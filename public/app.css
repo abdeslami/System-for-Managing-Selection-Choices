@@ -1,0 +1,29 @@
+:root {
+    --bs-primary: #A4654C; 
+}
+
+.btn-primary {
+    background-color: #A4654C; 
+    border-color: #A4654C; 
+}
+
+.btn-outline-primary {
+    color: #A4654C; 
+    border-color: #A4654C; 
+}
+
+
+body{
+    background: url(images/background-image.png) #EDE9D0 no-repeat right top;
+    background-size: contain;  
+    width: 100vw;
+    height: 100vh; 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+nav{
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(6px); 
+}
