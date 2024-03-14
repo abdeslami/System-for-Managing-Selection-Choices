@@ -17,6 +17,12 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    protected $primaryKey="id_users";
+
+    public function condidat()
+    {
+        return $this->hasMany(Condidature::class, "id_users");
+    }
     protected $fillable = [
         'name',
         'email',
