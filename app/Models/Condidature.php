@@ -18,7 +18,7 @@ class Condidature extends Model
 
     public function diplom()
     {
-        return $this->hasOne(Diplome::class, "id_condidat");
+        return $this->hasMany(Diplome::class, "id_condidat");
     }
 
     public function user()

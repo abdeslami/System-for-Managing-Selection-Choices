@@ -13,22 +13,22 @@ return new class extends Migration
     {
         Schema::create('condidatures', function (Blueprint $table) {
             $table->id('id_condidat');
-            $table->string('nom');
-            $table->string('prenom');
-            $table->string('sexe');
-            $table->string('cin');
-            $table->string('scan_cin');
-            $table->string('cne_cme');
-            $table->string('date_naissance');
-            $table->string('nationalite');
-            $table->string('adresse');
-            $table->string('ville_natale');
-            $table->string('num_tel');
-            $table->string('photo_personnel');
-            $table->string('merite');
-            $table->string('annee_universitaire');
-            $table->unsignedBigInteger('id_users'); 
-            $table->string('etat');
+            $table->string('nom')->nullable();
+            $table->string('prenom')->nullable();
+            $table->string('sexe')->nullable();
+            $table->string('cin')->nullable();
+            $table->string('scan_cin')->nullable();
+            $table->string('cne_cme')->nullable();
+            $table->string('date_naissance')->nullable();
+            $table->string('nationalite')->nullable();
+            $table->string('adresse')->nullable();
+            $table->string('ville_natale')->nullable();
+            $table->string('num_tel')->nullable();
+            $table->string('photo_personnel')->nullable();
+            $table->string('merite')->nullable();
+            $table->string('annee_universitaire')->nullable();
+            $table->unsignedBigInteger('id_users')->nullable(); 
+            $table->string('etat')->nullable();
             $table->timestamps();
             $table->foreign('id_users')->references('id_users')->on('users');
         });

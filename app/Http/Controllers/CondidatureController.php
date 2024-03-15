@@ -38,65 +38,125 @@ class CondidatureController extends Controller
      */
     public function store(Request $request)
     {
+      
+        if ($request->hasFile('photo_personnel')) {
+            $scanCinOriginalName = $request->file('photo_personnel')->getClientOriginalName();
+            $scanPhotoEncryptedName = hash('sha256', time() . $scanCinOriginalName) . '.' . $request->file('photo_personnel')->getClientOriginalExtension();
+            $scanCinPath = $request->file('photo_personnel')->storeAs('photo', $scanPhotoEncryptedName);
+        }
         
-        $photoFilename = $request->file('photo_personnel')->getClientOriginalName();
-        $photoPath = $request->file('photo_personnel')->storeAs('images', $photoFilename, 'public');
 
-        
-        $scanCinFilename = $request->file('scan_cin')->getClientOriginalName();
-        $scanCinPath = $request->file('scan_cin')->storeAs('dossier_scan', $scanCinFilename);
+        if ($request->hasFile('scan_cin')) {
+            $scanCinOriginalName = $request->file('scan_cin')->getClientOriginalName();
+            $scanCinEncryptedName = hash('sha256', time() . $scanCinOriginalName) . '.' . $request->file('scan_cin')->getClientOriginalExtension();
+            $scanCinPath = $request->file('scan_cin')->storeAs('dossier_scan', $scanCinEncryptedName);
+        }
+        if ($request->hasFile('scan_bac')) {
+            $scanCinOriginalName = $request->file('scan_bac')->getClientOriginalName();
+            $scanBacEncryptedName = hash('sha256', time() . $scanCinOriginalName) . '.' . $request->file('scan_bac')->getClientOriginalExtension();
+            $scanCinPath = $request->file('scan_bac')->storeAs('dossier_scan', $scanBacEncryptedName);
+        }
+        if ($request->hasFile('scan_diplome')) {
+            $scanCinOriginalName = $request->file('scan_diplome')->getClientOriginalName();
+            $scanDilpomeEncryptedName = hash('sha256', time() . $scanCinOriginalName) . '.' . $request->file('scan_diplome')->getClientOriginalExtension();
+            $scanCinPath = $request->file('scan_diplome')->storeAs('dossier_scan', $scanDilpomeEncryptedName);
+        }
+       
 
-        $scanBacFilename = $request->file('scan_bac')->getClientOriginalName();
-        $scanBacPath = $request->file('scan_bac')->storeAs('dossier_scan', $scanBacFilename);
 
-        $scanDiplomeFilename = $request->file('scan_diplome')->getClientOriginalName();
-        $scanDiplomePath = $request->file('scan_diplome')->storeAs('dossier_scan', $scanDiplomeFilename);
+
+
+
+        if($request->hasFile('releve_s1')){
 
         $releve_s1Filename = $request->file('releve_s1')->getClientOriginalName();
-        $releve_s1Path = $request->file('releve_s1')->storeAs('dossier_scan', $releve_s1Filename);
+        $releve_s1Filename = hash('sha256', time() . $scanCinOriginalName) . '.' . $request->file('releve_s1')->getClientOriginalExtension();
+        $scanCinPath = $request->file('releve_s1')->storeAs('dossier_scan', $releve_s1Filename);
+        }
 
-        $releve_s2Filename = $request->file('releve_s2')->getClientOriginalName();
-        $releve_s2Path = $request->file('releve_s2')->storeAs('dossier_scan', $releve_s2Filename);
+        if($request->hasFile('releve_s1')){
 
-        $releve_s3Filename = $request->file('releve_s3')->getClientOriginalName();
-        $releve_s3Path = $request->file('releve_s3')->storeAs('dossier_scan', $releve_s3Filename);
-        
-        
-        $releve_s4Filename = $request->file('releve_s4')->getClientOriginalName();
-        $releve_s4Path = $request->file('releve_s4')->storeAs('dossier_scan', $releve_s4Filename);
-        
-        
-        $releve_s5Filename = $request->file('releve_s5')->getClientOriginalName();
-        $releve_s5Path = $request->file('releve_s5')->storeAs('dossier_scan', $releve_s5Filename);
+            $releve_s1Filename = $request->file('releve_s1')->getClientOriginalName();
+            $releve_s1Filename = hash('sha256', time() . $scanCinOriginalName) . '.' . $request->file('releve_s1')->getClientOriginalExtension();
+            $scanCinPath = $request->file('releve_s1')->storeAs('dossier_scan', $releve_s1Filename);
+         }
+         if($request->hasFile('releve_s2')){
 
-        $releve_s6Filename = $request->file('releve_s6')->getClientOriginalName();
-        $releve_s6Path = $request->file('releve_s6')->storeAs('dossier_scan', $releve_s6Filename);
+            $releve_s2Filename = $request->file('releve_s2')->getClientOriginalName();
+            $releve_s2Filename = hash('sha256', time() . $scanCinOriginalName) . '.' . $request->file('releve_s2')->getClientOriginalExtension();
+            $scanCinPath = $request->file('releve_s2')->storeAs('dossier_scan', $releve_s2Filename);
+         }
+         if($request->hasFile('releve_s3')){
 
-        $releve_s7Filename = $request->file('releve_s7')->getClientOriginalName();
-        $releve_s7Path = $request->file('releve_s7')->storeAs('dossier_scan', $releve_s7Filename);
+            $releve_s3Filename = $request->file('releve_s3')->getClientOriginalName();
+            $releve_s3Filename = hash('sha256', time() . $scanCinOriginalName) . '.' . $request->file('releve_s3')->getClientOriginalExtension();
+            $scanCinPath = $request->file('releve_s3')->storeAs('dossier_scan', $releve_s3Filename);
+         }
+         if($request->hasFile('releve_s4')){
 
-        $releve_s8Filename = $request->file('releve_s8')->getClientOriginalName();
-        $releve_s8Path = $request->file('releve_s8')->storeAs('dossier_scan', $releve_s8Filename);
+            $releve_s4Filename = $request->file('releve_s4')->getClientOriginalName();
+            $releve_s4Filename = hash('sha256', time() . $scanCinOriginalName) . '.' . $request->file('releve_s4')->getClientOriginalExtension();
+            $scanCinPath = $request->file('releve_s4')->storeAs('dossier_scan', $releve_s4Filename);
+         }
+         if($request->hasFile('releve_s5')){
 
-        $releve_s9Filename = $request->file('releve_s9')->getClientOriginalName();
-        $releve_s9Path = $request->file('releve_s9')->storeAs('dossier_scan', $releve_s9Filename);
+            $releve_s5Filename = $request->file('releve_s5')->getClientOriginalName();
+            $releve_s5Filename = hash('sha256', time() . $scanCinOriginalName) . '.' . $request->file('releve_s5')->getClientOriginalExtension();
+            $scanCinPath = $request->file('releve_s5')->storeAs('dossier_scan', $releve_s5Filename);
+         }
+         if($request->hasFile('releve_s6')){
 
-        $releve_s10Filename = $request->file('releve_s10')->getClientOriginalName();
-        $releve_s10Path = $request->file('releve_s10')->storeAs('dossier_scan', $releve_s10Filename);
-       
+            $releve_s6Filename = $request->file('releve_s6')->getClientOriginalName();
+            $releve_s6Filename = hash('sha256', time() . $scanCinOriginalName) . '.' . $request->file('releve_s6')->getClientOriginalExtension();
+            $scanCinPath = $request->file('releve_s6')->storeAs('dossier_scan', $releve_s6Filename);
+         }
+         if($request->hasFile('releve_s7')){
+
+            $releve_s7Filename = $request->file('releve_s7')->getClientOriginalName();
+            $releve_s7Filename = hash('sha256', time() . $scanCinOriginalName) . '.' . $request->file('releve_s7')->getClientOriginalExtension();
+            $scanCinPath = $request->file('releve_s7')->storeAs('dossier_scan', $releve_s7Filename);
+         }
+         if($request->hasFile('releve_s8')){
+
+            $releve_s8Filename = $request->file('releve_s8')->getClientOriginalName();
+            $releve_s8Filename = hash('sha256', time() . $scanCinOriginalName) . '.' . $request->file('releve_s8')->getClientOriginalExtension();
+            $scanCinPath = $request->file('releve_s8')->storeAs('dossier_scan', $releve_s8Filename);
+         }
+         if($request->hasFile('releve_s9')){
+
+            $releve_s9Filename = $request->file('releve_s9')->getClientOriginalName();
+            $releve_s9Filename = hash('sha256', time() . $scanCinOriginalName) . '.' . $request->file('releve_s9')->getClientOriginalExtension();
+            $scanCinPath = $request->file('releve_s9')->storeAs('dossier_scan', $releve_s9Filename);
+         }
+         if($request->hasFile('releve_s10')){
+
+            $releve_s10Filename = $request->file('releve_s10')->getClientOriginalName();
+            $releve_s10Filename = hash('sha256', time() . $scanCinOriginalName) . '.' . $request->file('releve_s10')->getClientOriginalExtension();
+            $scanCinPath = $request->file('releve_s10')->storeAs('dossier_scan', $releve_s10Filename);
+         }
+
+            
+
+
+      
         $condidature = new Condidature();
         $condidature->nom = $request->nom;
         $condidature->prenom = $request->prenom;
         $condidature->sexe = $request->sexe;
         $condidature->cin = $request->cin;
-        $condidature->scan_cin = $scanCinFilename; // Save the original filename
+        if(isset($scanCinEncryptedName)){
+            $condidature->scan_cin = $scanCinEncryptedName; // Save the original filename
+        }
         $condidature->cne_cme = $request->cne_cme;
         $condidature->date_naissance = $request->date_naissance;
         $condidature->nationalite = $request->nationalite;
         $condidature->adresse = $request->adresse;
         $condidature->ville_natale = $request->ville_natale;
         $condidature->num_tel = $request->num_tel;
-        $condidature->photo_personnel = $photoFilename; // Save the original filename
+        if(isset($scanPhotoEncryptedName)){
+
+        $condidature->photo_personnel = $scanPhotoEncryptedName; // Save the original filename
+        }
         $condidature->annee_universitaire = $request->annee_universitaire;
         // Set other fields as needed
         $condidature->save();
@@ -105,9 +165,16 @@ class CondidatureController extends Controller
         $diplome = new Diplome();
         $diplome->nom = $request->diplome_nom;
         $diplome->mention_diplome = $request->mention_diplome;
-        $diplome->scan_bac = $scanBacFilename; // Save the original filename
+        if(isset($scanBacEncryptedName)){
+
+        $diplome->scan_bac = $scanBacEncryptedName;  // Save the original filename
+        }
+       
         $diplome->date_bac = $request->date_bac;
-        $diplome->scan_diplome = $scanDiplomeFilename; // Save the original filename
+        if(isset($scanDilpomeEncryptedName)){
+
+        $diplome->scan_diplome = $scanDilpomeEncryptedName; // Save the original filename
+        }
         $diplome->type_diplome = $request->type_diplome;
         $diplome->moyenne_s1 = $request->moyenne_s1;
         $diplome->moyenne_s2 = $request->moyenne_s2;
@@ -119,21 +186,47 @@ class CondidatureController extends Controller
         $diplome->moyenne_s8 = $request->moyenne_s8;
         $diplome->moyenne_s9 = $request->moyenne_s9;
         $diplome->moyenne_s10 = $request->moyenne_s10;
+        if(isset($releve_s1Filename)){
 
         $diplome->releve_s1 = $releve_s1Filename;
-        $diplome->releve_s2 =  $releve_s2Filename;
-        $diplome->releve_s3 =  $releve_s3Filename;
-        $diplome->releve_s4 =  $releve_s4Filename;
-        $diplome->releve_s5 =  $releve_s5Filename;
-        $diplome->releve_s6 =  $releve_s6Filename;
-        $diplome->releve_s7 = $releve_s7Filename;
-        $diplome->releve_s8 =  $releve_s8Filename;
-        $diplome->releve_s9 =  $releve_s9Filename;
-        $diplome->releve_s10 =  $releve_s10Filename;
+        }
+        if(isset($releve_s2Filename)){
 
-        // Add more fields as needed
-        $diplome->id_condidat = $condidature->id;
-        $diplome->save();
+        $diplome->releve_s2 =  $releve_s2Filename;
+        }
+        if(isset($releve_s3Filename)){
+
+        $diplome->releve_s3 =  $releve_s3Filename;
+        }
+        if(isset($releve_s4Filename)){
+
+        $diplome->releve_s4 =  $releve_s4Filename;
+        }
+        if(isset($releve_s5Filename)){
+
+        $diplome->releve_s5 =  $releve_s5Filename;
+        }
+        if(isset($releve_s6Filename)){
+
+        $diplome->releve_s6 =  $releve_s6Filename;
+        }
+        if(isset($releve_s7Filename)){
+
+        $diplome->releve_s7 = $releve_s7Filename;
+        }
+        if(isset($releve_s8Filename)){
+
+        $diplome->releve_s8 =  $releve_s8Filename;
+        }
+        if(isset($releve_s9Filename)){
+
+        $diplome->releve_s9 =  $releve_s9Filename;
+        }
+        if(isset($releve_s10Filename)){
+
+        $diplome->releve_s10 =  $releve_s10Filename;
+        }
+       $condidature->diplom()->save($diplome);
 
         // Return a success response
         return response()->json(['message' => 'Condidature and Diplome inserted successfully'], 201);
