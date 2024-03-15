@@ -28,7 +28,7 @@ class CondidatureController extends Controller
      */
     public function create()
     {
-        return view("admin.etudiant");
+        return view("etudiant.etudiant");
     }
 
     /**

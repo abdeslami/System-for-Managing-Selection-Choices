@@ -24,16 +24,16 @@ Route::get("/acceuil", function(){
 Route::get("/admin", [AdminController::class,'afficheDonne']);
 
 Route::get("/compte", [AdminController::class,'afficheDonneBase']);
+Route::get("/fiche", [AdminController::class,'fiche']);
+
 Route::get("/test", [AdminController::class,'affichetest']);
+Route::get("/etudiante/{s?}", [AdminController::class,'etudiante']);
+
+
 
 
 Route::get("/etudiant", [CondidatureController::class,'create']);
 Route::post("/ajouterE", [CondidatureController::class,'store'])->name('ajouterE');
-
-
-Route::get("/condidat", function(){
-    return view("admin.condidat");
-} );
 Route::get('/index',[CondidatureController::class,'index']);
 Auth::routes();
 

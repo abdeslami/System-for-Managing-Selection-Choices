@@ -7,6 +7,8 @@ use App\Models\Diplome;
 
 use Illuminate\Http\Request;
 
+use function Ramsey\Uuid\v1;
+
 class AdminController extends Controller
 {
     public function afficheDonne(){
@@ -109,5 +111,12 @@ class AdminController extends Controller
         
             return view("admin.test", compact('condidatures'));
         }
+        public function fiche(){
+            return view("etudiant.fiche_etudiant");
+        }
+        public function etudiante(){
+            return view("etudiant.modifierEtudiant");
+        }
+        
     
 }

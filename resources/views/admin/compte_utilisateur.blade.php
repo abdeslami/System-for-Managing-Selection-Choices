@@ -119,13 +119,16 @@
                                                         <option value="all"></option>
                                                     </select>
                                                 </th>
-                                                <th col-index="7">Autre filtre:
-                                                    <select class="table-filter form-select" onchange="filter_rows()">
-                                                        <option value="all"></option>
+                                                <th col-index="7">
+                                                    Autre filtre:
+                                                    <select class="table-sort form-select" onchange="sortTable()">
+                                                        <option value="asc">Asc</option>
+                                                        <option value="desc">Desc</option>
                                                     </select>
-                                                </th>
+                                                </th>                                                
                                                 <th>Image</th>
                                             </tr>
+                                    
                                         </thead>
                                         <tbody>
                                             @isset($condidatures)
@@ -139,7 +142,7 @@
                                                             <td>{{ $diplome->date_bac }}</td>
                                                             <td>{{ $condidature->average_moyenne }}</td>
                                                             <td>{{-- Action button or link here --}}</td>
-                                                            <td><img src="{{ asset('storage/photo/' . $condidature->photo_personnel) }}" alt="Photo Personnel"></td>
+                                                            <td><img style="width: 2rem" class=" rounded-circle" src="{{ asset('storage/photo/' . $condidature->photo_personnel) }}" alt="Photo Personnel"></td>
 
                                                         </tr>
                                                     @endforeach
