@@ -16,13 +16,11 @@ class CondidatureController extends Controller
      */
     public function index()
     {
-        $condidature = Condidature::find(1);
+        $condidature = Condidature::all();
 
-        // Access the diplome relationship directly
         $diplome = $condidature->diplom;
     
-        // Return the condidature along with its diplome
-        return $condidature;
+        return view("admin.index",compact('condidature'));
     }
 
     /**
@@ -42,8 +40,10 @@ class CondidatureController extends Controller
         if ($request->hasFile('photo_personnel')) {
             $scanCinOriginalName = $request->file('photo_personnel')->getClientOriginalName();
             $scanPhotoEncryptedName = hash('sha256', time() . $scanCinOriginalName) . '.' . $request->file('photo_personnel')->getClientOriginalExtension();
-            $scanCinPath = $request->file('photo_personnel')->storeAs('photo', $scanPhotoEncryptedName);
+           
+            $scanCinPath = $request->file('photo_personnel')->storeAs('photo', $scanPhotoEncryptedName, 'public');
         }
+        
         
 
         if ($request->hasFile('scan_cin')) {

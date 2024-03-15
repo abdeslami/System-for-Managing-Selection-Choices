@@ -106,155 +106,33 @@
                                     <div class="data_table">
                                         <table id="example" class="table table-striped table-bordered">
                                             <thead class="table-dark">
-                                                <tr>
+                                            <tr>
                                                     <th>CIN</th>
                                                     
-                                                    <th>Nom</th>
-                                                    <th>Prenom</th>
-                                                    <th>Moyenne de bac</th>
-                                                    <th>Chois de filere</th>
+                                                    <th>Nom Prenom</th>
+                                                    <th>mention de Dilpome</th>
+                                                    <th>Type de Diplome</th>
+                                                    <th>Date de bac </th>
+                                                    <th>Moyenne</th>
+
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>H4656261</td>
-                                                    <td>assia</td>
-                                                    <td>sousous</td>
-                                                    <td>18</td>
-                                                    <td>A</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>H4656261</td>
-                                                    <td>assia</td>
-                                                    <td>sousous</td>
-                                                    <td>18.6</td>
-                                                    <td>B</td>
-                                                </tr>
-                                              
-                                                <tr>
-                                                    <td>H4656261</td>
-                                                    <td>assia</td>
-                                                    <td>sousous</td>
-                                                    <td>18.9</td>
-                                                    <td>C</td>
-                                                </tr>
-                                              
-                                                <tr>
-                                                    <td>H4656261</td>
-                                                    <td>assia</td>
-                                                    <td>sousous</td>
-                                                    <td>15</td>
-                                                    <td>D</td>
-                                                </tr>
-                                              
-
-                                                <tr>
-                                                    <td>H4656261</td>
-                                                    <td>assia</td>
-                                                    <td>sousous</td>
-                                                    <td>16.8</td>
-                                                    <td>mois</td>
-                                                </tr>
-                                              
-                                                <tr>
-                                                    <td>H4656261</td>
-                                                    <td>assia</td>
-                                                    <td>sousous</td>
-                                                    <td>18.4</td>
-                                                    <td>E</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>H4656261</td>
-                                                    <td>assia</td>
-                                                    <td>sousous</td>
-                                                    <td>16.8</td>
-                                                    <td>F</td>
-                                                </tr>
-                                              
-                                                <tr>
-                                                    <td>H4656261</td>
-                                                    <td>assia</td>
-                                                    <td>sousous</td>
-                                                    <td>18.4</td>
-                                                    <td>Ce</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>H4656261</td>
-                                                    <td>assia</td>
-                                                    <td>sousous</td>
-                                                    <td>16.8</td>
-                                                    <td>D</td>
-                                                </tr>
-                                              
-                                                <tr>
-                                                    <td>H4656261</td>
-                                                    <td>assia</td>
-                                                    <td>sousous</td>
-                                                    <td>18.4</td>
-                                                    <td>H</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>H4656261</td>
-                                                    <td>assia</td>
-                                                    <td>sousous</td>
-                                                    <td>16.8</td>
-                                                    <td>u</td>
-                                                </tr>
-                                              
-                                                <tr>
-                                                    <td>H4656261</td>
-                                                    <td>assia</td>
-                                                    <td>sousous</td>
-                                                    <td>18.4</td>
-                                                    <td>e</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>H4656261</td>
-                                                    <td>assia</td>
-                                                    <td>sousous</td>
-                                                    <td>16.8</td>
-                                                    <td>z</td>
-                                                </tr>
-                                              
-                                                <tr>
-                                                    <td>H4656261</td>
-                                                    <td>assia</td>
-                                                    <td>sousous</td>
-                                                    <td>18.4</td>
-                                                    <td>u</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>H4656261</td>
-                                                    <td>assia</td>
-                                                    <td>sousous</td>
-                                                    <td>16.8</td>
-                                                    <td>mois</td>
-                                                </tr>
-                                              
-                                                <tr>
-                                                    <td>H4656261</td>
-                                                    <td>assia</td>
-                                                    <td>sousous</td>
-                                                    <td>18.4</td>
-                                                    <td>mois</td>
-                                                </tr>
-                                               <tr>
-                                                    <td>H4656261</td>
-                                                    <td>assia</td>
-                                                    <td>sousous</td>
-                                                    <td>16.8</td>
-                                                    <td>mois</td>
-                                                </tr>
-                                              
-                                                <tr>
-                                                    <td>H4656261</td>
-                                                    <td>assia</td>
-                                                    <td>sousous</td>
-                                                    <td>18.4</td>
-                                                    <td>mois</td>
-                                                </tr>
-                                              
-
+                                                @isset($condidatures)
+                                                @foreach ($condidatures as $condidature)
+                                                    @foreach ($condidature->diplom as $diplome)
+                                                        <tr>
+                                                            <td>{{ $condidature->cin }}</td>
+                                                            <td>{{ $condidature->nom }} {{ $condidature->prenom }}</td>
+                                                            <td>{{ $diplome->mention_diplome }}</td>
+                                                            <td>{{ $diplome->type_diplome }}</td>
+                                                            <td>{{ $diplome->date_bac }}</td>
+                                                            <td>{{ $condidature->average_moyenne }}</td>
+                                                        </tr>
+                                                    @endforeach
+                                                @endforeach
+                                            @endisset
+                                        </tbody>
                                               
                                             
                                             </tbody>

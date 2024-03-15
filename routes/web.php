@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CondidatureController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,18 +21,16 @@ Route::get('/', function () {
 Route::get("/acceuil", function(){
     return view("acceuil");
 } );
-Route::get("/admin", function(){
-    return view("admin.index");
-} );
-Route::get("/compte", function(){
-    return view("admin.compte_utilisateur");
-} );
+Route::get("/admin", [AdminController::class,'afficheDonne']);
+
+Route::get("/compte", [AdminController::class,'afficheDonneBase']);
+Route::get("/test", [AdminController::class,'affichetest']);
+
+
 Route::get("/etudiant", [CondidatureController::class,'create']);
 Route::post("/ajouterE", [CondidatureController::class,'store'])->name('ajouterE');
 
-Route::get("/test", function(){
-    return view("admin.test");
-} );
+
 Route::get("/condidat", function(){
     return view("admin.condidat");
 } );
