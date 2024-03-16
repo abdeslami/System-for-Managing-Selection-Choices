@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('choix_classements', function (Blueprint $table) {
-            $table->id('id_choix');
+            $table->id();
             $table->string('choix_1');
             $table->string('choix_2');
             $table->string('choix_3');
@@ -22,8 +22,6 @@ return new class extends Migration
             $table->string('choix_7');
             $table->string('choix_8');
             $table->string('choix_9');
-            $table->unsignedBigInteger('id_condidat')->unique();
-            $table->foreign('id_condidat')->references('id_condidat')->on('condidatures');
             $table->timestamps();
         });
     }

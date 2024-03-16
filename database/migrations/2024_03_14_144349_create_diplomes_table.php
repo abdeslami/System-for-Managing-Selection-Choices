@@ -12,9 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('diplomes', function (Blueprint $table) {
-            $table->id('id_diplome');
+            $table->id();
             $table->string('nom')->nullable();
             $table->string('mention_diplome')->nullable();
+            $table->string('etablissement')->nullable();
             $table->string('scan_bac')->nullable();
             $table->string('date_bac')->nullable();
             $table->string('scan_diplome')->nullable();
@@ -39,8 +40,14 @@ return new class extends Migration
             $table->string('releve_s8')->nullable();
             $table->string('releve_s9')->nullable();
             $table->string('releve_s10')->nullable();
-            $table->unsignedBigInteger('id_condidat');
-            $table->foreign('id_condidat')->references('id_condidat')->on('condidatures');
+            $table->string('diplome_supp1')->nullable();
+            $table->string('diplome_supp2')->nullable();
+            $table->string('diplome_supp3')->nullable();
+            $table->string('diplome_supp4')->nullable();
+            $table->string('nom_ds1')->nullable();
+            $table->string('nom_ds2')->nullable();
+            $table->string('nom_ds3')->nullable();
+            $table->string('nom_ds4')->nullable();
             $table->timestamps();
         });
     }

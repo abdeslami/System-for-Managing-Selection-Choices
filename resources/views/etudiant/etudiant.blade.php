@@ -211,6 +211,34 @@
                                             </div>
                                         <div class="col-12">
                                             <div class="form-outline mb-4 ">
+                                                <label class="form-label" for="type_diplome">Choix de votre Etablissement:</label>
+                                                <select name="etablissement"  class="form-control">
+                                            
+                                                    <option disabled selected value="">Sélectionnez votre choix</option>
+                                                    <option value="ISTA">ISTA</option>
+                                                    <option value="EST">EST</option>
+                                                    <option value="ENSG">ENSG</option>
+                                                    <option value="fac">LA fac</option>
+
+
+                                            
+                                                </select>
+                                                   
+                                        </div>
+                                        <div class="form-outline mb-4">
+                                            <label class="form-label" for="form3Example4cdg">Mention de Diplome :</label>
+              
+                                            <select name="mention_diplome" class="form-control">
+                                                <option selected value="">Select votre Montion</option>
+                                                <option value="Mention Très Bien">Mention Très Bien</option>
+                                                <option value="Mention Bien">Mention Bien</option>
+                                                <option value="Mention Assez Bien">Mention Assez Bien</option>
+                                                <option value="Sans mention">Sans mention</option>
+
+                                            </select>
+                                          </div>
+                                            
+                                            <div class="form-outline mb-4 ">
                                                 <label class="form-label" for="type_diplome">Choix de votre Diplôme:</label>
                                                 <select name="type_diplome" onchange="handleInput()" id="type_diplome" class="form-control">
                                             
@@ -226,6 +254,21 @@
                                                
                                             <div id="div_input"></div>
                                         </div>
+                                        <div class="form-outline mb-4 ">
+                                            <label class="form-label" for="aute_diplome">Autre  de Diplôme:</label>
+                                            <select  onchange="AutreDiplome()" id="autre" class="form-control">
+                                        
+                                                <option disabled selected value="">Combien Diplome</option>
+                                                <option value="Diplome+1">Diplome+1</option>
+                                                <option value="Diplome+2">Diplome+2</option>
+                                                <option value="Diplome+3">Diplome+3</option>
+                                                <option value="Diplome+4">Diplome+4</option>
+                                            </select>
+                                               
+                                            
+                                           
+                                        <div id="div_input1"></div>
+                                    </div>
                                         </div>
                                                
                                         </div>
@@ -246,18 +289,7 @@
                                                 <h2 class="steps">Étape 3 - 4</h2>
                                             </div>
                                         </div>  
-                                        <div class="form-outline mb-4">
-                                            <label class="form-label" for="form3Example4cdg">Mention de Diplome :</label>
-              
-                                            <select name="mention_diplome" class="form-control">
-                                                <option selected value="">Select votre Montion</option>
-                                                <option value="Mention Très Bien">Mention Très Bien</option>
-                                                <option value="Mention Bien">Mention Bien</option>
-                                                <option value="Mention Assez Bien">Mention Assez Bien</option>
-                                                <option value="Sans mention">Sans mention</option>
-
-                                            </select>
-                                          </div>
+                                        
                                           <div class="form-outline mb-4">
                                             <label class="form-label" for="form3Example4cdg">Scan Bac :</label>
               

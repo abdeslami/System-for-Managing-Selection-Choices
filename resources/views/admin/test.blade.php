@@ -118,23 +118,26 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @isset($condidatures)
-                                                @foreach ($condidatures as $condidature)
-                                                    @foreach ($condidature->diplom as $diplome)
+                                                @isset($diplomes)
+                                                @foreach ($diplomes as $diplome)
                                                         <tr>
-                                                            <td>{{ $condidature->cin }}</td>
-                                                            <td>{{ $condidature->nom }} {{ $condidature->prenom }}</td>
+                                                            <td>{{ $diplome->candidature->nom }}</td>
+                                                            <td>{{ $diplome->candidature->prenom }}</td>
+
+
                                                             <td>{{ $diplome->mention_diplome }}</td>
                                                             <td>{{ $diplome->type_diplome }}</td>
                                                             <td>{{ $diplome->date_bac }}</td>
-                                                            <td>{{ $condidature->average_moyenne }}</td>
+
+                                                            <td>{{ $diplome->average_moyenne }}</td>
                                                         </tr>
-                                                    @endforeach
+                                                   
                                                 @endforeach
                                             @endisset
-                                        </tbody>
-                                              
                                             
+                                        </tbody>
+                                        
+                                     
                                             </tbody>
                                         </table>
                                     </div>

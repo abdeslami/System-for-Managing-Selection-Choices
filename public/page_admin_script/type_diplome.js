@@ -460,3 +460,290 @@
             document.getElementById('div_input').appendChild(div1);
         }
     }
+    function AutreDiplome(){
+        let autre_diplome = document.getElementById('autre').value;
+        if (autre_diplome === "Diplome+1" ) {
+            let input_note1 = document.createElement('input');
+            let label_note1 = document.createElement('label');
+            let label_releve1 = document.createElement('label');
+            let file_note1 = document.createElement('input'); 
+
+            file_note1.setAttribute('type', 'file');
+            file_note1.setAttribute('name', 'diplome_supp1');
+            file_note1.setAttribute('class', 'form-control');
+
+            input_note1.setAttribute('type', 'text');
+            input_note1.setAttribute('name', 'nom_ds1');
+            input_note1.setAttribute('class', 'form-control');
+
+            let div1 = document.createElement('div');
+            label_note1.textContent = "Saisir la Moyenne de Diplome :";
+            label_releve1.textContent = "Donnez le Donneé Diplome :";
+            div1.setAttribute('class', 'form-outline mb-4');
+
+            div1.appendChild(label_note1);
+            div1.appendChild(input_note1);
+            div1.appendChild(label_releve1);
+            div1.appendChild(file_note1);
+            document.getElementById('div_input1').innerHTML = '';
+            document.getElementById('div_input1').appendChild(div1);
+        }
+        else if (autre_diplome === "Diplome+2" ) {
+            let input_note1 = document.createElement('input');
+            let label_note1 = document.createElement('label');
+            let label_releve1 = document.createElement('label');
+            let file_note1 = document.createElement('input'); 
+
+            let input_note2 = document.createElement('input');
+            let label_note2 = document.createElement('label');
+            let label_releve2 = document.createElement('label');
+            let file_note2 = document.createElement('input'); 
+
+            file_note1.setAttribute('type', 'file');
+            file_note1.setAttribute('name', 'diplome_supp1');
+            file_note1.setAttribute('class', 'form-control');
+
+            input_note1.setAttribute('type', 'text');
+            input_note1.setAttribute('name', 'nom_ds1');
+            input_note1.setAttribute('class', 'form-control');
+
+            file_note2.setAttribute('type', 'file');
+            file_note2.setAttribute('name', 'diplome_supp2');
+            file_note2.setAttribute('class', 'form-control');
+
+            input_note2.setAttribute('type', 'text');
+            input_note2.setAttribute('name', 'nom_ds2');
+            input_note2.setAttribute('class', 'form-control');
+
+            let div1 = document.createElement('div');
+            label_note1.textContent = "Saisir la Moyenne de Diplome  1:";
+            label_releve1.textContent = "Donnez le  Diplome 1 :";
+            label_note2.textContent = "Saisir la Moyenne de Diplome 2:";
+            label_releve2.textContent = "Donnez le  Diplome 2:";
+            div1.setAttribute('class', 'form-outline mb-4');
+
+            div1.appendChild(label_note1);
+            div1.appendChild(input_note1);
+            div1.appendChild(label_releve1);
+            div1.appendChild(file_note1);
+
+            div1.appendChild(label_note2);
+            div1.appendChild(input_note2);
+            div1.appendChild(label_releve2);
+            div1.appendChild(file_note2);
+
+            document.getElementById('div_input1').innerHTML = '';
+            document.getElementById('div_input1').appendChild(div1);
+        }else if (autre_diplome === "Diplome+3" ) {
+            let input_note1 = document.createElement('input');
+            let label_note1 = document.createElement('label');
+            let label_releve1 = document.createElement('label');
+            let file_note1 = document.createElement('input'); 
+
+            let input_note2 = document.createElement('input');
+            let label_note2 = document.createElement('label');
+            let label_releve2 = document.createElement('label');
+            let file_note2 = document.createElement('input'); 
+
+            let input_note3 = document.createElement('input');
+            let label_note3 = document.createElement('label');
+            let label_releve3 = document.createElement('label');
+            let file_note3 = document.createElement('input'); 
+
+
+            file_note1.setAttribute('type', 'file');
+            file_note1.setAttribute('name', 'diplome_supp1');
+            file_note1.setAttribute('class', 'form-control');
+
+            input_note1.setAttribute('type', 'text');
+            input_note1.setAttribute('name', 'nom_ds1');
+            input_note1.setAttribute('class', 'form-control');
+
+            file_note2.setAttribute('type', 'file');
+            file_note2.setAttribute('name', 'diplome_supp2');
+            file_note2.setAttribute('class', 'form-control');
+
+            input_note2.setAttribute('type', 'text');
+            input_note2.setAttribute('name', 'nom_ds2');
+            input_note2.setAttribute('class', 'form-control');
+
+            file_note3.setAttribute('type', 'file');
+            file_note3.setAttribute('name', 'diplome_supp3');
+            file_note3.setAttribute('class', 'form-control');
+
+            input_note3.setAttribute('type', 'text');
+            input_note3.setAttribute('name', 'nom_ds3');
+            input_note3.setAttribute('class', 'form-control');
+
+            let div1 = document.createElement('div');
+            label_note1.textContent = "Saisir la Moyenne de Diplome  1:";
+            label_releve1.textContent = "Donnez le  Diplome 1 :";
+            label_note2.textContent = "Saisir la Moyenne de Diplome 2:";
+            label_releve2.textContent = "Donnez le  Diplome 2:";
+            
+            label_note3.textContent = "Saisir la Moyenne de Diplome 3:";
+            label_releve3.textContent = "Donnez le  Diplome 3:";
+
+            
+
+            div1.setAttribute('class', 'form-outline mb-4');
+
+            div1.appendChild(label_note1);
+            div1.appendChild(input_note1);
+            div1.appendChild(label_releve1);
+            div1.appendChild(file_note1);
+
+            div1.appendChild(label_note2);
+            div1.appendChild(input_note2);
+            div1.appendChild(label_releve2);
+            div1.appendChild(file_note2);
+
+            div1.appendChild(label_note3);
+            div1.appendChild(input_note3);
+            div1.appendChild(label_releve3);
+            div1.appendChild(file_note3);
+
+            document.getElementById('div_input1').innerHTML = '';
+            document.getElementById('div_input1').appendChild(div1);
+        }
+        else if (autre_diplome === "Diplome+2" ) {
+            let input_note1 = document.createElement('input');
+            let label_note1 = document.createElement('label');
+            let label_releve1 = document.createElement('label');
+            let file_note1 = document.createElement('input'); 
+
+            let input_note2 = document.createElement('input');
+            let label_note2 = document.createElement('label');
+            let label_releve2 = document.createElement('label');
+            let file_note2 = document.createElement('input'); 
+
+            file_note1.setAttribute('type', 'file');
+            file_note1.setAttribute('name', 'diplome_supp1');
+            file_note1.setAttribute('class', 'form-control');
+
+            input_note1.setAttribute('type', 'text');
+            input_note1.setAttribute('name', 'nom_ds1');
+            input_note1.setAttribute('class', 'form-control');
+
+            file_note2.setAttribute('type', 'file');
+            file_note2.setAttribute('name', 'diplome_supp2');
+            file_note2.setAttribute('class', 'form-control');
+
+            input_note2.setAttribute('type', 'text');
+            input_note2.setAttribute('name', 'nom_ds2');
+            input_note2.setAttribute('class', 'form-control');
+
+            let div1 = document.createElement('div');
+            label_note1.textContent = "Saisir la Moyenne de Diplome  1:";
+            label_releve1.textContent = "Donnez le  Diplome 1 :";
+            label_note2.textContent = "Saisir la Moyenne de Diplome 2:";
+            label_releve2.textContent = "Donnez le  Diplome 2:";
+            div1.setAttribute('class', 'form-outline mb-4');
+
+            div1.appendChild(label_note1);
+            div1.appendChild(input_note1);
+            div1.appendChild(label_releve1);
+            div1.appendChild(file_note1);
+
+            div1.appendChild(label_note2);
+            div1.appendChild(input_note2);
+            div1.appendChild(label_releve2);
+            div1.appendChild(file_note2);
+
+            document.getElementById('div_input1').innerHTML = '';
+            document.getElementById('div_input1').appendChild(div1);
+        }else if (autre_diplome === "Diplome+4" ) {
+            let input_note1 = document.createElement('input');
+            let label_note1 = document.createElement('label');
+            let label_releve1 = document.createElement('label');
+            let file_note1 = document.createElement('input'); 
+
+            let input_note2 = document.createElement('input');
+            let label_note2 = document.createElement('label');
+            let label_releve2 = document.createElement('label');
+            let file_note2 = document.createElement('input'); 
+
+            let input_note3 = document.createElement('input');
+            let label_note3 = document.createElement('label');
+            let label_releve3 = document.createElement('label');
+            let file_note3 = document.createElement('input'); 
+            
+            let input_note4 = document.createElement('input');
+            let label_note4 = document.createElement('label');
+            let label_releve4 = document.createElement('label');
+            let file_note4 = document.createElement('input');
+
+
+            file_note1.setAttribute('type', 'file');
+            file_note1.setAttribute('name', 'diplome_supp1');
+            file_note1.setAttribute('class', 'form-control');
+
+            input_note1.setAttribute('type', 'text');
+            input_note1.setAttribute('name', 'nom_ds1');
+            input_note1.setAttribute('class', 'form-control');
+
+            file_note2.setAttribute('type', 'file');
+            file_note2.setAttribute('name', 'diplome_supp2');
+            file_note2.setAttribute('class', 'form-control');
+
+            input_note2.setAttribute('type', 'text');
+            input_note2.setAttribute('name', 'nom_ds2');
+            input_note2.setAttribute('class', 'form-control');
+
+            file_note3.setAttribute('type', 'file');
+            file_note3.setAttribute('name', 'diplome_supp3');
+            file_note3.setAttribute('class', 'form-control');
+
+            input_note3.setAttribute('type', 'text');
+            input_note3.setAttribute('name', 'nom_ds3');
+            input_note3.setAttribute('class', 'form-control');
+
+            file_note4.setAttribute('type', 'file');
+            file_note4.setAttribute('name', 'diplome_supp4');
+            file_note4.setAttribute('class', 'form-control');
+
+            input_note4.setAttribute('type', 'text');
+            input_note4.setAttribute('name', 'nom_ds4');
+            input_note4.setAttribute('class', 'form-control');
+
+            let div1 = document.createElement('div');
+            label_note1.textContent = "Saisir la Moyenne de Diplome  1:";
+            label_releve1.textContent = "Donnez le  Diplome 1 :";
+            label_note2.textContent = "Saisir la Moyenne de Diplome 2:";
+            label_releve2.textContent = "Donnez le  Diplome 2:";
+            
+            label_note3.textContent = "Saisir la Moyenne de Diplome 3:";
+            label_releve3.textContent = "Donnez le  Diplome 3:";
+            
+            label_note4.textContent = "Saisir la Moyenne de Diplome 4:";
+            label_releve4.textContent = "Donnez le  Diplome 4:";
+
+            
+
+            div1.setAttribute('class', 'form-outline mb-4');
+
+            div1.appendChild(label_note1);
+            div1.appendChild(input_note1);
+            div1.appendChild(label_releve1);
+            div1.appendChild(file_note1);
+
+            div1.appendChild(label_note2);
+            div1.appendChild(input_note2);
+            div1.appendChild(label_releve2);
+            div1.appendChild(file_note2);
+
+            div1.appendChild(label_note3);
+            div1.appendChild(input_note3);
+            div1.appendChild(label_releve3);
+            div1.appendChild(file_note3);
+
+            div1.appendChild(label_note4);
+            div1.appendChild(input_note4);
+            div1.appendChild(label_releve4);
+            div1.appendChild(file_note4);
+
+            document.getElementById('div_input1').innerHTML = '';
+            document.getElementById('div_input1').appendChild(div1);
+        }
+
+    }

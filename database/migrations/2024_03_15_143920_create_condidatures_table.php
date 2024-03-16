@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('condidatures', function (Blueprint $table) {
-            $table->id('id_condidat');
+        Schema::create('candidatures', function (Blueprint $table) {
+            $table->id();
             $table->string('nom')->nullable();
             $table->string('prenom')->nullable();
             $table->string('sexe')->nullable();
@@ -27,12 +27,13 @@ return new class extends Migration
             $table->string('photo_personnel')->nullable();
             $table->string('merite')->nullable();
             $table->string('annee_universitaire')->nullable();
-            $table->unsignedBigInteger('id_users')->nullable(); 
             $table->string('etat')->nullable();
+            //$table->foreignId("choix_classement_id")->nullable()->constrained('choix_classements')->onDelete('cascade'); 
+            //$table->foreignId("user_id")->constrained('users')->onDelete('cascade');
+            $table->foreignId("diplome_id")->nullable()->constrained('diplomes')->onDelete('cascade'); 
             $table->timestamps();
-            $table->foreign('id_users')->references('id_users')->on('users');
         });
-        
+      
     }
 
     /**

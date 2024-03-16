@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Condidature;
+use App\Models\Candidature;
 use App\Models\Diplome;
 
 use App\Http\Requests\StoreCondidatureRequest;
@@ -16,7 +16,7 @@ class CondidatureController extends Controller
      */
     public function index()
     {
-        $condidature = Condidature::all();
+        $condidature = Candidature::all();
 
         $diplome = $condidature->diplom;
     
@@ -134,37 +134,36 @@ class CondidatureController extends Controller
             $releve_s10Filename = hash('sha256', time() . $scanCinOriginalName) . '.' . $request->file('releve_s10')->getClientOriginalExtension();
             $scanCinPath = $request->file('releve_s10')->storeAs('dossier_scan', $releve_s10Filename);
          }
+         if($request->hasFile('diplome_supp1')){
 
-            
+            $diplome_supp1Filename = $request->file('diplome_supp1')->getClientOriginalName();
+            $diplome_supp1Filename = hash('sha256', time() . $scanCinOriginalName) . '.' . $request->file('diplome_supp1')->getClientOriginalExtension();
+            $scanCinPath = $request->file('diplome_supp1')->storeAs('dossier_scan', $diplome_supp1Filename);
+         }
+         if($request->hasFile('diplome_supp2')){
 
+            $diplome_supp2Filename = $request->file('diplome_supp2')->getClientOriginalName();
+            $diplome_supp2Filename = hash('sha256', time() . $scanCinOriginalName) . '.' . $request->file('diplome_supp2')->getClientOriginalExtension();
+            $scanCinPath = $request->file('diplome_supp2')->storeAs('dossier_scan', $diplome_supp2Filename);
+         }
+         if($request->hasFile('diplome_supp3')){
 
-      
-        $condidature = new Condidature();
-        $condidature->nom = $request->nom;
-        $condidature->prenom = $request->prenom;
-        $condidature->sexe = $request->sexe;
-        $condidature->cin = $request->cin;
-        if(isset($scanCinEncryptedName)){
-            $condidature->scan_cin = $scanCinEncryptedName; // Save the original filename
-        }
-        $condidature->cne_cme = $request->cne_cme;
-        $condidature->date_naissance = $request->date_naissance;
-        $condidature->nationalite = $request->nationalite;
-        $condidature->adresse = $request->adresse;
-        $condidature->ville_natale = $request->ville_natale;
-        $condidature->num_tel = $request->num_tel;
-        if(isset($scanPhotoEncryptedName)){
+            $diplome_supp3Filename = $request->file('diplome_supp3')->getClientOriginalName();
+            $diplome_supp3Filename = hash('sha256', time() . $scanCinOriginalName) . '.' . $request->file('diplome_supp3')->getClientOriginalExtension();
+            $scanCinPath = $request->file('diplome_supp3')->storeAs('dossier_scan', $diplome_supp3Filename);
+         }
+         if($request->hasFile('diplome_supp4')){
 
-        $condidature->photo_personnel = $scanPhotoEncryptedName; // Save the original filename
-        }
-        $condidature->annee_universitaire = $request->annee_universitaire;
-        // Set other fields as needed
-        $condidature->save();
-
-        // Create a new Diplome instance and associate it with the Condidature
+            $diplome_supp4Filename = $request->file('diplome_supp4')->getClientOriginalName();
+            $diplome_supp4Filename = hash('sha256', time() . $scanCinOriginalName) . '.' . $request->file('diplome_supp4')->getClientOriginalExtension();
+            $scanCinPath = $request->file('diplome_supp4')->storeAs('dossier_scan', $diplome_supp4Filename);
+         }
+         // Create a new Diplome instance and associate it with the Condidature
         $diplome = new Diplome();
         $diplome->nom = $request->diplome_nom;
         $diplome->mention_diplome = $request->mention_diplome;
+        $diplome->etablissement= $request->etablissement;
+
         if(isset($scanBacEncryptedName)){
 
         $diplome->scan_bac = $scanBacEncryptedName;  // Save the original filename
@@ -186,6 +185,13 @@ class CondidatureController extends Controller
         $diplome->moyenne_s8 = $request->moyenne_s8;
         $diplome->moyenne_s9 = $request->moyenne_s9;
         $diplome->moyenne_s10 = $request->moyenne_s10;
+        
+        $diplome->nom_ds1 = $request->nom_ds1;
+        $diplome->nom_ds2 = $request->nom_ds2;
+        $diplome->nom_ds3 = $request->nom_ds3;
+        $diplome->nom_ds4 = $request->nom_ds4;
+
+
         if(isset($releve_s1Filename)){
 
         $diplome->releve_s1 = $releve_s1Filename;
@@ -226,7 +232,55 @@ class CondidatureController extends Controller
 
         $diplome->releve_s10 =  $releve_s10Filename;
         }
-       $condidature->diplom()->save($diplome);
+
+        if(isset($diplome_supp1Filename)){
+
+            $diplome->diplome_supp1 =  $diplome_supp1Filename;
+        }
+        if(isset($diplome_supp2Filename)){
+
+            $diplome->diplome_supp2 =  $diplome_supp2Filename;
+            }
+            if(isset($diplome_supp3Filename)){
+
+                $diplome->diplome_supp3 =  $diplome_supp3Filename;
+                }
+                if(isset($diplome_supp4Filename)){
+
+                    $diplome->diplome_supp4 =  $diplome_supp4Filename;
+                    }
+$diplome->save();
+
+            
+
+
+      
+        $condidature = new Candidature();
+        $condidature->nom = $request->nom;
+        $condidature->prenom = $request->prenom;
+        $condidature->sexe = $request->sexe;
+        $condidature->cin = $request->cin;
+        if(isset($scanCinEncryptedName)){
+            $condidature->scan_cin = $scanCinEncryptedName; // Save the original filename
+        }
+        $condidature->cne_cme = $request->cne_cme;
+        $condidature->date_naissance = $request->date_naissance;
+        $condidature->nationalite = $request->nationalite;
+        $condidature->adresse = $request->adresse;
+        $condidature->ville_natale = $request->ville_natale;
+        $condidature->num_tel = $request->num_tel;
+        if(isset($scanPhotoEncryptedName)){
+
+        $condidature->photo_personnel = $scanPhotoEncryptedName; // Save the original filename
+        }
+        $condidature->annee_universitaire = $request->annee_universitaire;
+
+        // Set other fields as needed
+        
+
+        
+       
+        $diplome->candidature()->save($condidature);
 
         // Return a success response
         return response()->json(['message' => 'Condidature and Diplome inserted successfully'], 201);
@@ -235,7 +289,7 @@ class CondidatureController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Condidature $condidature)
+    public function show(Candidature $condidature)
     {
         //
     }
@@ -243,7 +297,7 @@ class CondidatureController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Condidature $condidature)
+    public function edit(Candidature $condidature)
     {
         //
     }
@@ -251,7 +305,7 @@ class CondidatureController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCondidatureRequest $request, Condidature $condidature)
+    public function update(UpdateCondidatureRequest $request, Candidature $condidature)
     {
         //
     }
@@ -259,7 +313,7 @@ class CondidatureController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Condidature $condidature)
+    public function destroy(Candidature $condidature)
     {
         //
     }

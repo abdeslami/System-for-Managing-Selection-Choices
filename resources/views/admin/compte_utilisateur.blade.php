@@ -131,23 +131,21 @@
                                     
                                         </thead>
                                         <tbody>
-                                            @isset($condidatures)
-                                                @foreach ($condidatures as $condidature)
-                                                    @foreach ($condidature->diplom as $diplome)
-                                                        <tr>
-                                                            <td>{{ $condidature->cin }}</td>
-                                                            <td>{{ $condidature->nom }} {{ $condidature->prenom }}</td>
-                                                            <td>{{ $diplome->mention_diplome }}</td>
-                                                            <td>{{ $diplome->type_diplome }}</td>
-                                                            <td>{{ $diplome->date_bac }}</td>
-                                                            <td>{{ $condidature->average_moyenne }}</td>
-                                                            <td>{{-- Action button or link here --}}</td>
-                                                            <td><img style="width: 2rem" class=" rounded-circle" src="{{ asset('storage/photo/' . $condidature->photo_personnel) }}" alt="Photo Personnel"></td>
-
-                                                        </tr>
-                                                    @endforeach
-                                                @endforeach
-                                            @endisset
+                                            @isset($diplomes)
+                                            @foreach ($diplomes as $diplome)
+                                                    <tr>
+                                                        <td>{{$diplome->candidature->cin}}</td>
+                                                        <td>{{ $diplome->candidature->nom }} {{ $diplome->candidature->prenom }}</td>
+                                                          <td>{{ $diplome->mention_diplome }}</td>
+                                                        <td>{{ $diplome->type_diplome }}</td>
+                                                        <td>{{ $diplome->date_bac }}</td>
+                                                        <td>{{ $diplome->average_moyenne }}</td>
+                                                        <td><img style="width: 2rem" class=" rounded-circle" src="{{ asset('storage/photo/' . $diplome->candidature->photo_personnel) }}" alt="Photo Personnel"></td>
+                                                        
+                                                    </tr>
+                                               
+                                            @endforeach
+                                        @endisset
                                         </tbody>
                                     </table>
                                 
