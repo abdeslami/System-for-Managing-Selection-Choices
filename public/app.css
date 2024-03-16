@@ -1,10 +1,19 @@
 :root {
-    --bs-primary: #A4654C; 
-}
+    --animate-duration: 1500ms;
+    
+  }
 
-.btn-primary {
+.btn-primary{
     background-color: #A4654C; 
     border-color: #A4654C; 
+}
+.btn-primary:hover,.btn-outline-primary:hover{
+    background-color: #9b6048; 
+    border-color: #9b6048; 
+}
+.btn-primary:active,.btn-outline-primary:active{
+    background-color: #8f5842 !important; 
+    border-color: #8f5842 !important; 
 }
 
 .btn-outline-primary {
@@ -14,8 +23,7 @@
 
 
 body{
-    background: url(images/background-image.png) #EDE9D0 no-repeat right top;
-    background-size: contain;  
+    background: url(images/bg.svg) #EDE9D0 no-repeat right top scroll;
     width: 100vw;
     height: 100vh; 
     margin: 0;
@@ -25,5 +33,43 @@ body{
 
 nav{
     background-color: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(6px); 
+    backdrop-filter: blur(6px);
+    
+}
+.login{
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px); 
+}
+
+
+.lead{
+
+    mix-blend-mode: exclusion;
+    color: white;
+    
+}
+.col[class*="lead"]{
+    mix-blend-mode: normal;
+    color: black;
+    font-weight: 400;
+
+}
+ .keyword{
+    color:#FF844F;
+} 
+.title{
+    background: linear-gradient(to right,black,#a4654c11)
+
+    
+}
+.card{
+    box-shadow: 5px 5px 4px #5FA9FE;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+.card-title{
+    border-bottom: #FF844F solid 2px;
+    margin-inline: 20%;
+    padding: 15px;
+    margin:30px;
 }

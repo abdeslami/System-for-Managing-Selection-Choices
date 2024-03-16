@@ -1,10 +1,15 @@
 <?php
+
+
 namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Diplome extends Model
 {
+
     protected $fillable = [
         'nom', 'mention_diplome', 'etablissement', 'scan_bac', 'date_bac', 'scan_diplome',
         'type_diplome', 'moyenne_s1', 'moyenne_s2', 'moyenne_s3', 'moyenne_s4', 'moyenne_s5',
@@ -19,4 +24,5 @@ class Diplome extends Model
     {
         return $this->hasOne(Candidature::class);
     }
+
 }
