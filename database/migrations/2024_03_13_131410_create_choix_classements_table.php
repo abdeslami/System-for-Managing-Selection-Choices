@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('choix_classements', function (Blueprint $table) {
             $table->id();
-        $table->string('choix_1', 100);
-        $table->string('choix_2', 100);
-        $table->string('choix_3', 100);
-        $table->string('choix_4', 100);
-        $table->string('choix_5', 100);
-        $table->string('choix_6', 100);
-        $table->string('choix_7', 100);
-        $table->string('choix_8', 100);
-        $table->string('choix_9', 100);
+            $table->string('choix_1');
+            $table->string('choix_2');
+            $table->string('choix_3');
+            $table->string('choix_4');
+            $table->string('choix_5');
+            $table->string('choix_6');
+            $table->string('choix_7');
+            $table->string('choix_8');
+            $table->string('choix_9');
             $table->timestamps();
         });
     }

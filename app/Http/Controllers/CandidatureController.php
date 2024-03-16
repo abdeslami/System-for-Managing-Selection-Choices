@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Utilisateur;
-use App\Http\Requests\StoreUtilisateurRequest;
-use App\Http\Requests\UpdateUtilisateurRequest;
+use App\Models\Candidature;
+use App\Http\Requests\StoreCandidatureRequest;
+use App\Http\Requests\UpdateCandidatureRequest;
 
-class UtilisateurController extends Controller
+class CandidatureController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class UtilisateurController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreUtilisateurRequest $request)
+    public function store(StoreCandidatureRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class UtilisateurController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Utilisateur $utilisateur)
+    public function show(Candidature $candidature)
     {
         //
     }
@@ -43,7 +43,7 @@ class UtilisateurController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Utilisateur $utilisateur)
+    public function edit(Candidature $candidature)
     {
         //
     }
@@ -51,7 +51,7 @@ class UtilisateurController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateUtilisateurRequest $request, Utilisateur $utilisateur)
+    public function update(UpdateCandidatureRequest $request, Candidature $candidature)
     {
         //
     }
@@ -59,7 +59,7 @@ class UtilisateurController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Utilisateur $utilisateur)
+    public function destroy(Candidature $candidature)
     {
         //
     }
