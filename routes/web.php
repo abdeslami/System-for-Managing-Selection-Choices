@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CondidatureController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,6 +22,20 @@ Route::get('/', function () {
 Route::get("/acceuil", function(){
     return view("acceuil");
 } );
+Route::get("/admin", [AdminController::class,'afficheDonne']);
+
+Route::get("/compte", [AdminController::class,'afficheDonneBase']);
+Route::get("/fiche", [AdminController::class,'fiche']);
+
+Route::get("/test", [AdminController::class,'affichetest']);
+Route::get("/etudiante/{s?}", [AdminController::class,'etudiante']);
+
+
+
+
+Route::get("/etudiant", [CondidatureController::class,'create']);
+Route::post("/ajouterE", [CondidatureController::class,'store'])->name('ajouterE');
+Route::get('/index',[CondidatureController::class,'index']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

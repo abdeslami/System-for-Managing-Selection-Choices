@@ -20,7 +20,9 @@
                             @enderror
                         </div>
 
-                        <div class="mb-4"> 
+
+                        <div class="mb-4">
+
                             <label for="password" class="col-form-label text-md-end">{{ __('Mot de passe') }}</label>
                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                             @error('password')
