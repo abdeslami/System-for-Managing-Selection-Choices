@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CondidatureController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,11 +18,14 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('acceuil');
+    return view('agGrid');
 });
 Route::get("/acceuil", function(){
     return view("acceuil");
 } );
+Route::get("/users", function(){
+    return User::select('name', 'email', 'password','role')->get();
+}); 
 Route::get("/admin", [AdminController::class,'afficheDonne']);
 
 Route::get("/compte", [AdminController::class,'afficheDonneBase']);

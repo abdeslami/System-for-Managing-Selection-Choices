@@ -16,11 +16,12 @@ class CondidatureController extends Controller
      */
     public function index()
     {
-        $condidature = Candidature::all();
-
-        $diplome = $condidature->diplom;
-    
-        return view("admin.index",compact('condidature'));
+        $candidatures = Candidature::all();
+        
+        // Load diplome relationship for each candidature
+        $candidatures->load('diplome');
+        
+        return view("admin.index", compact('candidatures'));
     }
 
     /**
