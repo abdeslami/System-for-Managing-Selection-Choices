@@ -22,6 +22,7 @@ li {
 
 body {
     font-family: 'Poppins', sans-serif;
+    
 }
 
 .wrapper {
@@ -35,7 +36,7 @@ body {
     width: 100%;
     overflow: hidden;
     transition: all 0.35s ease-in-out;
-    background-color: #fff;
+    background-color: #EDE9D0;
     min-width: 0;
 }
 
@@ -85,10 +86,16 @@ background-color: #5FA9FE;
 #sidebar:not(.expand) a.sidebar-link span {
     display: none;
 }
+#sidebar.expand a.sidebar-link span {
+    margin-inline: 10px;
+    
+}
+
 
 #sidebar.expand .sidebar-logo,
 #sidebar.expand a.sidebar-link span {
     animation: fadeIn .25s ease;
+    
 }
 
 @keyframes fadeIn {
@@ -109,7 +116,7 @@ background-color: #5FA9FE;
 }
 
 a.sidebar-link {
-    padding: .625rem 1.625rem;
+    padding: 2rem 1.625rem;
     color: #FFF;
     display: block;
     font-size: 0.9rem;
@@ -123,7 +130,7 @@ a.sidebar-link {
     margin-right: .75rem;
 }
 
-a.sidebar-link:hover {
+a.sidebar-link:hover,.active {
     background-color: rgba(255, 255, 255, .075);
     border-left: 3px solid #3b7ddd;
 }
