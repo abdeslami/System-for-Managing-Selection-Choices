@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CandidatureController;
+use App\Http\Controllers\ChoixClassementController;
 use App\Http\Controllers\CondidatureController;
 use App\Models\Candidature;
 use App\Models\User;
@@ -32,7 +33,11 @@ Route::get("/users", function(){
     return User::select('name', 'email', 'role')->get();
 }); 
 Auth::routes();
-Route::get("/inscription", [CandidatureController::class,"index"]);
+Route::get("/suivi", [CandidatureController::class,"index"]);
+Route::get("/inscription", [CandidatureController::class,"create"]);
+Route::post("/inscription/s1", [CandidatureController::class,"store"])->name("candidat-store");
+
+Route::get("/choix", [ChoixClassementController::class,"index"]);
 
 
 

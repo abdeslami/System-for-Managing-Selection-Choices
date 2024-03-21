@@ -58,7 +58,7 @@
     this.eGui.appendChild(this.eButton);
   }
 
-  init(params) {}
+  
 
   getGui() {
     return this.eGui;

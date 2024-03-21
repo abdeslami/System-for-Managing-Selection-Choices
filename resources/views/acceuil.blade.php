@@ -94,6 +94,28 @@
                   <p class="h3 text-light px-2 py-1 wow animate__animated animate__fadeInLeft" id="formations">Formations</p>
               </div>
           </div>
+          <div class="row mt-5 ">
+            <div class="col flex-fill  mx-4 mb-4">
+              <div class="card h-100 mb-4 wow animate__animated animate__fadeIn">
+                <div class="card-body">
+                  <h6 class="card-title " class="hover:animate__animated hover:animate__bounce"><img src="images/chevron-right.svg" alt=""> <a href="">Cycle Préparatoire - Sciences et Techniques pour l'ingénieur</a></h6>
+                  <h6 class="card-title "><img src="images/chevron-right.svg" alt=""> <a href="">Cycle Ingénieur - Ingénierie Data Sciences et Cloud Computing</a></h6>
+                  <h6 class="card-title "><img src="images/chevron-right.svg" alt=""> <a href="">Cycle Ingénieur - Ingénierie des Technologies de l'information et Réseaux de Communication</a></h6>
+                  <h6 class="card-title "><img src="images/chevron-right.svg" alt=""> <a href="">Cycle Ingénieur - Sécurité Informatique et Cyber Sécurité</a></h6>
+                  <h6 class="card-title "><img src="images/chevron-right.svg" alt=""> <a href="">Cycle Ingénieur - Génie Civil</a></h6>
+                  <h6 class="card-title "><img src="images/chevron-right.svg" alt=""> <a href="">Cycle Ingénieur - Génie Electrique</a></h6>
+                  <h6 class="card-title "><img src="images/chevron-right.svg" alt=""> <a href="">Cycle Ingénieur - Génie Industriel</a></h6>
+                  <h6 class="card-title "><img src="images/chevron-right.svg" alt=""> <a href="">Cycle Ingénieur - Génie Informatique</a></h6>
+                  <h6 class="card-title "><img src="images/chevron-right.svg" alt=""> <a href="">Cycle Ingénieur - Génie des Systèmes Electronique, Informatique et Réseaux</a></h6>
+                  <h6 class="card-title "><img src="images/chevron-right.svg" alt=""> <a href="">Cycle Ingénieur - Management et Gouvernance des Systèmes d'informations</a></h6>
+
+                </div>
+                
+                
+              </div>
+            </div>
+        </div>
+          
     </div>
     
     @endsection
