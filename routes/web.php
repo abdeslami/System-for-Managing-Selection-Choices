@@ -6,6 +6,7 @@ use App\Http\Controllers\ChoixClassementController;
 use App\Http\Controllers\CondidatureController;
 use App\Models\Candidature;
 use App\Models\User;
+use Illuminate\Auth\Events\Verified;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,8 +33,9 @@ Route::get("/acceuil", function(){
 Route::get("/users", function(){
     return User::select('name', 'email', 'role')->get();
 }); 
-Auth::routes();
-Route::get("/suivi", [CandidatureController::class,"index"]);
+
+Auth::routes(/* ["verify"=>true] */);
+Route::get("/suivi", [CandidatureController::class,"index"])/* ->middleware('verified') */;
 Route::get("/inscription", [CandidatureController::class,"create"]);
 Route::post("/inscription/s1", [CandidatureController::class,"store"])->name("candidat-store");
 
@@ -57,5 +59,6 @@ Route::get("/etudiant", [CondidatureController::class,'create']);
 Route::post("/ajouterE", [CondidatureController::class,'store'])->name('ajouterE');
 Route::get('/index',[CondidatureController::class,'index']);
 
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home'); */
+*/
+/* Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified'); 
+ */

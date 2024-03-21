@@ -44,7 +44,7 @@
         @if (Route::has('login'))
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('login') }}">
-                    <button class="btn btn-primary fs-5 p-3">{{ __('Se connecter') }}</button> <!-- Normal button for "Se connecter" -->
+                    <button class="btn  btn-primary fs-7 p-3">{{ __('Se connecter') }}</button> <!-- Normal button for "Se connecter" -->
                 </a>
             </li>
         @endif
@@ -52,7 +52,7 @@
         @if (Route::has('register'))
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('register') }}">
-                    <button class="btn btn-outline-primary fs-5 p-3">{{ __('Register') }}</button> <!-- Outlined button for "Register" -->
+                    <button class="btn btn-outline-primary fs-7 p-3">{{ __('Register') }}</button> <!-- Outlined button for "Register" -->
                 </a>
             </li>
         @endif
