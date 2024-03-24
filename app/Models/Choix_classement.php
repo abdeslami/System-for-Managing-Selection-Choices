@@ -17,7 +17,7 @@ class Choix_classement extends Model
 
     public function candidature()
     {
-        return $this->belongsTo(Candidature::class, 'choix_classement_id');
+        return $this->hasOne(Candidature::class);
 
     }
 }

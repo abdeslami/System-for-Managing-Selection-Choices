@@ -11,7 +11,7 @@ class Candidature extends Model
 
     protected $fillable = [
         'nom', 'prenom', 'sexe', 'cin', 'scan_cin', 'cne_cme', 'date_naissance',
-        'nationalite', 'adresse', 'ville_natale', 'num_tel', 'photo_personnel',
+        'nationalite', 'adresse', 'ville_natale', 'num_tel', 'photo_personnel','note_ecrite',
         'merite', 'annee_universitaire', 'etat', 'choix_classement_id', 'user_id', 'diplome_id'
     ];
 
@@ -19,7 +19,7 @@ class Candidature extends Model
 
     public function choix()
     {
-        return $this->hasOne(Choix_classement::class, 'candidature_id');
+        return $this->belongsTo(Choix_classement::class);
     }
 
     public function diplome()

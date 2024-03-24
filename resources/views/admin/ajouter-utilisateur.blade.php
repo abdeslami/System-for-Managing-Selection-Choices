@@ -111,96 +111,55 @@
             </nav>
             
             <div class="container p-4">
-                @if (Session::has('error'))
-                <div class="alert alert-warning"role="alert">
-                    <strong>{{Session::get('error')}}</strong>
-                </div>
-                @endif
                 @if (Session::has('success'))
                 <div class="alert alert-success"role="alert">
                     <strong>{{Session::get('success')}}</strong>
                 </div>
                 @endif
-                <a href="{{route('ajouter_utilisateurs')}}" class="btn btn-success px-3 mb-3"><img src="{{asset('page_admin_image/add-person.svg')}}" alt="">Add utilisateur</a>
-                <table id="emp-table" class="table table-striped table-hover table-responsive w-100">
+                @if (Session::has('error'))
+                <div class="alert alert-danger"role="alert">
+                    <strong>{{Session::get('error')}}</strong>
+                </div>
+                @endif
+              
+                <form method="POST" action="{{ route('ajouter_utilisateurs_add') }}">
+                    @csrf
+                    @method('POST')
 
-                    <thead>
-                        <tr>
-                            <th col-index="1" class="text-center">CIN</th>
-                            <th col-index="2" class="text-center">Nom</th>
-                            <th col-index="3" class="text-center">Prenom</th>
-                            <th col-index="4" class="text-center">Date de Naissance</th>
-                            <th col-index="5" class="text-center">
-                                Ville Natale:
-                                <select class="table-filter form-select" onchange="filter_rows()">
-                                    <option value="all"></option>
-                                </select>
-                            </th>
-                            <th col-index="6" class="text-center">
-                                Date de Bac:
-                                <select class="table-filter form-select" onchange="filter_rows()">
-                                    <option value="all"></option>
-                                </select>
-                            </th>
-                            <th col-index="7" class="text-center">
-                                Type de Diplome:
-                                <select class="table-filter form-select" onchange="filter_rows()">
-                                    <option value="all"></option>
-                                </select>
-                            </th>
-                            <th col-index="8" class="text-center">
-                                Etat:
-                                <select class="table-filter form-select" onchange="filter_rows()">
-                                    <option value="all"></option>
-                                </select>
-                            </th>
-                            <th class="text-center">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        @foreach ($data as $candidature)
-                        <tr>
-                            <td>{{$candidature->cin}}</td>
-                            <td>{{$candidature->nom}}</td>
-                            <td>{{$candidature->prenom}}</td>
-                            <td>{{$candidature->date_naissance}}</td>
-                            <td>{{$candidature->ville_natale}}</td>
-                            <td>{{$candidature->diplome->date_bac}}</td>
-                            <td>{{$candidature->diplome->type_diplome}}</td>
-                            <td>{{$candidature->etat}}</td>
-                        
-                            <td>
-                                <form class="deleteForm" method="post" action="{{ route('deleteUser', ['id' => $candidature->id]) }}">
-                                    @method('DELETE')
-                                    @csrf 
-                                    <button class="btn btn-danger delete-btn" type="button"><img src="{{ asset('page_admin_image/remove.svg') }}" alt=""></button>
-                                </form>
-                        
-                                <button class="btn btn-danger"><img src="{{asset('page_admin_image/details.svg')}}" alt=""></button>
-                                <button class="btn btn-danger"><img src="{{asset('page_admin_image/person.svg')}}" alt=""></button>
-                            </td>
-                        </tr>
-                        @endforeach
-                        
-                        <script>
-                            document.querySelectorAll('.delete-btn').forEach(button => {
-                                button.addEventListener('click', confirmDelete);
-                            });
-                        
-                            function confirmDelete(event) {
-                                event.preventDefault();
-                                if (confirm("Êtes-vous sûr de vouloir supprimer cet utilisateur ?")) {
-                                    event.target.closest('.deleteForm').submit(); 
-                                }
-                            }
-                        </script>
-                        
+                    <div class="mb-4"> 
+                        <label for="name" class="col-form-label text-md-end">nom</label>
+                        <input id="name" type="text" class="form-control " name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                        
-                        
-                    </tbody>
-                </table>    
-            
+                    </div>
+
+                    <div class="mb-4"> 
+                        <label for="email" class="col-form-label text-md-end">email adresse</label>
+                        <input id="email" type="email" class="form-control " name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                       
+                    </div>
+
+                    <div class="mb-4"> 
+                        <label for="password" class="col-form-label text-md-end">Role</label>
+                        <select name="role" class="form-control">
+                            <option>Selection un role</option>
+                            <option value="admin">admin</option>
+                            <option value="candidat">candidat</option>
+                        </select>
+                      
+                    </div>
+                    <div class="mb-4"> 
+                        <label for="password" class="col-form-label text-md-end">password</label>
+                        <input id="password" type="password" class="form-control " name="password" required autocomplete="current-password">
+                      
+                    </div>
+
+                    
+
+                    <div class="mb-4 d-grid gap-2 d-md-flex justify-content-md-center"> 
+                        <button type="submit" style="background-color:#FF8450;color:wheat;" class=" px-5 py-2 fw-bold">Ajouter Utilisateur</button> <!-- Changed button text to French -->
+                    </div>
+
+                </form>
                
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"

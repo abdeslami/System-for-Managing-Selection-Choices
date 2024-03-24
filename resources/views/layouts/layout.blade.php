@@ -16,7 +16,7 @@
 <script>
     new WOW().init();
     </script>
-<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="../../../../../../../../../app.css">
 </head>
 <body class="container-fluid">
     
@@ -33,7 +33,7 @@
                     <a class="nav-link" href="#">Formations</a>
                 </li>
                 <li class="nav-item mx-auto"> <!-- Added mx-3 class for horizontal margin -->
-                    <a class="nav-brand" href="#"><img src="images/logo.png" alt=""></a>
+                    <a class="nav-brand" href="#"><img src="../../../../../../../../../images/logo.png" alt=""></a>
                 </li>
                 <li class="nav-item mx-3"> <!-- Added mx-3 class for horizontal margin -->
            

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Candidature;
 use App\Http\Requests\StoreCandidatureRequest;
 use App\Http\Requests\UpdateCandidatureRequest;
+use App\Models\Choix_classement;
 use App\Models\Diplome;
 use Illuminate\Http\Request;
 
@@ -40,6 +41,20 @@ class CandidatureController extends Controller
             return view("etudiant.formulaire",compact('candidatureExist'));
         }
         else{   return view("etudiant.formulaire");     }
+    
+
+    
+        
+    }
+    public function choix()
+    {
+        // 
+            $userId = auth()->id();
+            $candidatureExist = Candidature::where("user_id",$userId)->first();
+        if($candidatureExist){
+            return view("etudiant.choix",compact('candidatureExist'));
+        }
+        else{   return view("etudiant.choix");     }
     
 
     
@@ -114,6 +129,40 @@ class CandidatureController extends Controller
         // Optionally, you can redirect the user to the next step of the form
 
     }
+    public function store_choix(Request $request)
+    {
+        $attributes = $request->all();
+        $userId = auth()->id();
+        $choices = collect($attributes)->only(['choix_1', 'choix_2', 'choix_3', 'choix_4', 'choix_5', 'choix_6', 'choix_7', 'choix_8', 'choix_9'])->filter();
+    
+        if ($choices->unique()->count() !== $choices->count()) {
+            return redirect()->route('choix_filiere')->with('error', 'Sélectionnez un seul choix pour chaque option.');
+        }
+        $candidature = Candidature::where('user_id', $userId)->first();
+    
+        if ($candidature) {
+            if ($candidature->choix_classement_id) {
+                $choix = Choix_classement::find($candidature->choix_classement_id);
+                if ($choix) {
+                    $choix->update($choices->toArray());
+                    return redirect()->route('choix_filiere')->with('success', 'Les choix ont été mis à jour avec succès.');
+                }
+            }
+            $choix = Choix_classement::create($choices->toArray());
+            $candidature->choix_classement_id = $choix->id;
+            $candidature->save();
+        } else {
+            $choix = Choix_classement::create($choices->toArray());
+            Candidature::create([
+                'choix_classement_id' => $choix->id,
+            ]);
+        }
+    
+        return redirect()->route('choix_filiere')->with('success', 'Les choix ont été envoyés avec succès.');
+    }
+    
+    
+    
 
     /**
      * Display the specified resource.

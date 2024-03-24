@@ -1,28 +1,33 @@
-@extends('layouts.app')
+@extends('layouts.layout')
+
 
 @section('content')
-<div class="container">
+<div class="container py-2">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
-
+        <div class="col-md-6 ">
+            <div class="card  shadow-sm p-5 login  border-dark"> 
                 <div class="card-body">
-                    @if (session('resent'))
-                        <div class="alert alert-success" role="alert">
-                            {{ __('A fresh verification link has been sent to your email address.') }}
-                        </div>
-                    @endif
+                    <h2 class="text-center mb-4 font-weight-bold">Vérifier l'adresse e-mail</h2>
 
-                    {{ __('Before proceeding, please check your email for a verification link.') }}
-                    {{ __('If you did not receive the email') }},
-                    <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
-                        @csrf
-                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
-                    </form>
-                </div>
+                    <div class="card-body">
+                        @if (session('resent'))
+                            <div class="alert alert-success" role="alert">
+                                {{ __('Un nouveau lien de vérification a été envoyé à votre adresse e-mail.') }}
+                            </div>
+                        @endif
+                    
+                        {{ __('Avant de continuer, veuillez vérifier votre e-mail pour un lien de vérification.') }}
+                        {{ __('Si vous n\'avez pas reçu l\'e-mail') }},
+                        <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
+                            @csrf
+                            <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('cliquez ici pour en demander un autre') }}</button>.
+                        </form>
+                    </div>
+                    
             </div>
         </div>
     </div>
 </div>
+</div>
+
 @endsection

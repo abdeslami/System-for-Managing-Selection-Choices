@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <link rel="stylesheet" href="page_admin_css/style.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         @yield("css/js links")
 
     </head>
@@ -55,7 +56,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link {{ request()->is('classement-choix') ? 'active' : '' }}">
+                    <a href="/choix_filiere" class="sidebar-link {{ request()->is('classement-choix') ? 'active' : '' }}">
                         <img src="page_admin_image/user-profile-svgrepo-com.svg" alt="">
                         <span>classement des choix</span>
                     </a>
