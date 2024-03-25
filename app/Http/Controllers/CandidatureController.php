@@ -23,9 +23,9 @@ class CandidatureController extends Controller
     public function index()
     {
         //
-        $etat =  Candidature::select('etat')->where("user_id",auth()->id())->get();
-/*         dd($etat);
- */        return view("etudiant.fiche_etudiant",compact("etat"));
+        $candidat =  Candidature::where("user_id",auth()->id())->get();
+/*         dd($candidat);
+ */        return view("etudiant.fiche_etudiant",compact("candidat"));
         
     }
 
