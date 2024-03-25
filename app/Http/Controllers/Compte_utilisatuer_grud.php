@@ -124,7 +124,7 @@ class Compte_utilisatuer_grud extends Controller
     return redirect()->route('compte_utilisateur')->with('success', 'Utilisateur modifié avec succès');
 }
 
-    /**
+    /**0666082071madame ilhame service de stage parteinrien
      * Remove the specified resource from storage.
      */
     public function destroy($id)

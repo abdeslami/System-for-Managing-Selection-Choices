@@ -163,7 +163,7 @@
     });
 </script>
 <h1 class="text-center">Table de Choix candidature</h1>
-<button type="button" class="btn btn-success w-20" id="exportButton1">Export Choix</button>
+<button type="button" class="btn btn-success w-20 mb-2" id="exportButton1">Export Choix</button>
 <div id="myGrid1" class="ag-theme-quartz" style="height: 80vh; width: 100%;"></div>
                
 <script>

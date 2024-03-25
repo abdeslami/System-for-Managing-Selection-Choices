@@ -31,15 +31,17 @@
                 @endif
                 <a href="{{route('ajouter_utilisateurs')}}" class="btn btn-success px-3 mb-3"><img src="{{asset('page_admin_image/add-person.svg')}}" alt="">Add utilisateur</a>
                 <table id="emp-table" class="table table-striped table-hover table-responsive w-100">
-
                     <thead>
                         <tr>
-                            <th col-index="1" class="text-center">name</th>
-                            <th col-index="2" class="text-center">email</th>
-                            <th col-index="5" class="text-center">
-                                role:
+                            <th col-index="1" class="text-center">Name</th>
+                            <th col-index="2" class="text-center">Email</th>
+                            <th col-index="3" class="text-center">
+                                Role:
                                 <select class="table-filter form-select" onchange="filter_rows()">
-                                    <option value="all"></option>
+                                    <option value="all">All</option>
+                                    <option value="admin">admin</option>
+                                    <option value="candidat">candidat</option>
+
                                 </select>
                             </th>
                             <th class="text-center">Action</th>
