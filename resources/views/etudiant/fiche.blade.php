@@ -35,7 +35,9 @@
 <div class="body" >
 
    
-    
+    @isset($candidature)
+        
+  
     <table style="margin-left: 7rem;">
         <tr>
             <td>NOM :</td>
@@ -92,10 +94,10 @@
             <td>{{ $candidature->diplome->etablissement }}</td>
         </tr>
 
-
+  
 
     </table>
-
+@endisset
 
     </div>
 
