@@ -23,19 +23,19 @@
             @if(Auth::check() && Auth::user()->role === 'admin')
             <ul class="sidebar-nav d-flex flex-column justify-content-center">
                 <li class="sidebar-item">
-                    <a href="test.html" class="sidebar-link {{ request()->is('admin') ? 'active' : '' }}">
+                    <a href="/dashboard/admin" class="sidebar-link {{ request()->is('dashboard/admin') ? 'active' : '' }}">
                         <img src="{{ asset('page_admin_image/dashboard (1).svg') }}" alt="">
                         <span>Dashboard</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link {{ request()->is('list-candidatures') ? 'active' : '' }}">
+                    <a href="/dashboard/admin/list_candidature" class="sidebar-link {{ request()->is('dashboard/admin/list_candidature') ? 'active' : '' }}">
                         <img src="{{ asset('page_admin_image/user-id-svgrepo-com (1).svg') }}" alt="">
                         <span>Liste des candidatures</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link {{ request()->is('comptes-utilisateurs') ? 'active' : '' }}">
+                    <a href="/dashboard/admin/compte_utilisateur" class="sidebar-link {{ request()->is('dashboard/admin/compte_utilisateur') ? 'active' : '' }}">
                         <img src="{{ asset('page_admin_image/user-profile-svgrepo-com.svg') }}" alt="">
                         <span>Comptes des utilisateurs</span>
                     </a>
