@@ -121,7 +121,7 @@
                     <strong>{{Session::get('success')}}</strong>
                 </div>
                 @endif
-                <a href="{{route('ajouter_utilisateurs')}}" class="btn btn-success px-3 mb-3"><img src="{{asset('page_admin_image/add-person.svg')}}" alt="">Add utilisateur</a>
+                <a href="{{route('ajgit outer_utilisateurs')}}" class="btn btn-success px-3 mb-3"><img src="{{asset('page_admin_image/add-person.svg')}}" alt="">Add utilisateur</a>
                 <table id="emp-table" class="table table-striped table-hover table-responsive w-100">
 
                     <thead>
