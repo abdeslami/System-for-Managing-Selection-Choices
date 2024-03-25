@@ -126,30 +126,10 @@
 
                     <thead>
                         <tr>
-                            <th col-index="1" class="text-center">CIN</th>
-                            <th col-index="2" class="text-center">Nom</th>
-                            <th col-index="3" class="text-center">Prenom</th>
-                            <th col-index="4" class="text-center">Date de Naissance</th>
+                            <th col-index="1" class="text-center">name</th>
+                            <th col-index="2" class="text-center">email</th>
                             <th col-index="5" class="text-center">
-                                Ville Natale:
-                                <select class="table-filter form-select" onchange="filter_rows()">
-                                    <option value="all"></option>
-                                </select>
-                            </th>
-                            <th col-index="6" class="text-center">
-                                Date de Bac:
-                                <select class="table-filter form-select" onchange="filter_rows()">
-                                    <option value="all"></option>
-                                </select>
-                            </th>
-                            <th col-index="7" class="text-center">
-                                Type de Diplome:
-                                <select class="table-filter form-select" onchange="filter_rows()">
-                                    <option value="all"></option>
-                                </select>
-                            </th>
-                            <th col-index="8" class="text-center">
-                                Etat:
+                                role:
                                 <select class="table-filter form-select" onchange="filter_rows()">
                                     <option value="all"></option>
                                 </select>
@@ -159,26 +139,23 @@
                     </thead>
                     <tbody>
 
-                        @foreach ($data as $candidature)
+                        @foreach ($data as $user)
                         <tr>
-                            <td>{{$candidature->cin}}</td>
-                            <td>{{$candidature->nom}}</td>
-                            <td>{{$candidature->prenom}}</td>
-                            <td>{{$candidature->date_naissance}}</td>
-                            <td>{{$candidature->ville_natale}}</td>
-                            <td>{{$candidature->diplome->date_bac}}</td>
-                            <td>{{$candidature->diplome->type_diplome}}</td>
-                            <td>{{$candidature->etat}}</td>
-                        
-                            <td>
-                                <form class="deleteForm" method="post" action="{{ route('deleteUser', ['id' => $candidature->id]) }}">
+                            <td>{{$user->name}}</td>
+                            <td>{{$user->email}}</td>
+                            <td>{{$user->role}}</td>
+                            <td class="text-center">
+                                <form class="deleteForm d-inline-block" method="post" action="{{ route('deleteUser', ['id' => $user->id]) }}">
                                     @method('DELETE')
                                     @csrf 
-                                    <button class="btn btn-danger delete-btn" type="button"><img src="{{ asset('page_admin_image/remove.svg') }}" alt=""></button>
+                                    <button class="btn btn-outline-danger rounded-0 delete-btn" title="delete"  type="button"><img title="delete" src="{{ asset('images/trash.svg') }}" alt=""></button>
                                 </form>
-                        
-                                <button class="btn btn-danger"><img src="{{asset('page_admin_image/details.svg')}}" alt=""></button>
-                                <button class="btn btn-danger"><img src="{{asset('page_admin_image/person.svg')}}" alt=""></button>
+                                <form method="post" class="d-inline-block" action="{{ route('updateForm', $user->id) }}">
+                                    @csrf
+                                
+                                    <button class="btn btn-outline-warning rounded-0 update-btn" title="update"  type="submit"><img title="update" src="{{ asset('images/edit.svg') }}" alt=""></button>
+                                </form>
+                                
                             </td>
                         </tr>
                         @endforeach

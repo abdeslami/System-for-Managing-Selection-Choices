@@ -14,7 +14,7 @@ class Compte_utilisatuer_grud extends Controller
      */
     public function index()
     {
-        $data = Candidature::with('diplome')->get();
+        $data = User::all();
 
         
         // return $data;
@@ -85,10 +85,44 @@ class Compte_utilisatuer_grud extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function updateForm(string $id)
     {
         //
+        $user = User::find($id);
+        return view("admin.edit-user",compact("user"));
     }
+    public function update(Request $request, string $id)
+{
+    // Find the user by ID
+    $user = User::find($id);
+
+    // Ensure the user exists
+    if (!$user) {
+        return redirect()->route('compte_utilisateur')->with('error', 'Utilisateur non trouvé');
+    }
+
+    // Validate the request data
+    $request->validate([
+        'name' => 'required',
+        'email' => 'required|email',
+        'role' => 'required',
+    ]);
+
+    // Update user attributes
+    $user->name = $request->name;
+    $user->email = $request->email;
+    $user->role = $request->role;
+
+    // Check if password is provided and not empty, then hash and update
+    if ($request->filled('password')) {
+        $user->password = bcrypt($request->password);
+    }
+
+    // Save the updated user
+    $user->save();
+
+    return redirect()->route('compte_utilisateur')->with('success', 'Utilisateur modifié avec succès');
+}
 
     /**
      * Remove the specified resource from storage.
