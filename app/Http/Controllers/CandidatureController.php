@@ -163,6 +163,19 @@ class CandidatureController extends Controller
     
         return redirect()->route('choix_filiere')->with('success', 'Les choix ont été envoyés avec succès.');
     }
+    public function changerEtat(Request $request)
+    {
+        $ids = json_decode($request->input('ids'), true);
+        
+if ($ids) {
+    Candidature::whereIn('id', $ids)->update(['etat' => 'accept']);
+    return redirect()->route('list_candidature')->with('success', 'État de Candidature a bien été changé.');
+}else{
+    return redirect()->route('list_candidature')->with('error', 'Selection Candidature pour changes etat ');
+}
+        
+    }
+    
     
     
     

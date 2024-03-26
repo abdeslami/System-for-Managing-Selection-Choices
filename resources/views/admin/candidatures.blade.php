@@ -33,13 +33,19 @@
 @endsection
 @section("content")
 
+<a class=" mb-5" href="{{route('choix_candidatre')}}">liste choix</a>
           
             <div class="container p-4">
-                <a href="{{route('choix_candidatre')}}">liste choix</a>
             
              @if (Session::has('success'))
              <div class="alert alert-success"role="alert">
                  <strong>{{Session::get('success')}}</strong>
+             </div>
+             @endif
+
+             @if (Session::has('error'))
+             <div class="alert alert-warning"role="alert">
+                 <strong>{{Session::get('error')}}</strong>
              </div>
              @endif
            @error('candidature_excel')
@@ -51,6 +57,14 @@
            
             
             <input type="text" class="form-control-sm" name="" id="filter-text-box" oninput="onFilterTextBoxChanged()">
+            <form id="changeEtatForm" action="/changer-etat-candidatures" method="POST">
+                @csrf
+                <input type="hidden" id="csrfToken" name="_token" value="{{ csrf_token() }}">
+                <input type="hidden" id="selectedIds" name="ids">
+                <input class="btn btn-success w-20" type="submit" value="Change État" id="changeetat">
+            </form>
+            
+
             <button type="button" class="btn btn-success w-20" id="exportButton">export</button>
             <form id="uploadForm" action="/dashboard/admin/import_candidature_excel" method="POST" enctype="multipart/form-data">
                 @method('POST')
@@ -82,15 +96,18 @@
             { headerName: 'Prenom', field: 'prenom', sortable: true, filter: true },
             { headerName: 'Sexe', field: 'sexe', sortable: true, filter: true },
             { headerName: 'CIN', field: 'cin', sortable: true, filter: true },
-            { headerName: 'note_ecrite', field: 'note_ecrite', sortable: true, filter: true },
-
+           
             { headerName: 'date_naissance', field: 'date_naissance', sortable: true, filter: true },
             { headerName: 'Nationalité', field: 'nationalite', sortable: true, filter: true },
             { headerName: 'Adresse', field: 'adresse', sortable: true, filter: true },
             { headerName: 'Ville Natale', field: 'ville_natale', sortable: true, filter: true },
             { headerName: 'Numéro de Téléphone', field: 'num_tel', sortable: true, filter: true },
+
             { headerName: 'Mention Diplôme', field: 'diplome.mention_diplome', sortable: true, filter: true },
             { headerName: 'Établissement', field: 'diplome.etablissement', sortable: true, filter: true },
+            { headerName: 'note_ecrite', field: 'note_ecrite', sortable: true, filter: true },
+            { headerName: 'Etat', field: 'etat', sortable: true, filter: true },
+
             { headerName: 'Scan Bac', field: 'diplome.scan_bac', sortable: true, filter: true },
             { headerName: 'Date Bac', field: 'diplome.date_bac', sortable: true, filter: true },
             { headerName: 'Type de Diplome', field: 'diplome.type_diplome', sortable: true, filter: true },
@@ -160,6 +177,26 @@
             }
 
             document.getElementById('filter-text-box').addEventListener('input', onFilterTextBoxChanged);
+            function changeEtat() {
+    var selectedNodes = gridOptions.api.getSelectedNodes();
+    var selectedIds = selectedNodes.map(node => node.data.id);
+
+    if (selectedIds.length > 0) {
+        var confirmation = confirm("Êtes-vous sûr de vouloir changer l'état des candidatures sélectionnées ?");
+        
+        if (confirmation) {
+            document.getElementById('selectedIds').value = JSON.stringify(selectedIds);
+            document.getElementById('changeEtatForm').submit();
+        }
+    } else {
+        alert('Aucune ligne sélectionnée!');
+    }
+}
+
+document.getElementById("changeetat").addEventListener("click", changeEtat);
+
+
+
         });
     });
 </script>

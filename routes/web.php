@@ -70,6 +70,7 @@ Route::put('/users/{id}', [Compte_utilisatuer_grud::class, 'update'])->name('upd
 
 
 Route::post("/dashboard/admin/import_candidature_excel", [AdminController::class,'import_candidature_excel'])->name('import_candidature_excel');
+Route::post('/changer-etat-candidatures', [CandidatureController::class,'changerEtat']);
 
 
 
