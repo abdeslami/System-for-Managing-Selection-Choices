@@ -40,7 +40,7 @@ Route::get("/users", function(){
 }); 
 
 Auth::routes(["verify"=>true]);
-Route::get("/suivi", [CandidatureController::class,"index"])->middleware('verified');;
+Route::get("/suivi", [CandidatureController::class,"index"])->name('suivi')->middleware('verified');;
 Route::get("/inscription", [CandidatureController::class,"create"])->middleware('verified');
 Route::get("/choix_filiere", [CandidatureController::class,"choix"])->name('choix_filiere')->middleware('verified');
 
@@ -50,8 +50,8 @@ Route::post("/choix/s1", [CandidatureController::class,"store_choix"])->name("ch
 
 Route::get("/choix", [ChoixClassementController::class,"index"]);
 Route::get("/pdf", [PDFController::class,"generatePDF"])->name("fiche");
-Route::get('/azertyuilkjhgfdsqsdfghjkjhgfdsqqjkjhgf4744fdfddffghsdfghsqSDFGHJYQSDFGHJQSDFGHJKIQSDFGHJKIGSDFGHJKLSDFGHJKJSDFJHGF515548548551',[AdminController::class,'api_candidature']);
-Route::get('/azertyuilkjhgfdsqsdfghjkjhgfdsqqjkjhgf4744fdfddffghsdfghsqSDFGHJYQSDFGHJQSDFGHJKIQSDFGHJKIGSDFGHJKLSDFGHJKJSDFJHGF515548548552',[AdminController::class,'api_candidature_choix']);
+Route::get('/azertyuilkjhgfdsqsdfghjkjhgfdsqqjkjhgf4744fdfddffghsdfghsqSDFGHJYQSDFGHJQSDFGHJKIQSDFGHJKIGSDFGHJKLSDFGHJKJSDFJHGF515548548551',[AdminController::class,'api_candidature'])->middleware('api_auth');
+Route::get('/azertyuilkjhgfdsqsdfghjkjhgfdsqqjkjhgf4744fdfddffghsdfghsqSDFGHJYQSDFGHJQSDFGHJKIQSDFGHJKIGSDFGHJKLSDFGHJKJSDFJHGF515548548552',[AdminController::class,'api_candidature_choix'])->middleware('api_auth');
 
 
 Route::get("/dashboard/admin", [AdminController::class,'dashboard_admin'])->name('dashboard_admin');

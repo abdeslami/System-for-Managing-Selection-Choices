@@ -4,7 +4,7 @@
 <div class="container mb-5">
     <div style="margin-top: 10rem;" class="row justify-content-center">
         <div class="col-md-8 ">
-            <div style="height: 30vh;" class="card  ">
+            <div style="height: 40vh;" class="card  ">
                 <div class="card-header">Réinitialiser le mot de passe </div>
 
                 <div class="card-body">

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Candidature;
+use App\Models\Choix_classement;
+use App\Models\Diplome;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\View\ViewName;
 
@@ -42,6 +45,7 @@ class Compte_utilisatuer_grud extends Controller
             "email" => "required",
             "password" => "required",
             "role" => "required",
+
         ]);
     
     $hashedPassword = bcrypt($request->password);
@@ -55,6 +59,9 @@ class Compte_utilisatuer_grud extends Controller
             'email' => $request->email,
             'password' => $hashedPassword,
             'role' => $request->role,
+            // 'email_verified_at' => Carbon::now()
+            'email_verified_at' => time()
+
         ]);
        }
     
@@ -130,20 +137,24 @@ class Compte_utilisatuer_grud extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
+    
         if (!$user) {
             return redirect()->route('compte_utilisateur')->with('error', 'Utilisateur non trouvé.');
         }
     
-        $candidature = $user->candidature;
+        $candidature = Candidature::where('user_id', $user->id)->first();
+    
         if ($candidature) {
-            $diplome = $candidature->diplome;
+            $diplome = Diplome::find($candidature->diplome_id);
             if ($diplome) {
                 $diplome->delete();
             }
-            $choixClassement = $candidature->choix;
-            if ($choixClassement) {
-                $choixClassement->delete();
+    
+            $choix = Choix_classement::find($candidature->choix_classement_id);
+            if ($choix) {
+                $choix->delete();
             }
+    
             $candidature->delete();
         }
     
@@ -152,4 +163,8 @@ class Compte_utilisatuer_grud extends Controller
         return redirect()->route('compte_utilisateur')->with('success', 'Utilisateur supprimé avec succès.');
     }
     
+    
+    
 }
+
+

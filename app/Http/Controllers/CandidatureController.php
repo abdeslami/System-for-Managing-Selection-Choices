@@ -111,6 +111,8 @@ class CandidatureController extends Controller
         if($candidatureExist){
             $candidatureExist->update($attributes);
             $candidatureExist->diplome->update($attributes);
+            return redirect()->route('suivi')->with('success', 'Le formulaire ont été mis à jour avec succès.');
+
 
         }
         else{      
@@ -123,6 +125,7 @@ class CandidatureController extends Controller
 
 
             $diplome->candidature()->save($candidature);
+            return redirect()->route('suivi')->with('success', 'Le formulaire ont été ajouter avec succès.');
 
     }
     
