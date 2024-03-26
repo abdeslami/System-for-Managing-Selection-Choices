@@ -57,12 +57,15 @@
            
             
             <input type="text" class="form-control-sm" name="" id="filter-text-box" oninput="onFilterTextBoxChanged()">
-            <form id="changeEtatForm" action="/changer-etat-candidatures" method="POST">
+            <form id="changeEtatForm" method="POST">
                 @csrf
                 <input type="hidden" id="csrfToken" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" id="selectedIds" name="ids">
-                <input class="btn btn-success w-20" type="submit" value="Change État" id="changeetat">
+                <input class="btn btn-success w-20" type="button" value="Changer État" id="changeetat">
+                <input class="btn btn-danger w-20" type="button" value="Annuler État" id="annulerEtat">
             </form>
+            
+            
             
 
             <button type="button" class="btn btn-success w-20" id="exportButton">export</button>
@@ -186,6 +189,7 @@
         
         if (confirmation) {
             document.getElementById('selectedIds').value = JSON.stringify(selectedIds);
+            document.getElementById('changeEtatForm').action = "/changerEtat";
             document.getElementById('changeEtatForm').submit();
         }
     } else {
@@ -195,6 +199,24 @@
 
 document.getElementById("changeetat").addEventListener("click", changeEtat);
 
+function confirmAnnulerEtat() {
+    var selectedNodes = gridOptions.api.getSelectedNodes();
+    var selectedIds = selectedNodes.map(node => node.data.id);
+
+    if (selectedIds.length > 0) {
+        var confirmation = confirm("Êtes-vous sûr de vouloir annuler l'état des candidatures sélectionnées ?");
+        
+        if (confirmation) {
+            document.getElementById('selectedIds').value = JSON.stringify(selectedIds);
+            document.getElementById('changeEtatForm').action = "/annulerEtat";
+            document.getElementById('changeEtatForm').submit();
+        }
+    } else {
+        alert('Aucune ligne sélectionnée!');
+    }
+}
+
+document.getElementById("annulerEtat").addEventListener("click", confirmAnnulerEtat);
 
 
         });

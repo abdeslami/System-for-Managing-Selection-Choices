@@ -167,14 +167,26 @@ class CandidatureController extends Controller
     {
         $ids = json_decode($request->input('ids'), true);
         
-if ($ids) {
-    Candidature::whereIn('id', $ids)->update(['etat' => 'accept']);
-    return redirect()->route('list_candidature')->with('success', 'État de Candidature a bien été changé.');
-}else{
-    return redirect()->route('list_candidature')->with('error', 'Selection Candidature pour changes etat ');
-}
-        
+        if ($ids && count($ids) > 0) {
+            Candidature::whereIn('id', $ids)->update(['etat' => 'accept']);
+            return redirect()->route('list_candidature')->with('success', 'État de Candidature a bien été changé.');
+        } else {
+            return redirect()->route('list_candidature')->with('error', 'Sélectionnez une candidature pour changer l\'état.');
+        }
     }
+    
+    public function annulerEtat(Request $request)
+    {
+        $ids = json_decode($request->input('ids'), true);
+        
+        if ($ids && count($ids) > 0) {
+            Candidature::whereIn('id', $ids)->update(['etat' => 'inscrit']);
+            return redirect()->route('list_candidature')->with('success', 'État de Candidature a bien été annulé.');
+        } else {
+            return redirect()->route('list_candidature')->with('error', 'Sélectionnez une candidature pour annuler l\'état.');
+        }
+    }
+    
     
     
     
