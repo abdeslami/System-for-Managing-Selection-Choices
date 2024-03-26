@@ -37,7 +37,6 @@ class AdminController extends Controller
                $femme++;
            }
    
-           // Calculer l'âge à partir de la date de naissance
            if ($Candidatures->date_naissance) {
                $date_naissance = new DateTime($Candidatures->date_naissance);
                $aujourd_hui = new DateTime();
@@ -87,6 +86,9 @@ class AdminController extends Controller
     {
         
         return view('admin.candidatures');
+    }
+    public function choix_candidatre(){
+        return view("admin.manupilation_choix");
     }
     
     
