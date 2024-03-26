@@ -8,6 +8,7 @@ use App\Models\User;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\CandidatureImport;
 use App\Models\Choix_classement;
+use DateTime;
 use Illuminate\Http\Request;
 
 use function Ramsey\Uuid\v1;
@@ -20,55 +21,58 @@ class AdminController extends Controller
     return redirect()->route('list_candidature')->with('success', 'Candidature bien importée');
 
    }
-    public function dashboard_admin()
-    {
-        $diplomesCount = Diplome::with('candidature')->count();
-        $diplomes = Diplome::with('candidature')->get();
-        $usersCount = User::count();
-        $totalMoyenne = 0;
-        $numMoyennes = 0;
-    
-        foreach ($diplomes as $diplome) {
-                $totalMoyenne += array_sum(array_filter([
-                    $diplome->moyenne_s1,
-                    $diplome->moyenne_s2,
-                    $diplome->moyenne_s3,
-                    $diplome->moyenne_s4,
-                    $diplome->moyenne_s5,
-                    $diplome->moyenne_s6,
-                    $diplome->moyenne_s7,
-                    $diplome->moyenne_s8,
-                    $diplome->moyenne_s9,
-                    $diplome->moyenne_s10,
-                ], function ($moyenne) {
-                    return !is_null($moyenne);
-                }));
-    
-                // Count the non-null moyenne values
-                $numMoyennes += count(array_filter([
-                    $diplome->moyenne_s1,
-                    $diplome->moyenne_s2,
-                    $diplome->moyenne_s3,
-                    $diplome->moyenne_s4,
-                    $diplome->moyenne_s5,
-                    $diplome->moyenne_s6,
-                    $diplome->moyenne_s7,
-                    $diplome->moyenne_s8,
-                    $diplome->moyenne_s9,
-                    $diplome->moyenne_s10,
-                ], function ($moyenne) {
-                    return !is_null($moyenne);
-                }));
-            
-        }
-    
-    
-    
-        // Calculate the average moyenne for all candidatures
-        $averageMoyenne = $numMoyennes > 0 ? $totalMoyenne / $numMoyennes : 0;
-    
-        return view("admin.dashboard", compact('diplomesCount', 'usersCount',"averageMoyenne"));
-    }
+   public function dashboard_admin()
+   {
+       $usersCount = User::count();
+       $diplomesCount = Diplome::with('candidature')->count();
+       $Candidature = Candidature::all();
+       $homme = 0;
+       $femme = 0;
+       $ages = [];
+   
+       foreach ($Candidature as $Candidatures) {
+           if ($Candidatures->sexe == "homme") {
+               $homme++;
+           } else {
+               $femme++;
+           }
+   
+           // Calculer l'âge à partir de la date de naissance
+           if ($Candidatures->date_naissance) {
+               $date_naissance = new DateTime($Candidatures->date_naissance);
+               $aujourd_hui = new DateTime();
+               $age = $date_naissance->diff($aujourd_hui)->y;  // Calcul de l'âge
+               $annee = $aujourd_hui->format('Y') - $age;  // Année de naissance
+               if (!isset($ages[$annee])) {
+                   $ages[$annee] = 0;
+               }
+               $ages[$annee]++;
+           }
+       }
+       $data = [];
+       $labels = [];
+   
+       foreach ($ages as $annee => $count) {
+           $labels[] = $annee;
+           $data[] = $count;
+       }
+   
+       $chartData = [
+           'labels' => $labels,
+           'datasets' => [
+               [
+                   'label' => 'Nombre de candidats',
+                   'data' => $data,
+                   'backgroundColor' => 'rgba(0,123,255,0.5)',
+                   'borderColor' => 'rgba(0,123,255,1)',
+                   'borderWidth' => 3
+               ]
+           ]
+       ];
+   
+       return view("admin.dashboard", compact('diplomesCount', 'usersCount', 'homme', 'femme', 'chartData'));
+   }
+   
     public function api_candidature(){
         $data = Candidature::with('diplome')->get();
         
@@ -89,46 +93,8 @@ class AdminController extends Controller
        public function affichetest()
 {
     $diplomes = Diplome::with('candidature')->get();
-    foreach ($diplomes as $diplome) {
-        $totalMoyenne = 0;
-        $numMoyennes = 0;
 
-        
-
-            $totalMoyenne += array_sum(array_filter([
-                $diplome->moyenne_s1,
-                $diplome->moyenne_s2,
-                $diplome->moyenne_s3,
-                $diplome->moyenne_s4,
-                $diplome->moyenne_s5,
-                $diplome->moyenne_s6,
-                $diplome->moyenne_s7,
-                $diplome->moyenne_s8,
-                $diplome->moyenne_s9,
-                $diplome->moyenne_s10,
-            ], function ($moyenne) {
-                return !is_null($moyenne);
-            }));
-
-            // Count the non-null moyenne values
-            $numMoyennes += count(array_filter([
-                $diplome->moyenne_s1,
-                $diplome->moyenne_s2,
-                $diplome->moyenne_s3,
-                $diplome->moyenne_s4,
-                $diplome->moyenne_s5,
-                $diplome->moyenne_s6,
-                $diplome->moyenne_s7,
-                $diplome->moyenne_s8,
-                $diplome->moyenne_s9,
-                $diplome->moyenne_s10,
-            ], function ($moyenne) {
-                return !is_null($moyenne);
-            }));
-        
-
-        $diplome->average_moyenne = $numMoyennes > 0 ? $totalMoyenne / $numMoyennes : 0;
-    }
+    
     
     return view("admin.test", compact('diplomes'));
 }

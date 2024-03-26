@@ -52,7 +52,7 @@ class Compte_utilisatuer_grud extends Controller
     $existingUser = User::where('email', $request->email)->first();
        if($existingUser){
        
-    return redirect()->route('ajouter_utilisateurs')->with('error', 'Utilisateurs dmail déja exists il y a un erreur');
+    return redirect()->route('ajouter_utilisateurs')->with('error', 'Utilisateurs email déja exists il y a un erreur');
        }else{
         $success = User::create([
             'name' => $request->name,   
