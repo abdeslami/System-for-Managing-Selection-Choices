@@ -2,6 +2,7 @@
 
 
 @section("content")
+<div class=" container-fluid px-5 py-5">
 @if (Session::has('success'))
 <div class="alert alert-success"role="alert">
     <strong>{{Session::get('success')}}</strong>
@@ -14,7 +15,7 @@
 @endif
 <form action="{{route('choix-store')}}" method="POST">
     @csrf
-<div class="form-outline mb-4">
+<div class="form-outline mb-4 ">
     <label class="form-label" for="form3Example4cdg">Premier choix:</label>
     <select name="choix_1" class="form-control form-control-lg"  id="choix_1" onchange="updateSecondChoice()" >
 
@@ -186,11 +187,12 @@
     </select>
   </div>
   <div class="form-outline mb-4">
-    <input type="submit" class="form-control" value="Envoyoer">
+    <input type="submit" style="background-color:#FF8450;color:wheat;" class="form-control " value="Envoyoer">
   </div>
 </form>
-@endsection
-{{-- <script>
+</div>
+ @endsection
+{{--<script>
   var selectedValues = [];
   var previousValue = "";
 
@@ -240,4 +242,4 @@
       }
     }
   }
-</script> --}}
+</script>  --}}

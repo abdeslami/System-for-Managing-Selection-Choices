@@ -26,7 +26,8 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
 /*     return view('agGrid');
  */
-return view('admin.edit-user');
+// return view('admin.edit-user');
+return redirect("/acceuil");
 
 });
 Route::get('/admin', function () {

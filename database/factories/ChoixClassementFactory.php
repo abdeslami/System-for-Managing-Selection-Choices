@@ -2,22 +2,25 @@
 
 namespace Database\Factories;
 
+use App\Models\Choix_classement;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Choix_classement>
- */
 class ChoixClassementFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition(): array
+    protected $model = Choix_classement::class;
+
+    public function definition()
     {
         return [
-            //
+            'choix_1' => $this->faker->name,
+            'choix_2' => $this->faker->name,
+            'choix_3' => $this->faker->name,
+            'choix_4' => $this->faker->name,
+            'choix_5' => $this->faker->name,
+            'choix_6' => $this->faker->name,
+            'choix_7' => $this->faker->name,
+            'choix_8' => $this->faker->name,
+            'choix_9' => $this->faker->name,
         ];
     }
 }
