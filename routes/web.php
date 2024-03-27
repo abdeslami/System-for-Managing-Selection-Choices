@@ -40,7 +40,7 @@ Route::get("/users", function(){
 }); 
 
 Auth::routes(["verify"=>true]);
-Route::get("/suivi", [CandidatureController::class,"index"])->middleware('verified');;
+Route::get("/suivi", [CandidatureController::class,"index"])->name('suivi')->middleware('verified');;
 Route::get("/inscription", [CandidatureController::class,"create"])->middleware('verified');
 Route::get("/choix_filiere", [CandidatureController::class,"choix"])->name('choix_filiere')->middleware('verified');
 
@@ -50,13 +50,15 @@ Route::post("/choix/s1", [CandidatureController::class,"store_choix"])->name("ch
 
 Route::get("/choix", [ChoixClassementController::class,"index"]);
 Route::get("/pdf", [PDFController::class,"generatePDF"])->name("fiche");
-Route::get('/azertyuilkjhgfdsqsdfghjkjhgfdsqqjkjhgf4744fdfddffghsdfghsqSDFGHJYQSDFGHJQSDFGHJKIQSDFGHJKIGSDFGHJKLSDFGHJKJSDFJHGF515548548551',[AdminController::class,'api_candidature']);
-Route::get('/azertyuilkjhgfdsqsdfghjkjhgfdsqqjkjhgf4744fdfddffghsdfghsqSDFGHJYQSDFGHJQSDFGHJKIQSDFGHJKIGSDFGHJKLSDFGHJKJSDFJHGF515548548552',[AdminController::class,'api_candidature_choix']);
+Route::get('/azertyuilkjhgfdsqsdfghjkjhgfdsqqjkjhgf4744fdfddffghsdfghsqSDFGHJYQSDFGHJQSDFGHJKIQSDFGHJKIGSDFGHJKLSDFGHJKJSDFJHGF515548548551',[AdminController::class,'api_candidature'])->middleware('api_auth');
+Route::get('/azertyuilkjhgfdsqsdfghjkjhgfdsqqjkjhgf4744fdfddffghsdfghsqSDFGHJYQSDFGHJQSDFGHJKIQSDFGHJKIGSDFGHJKLSDFGHJKJSDFJHGF515548548552',[AdminController::class,'api_candidature_choix'])->middleware('api_auth');
 
 
 Route::get("/dashboard/admin", [AdminController::class,'dashboard_admin'])->name('dashboard_admin');
 Route::get("/dashboard/admin/list_candidature", [AdminController::class,'list_candidature'])->name('list_candidature');
 Route::get("/dashboard/admin/compte_utilisateur", [Compte_utilisatuer_grud::class,'index'])->name('compte_utilisateur');
+Route::get("/dashboard/admin/choix_candidatre", [AdminController::class,'choix_candidatre'])->name('choix_candidatre');
+
 Route::get("/dashboard/admin/compte_utilisateur/ajouter_utilisateurs", [Compte_utilisatuer_grud::class,'create'])->name('ajouter_utilisateurs');
 Route::post("/dashboard/admin/compte_utilisateur/ajouter_utilisateurs/add", [Compte_utilisatuer_grud::class,'store'])->name('ajouter_utilisateurs_add');
 Route::delete("/dashboard/admin/compte_utilisateur/delete/{id?}", [Compte_utilisatuer_grud::class, 'destroy'])->name('deleteUser');
@@ -68,6 +70,9 @@ Route::put('/users/{id}', [Compte_utilisatuer_grud::class, 'update'])->name('upd
 
 
 Route::post("/dashboard/admin/import_candidature_excel", [AdminController::class,'import_candidature_excel'])->name('import_candidature_excel');
+Route::post('/changer-etat-candidatures', [CandidatureController::class,'changerEtat']);
+Route::post('/annulerEtat', [CandidatureController::class,'annulerEtat']);
+
 
 
 

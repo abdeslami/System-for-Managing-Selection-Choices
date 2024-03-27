@@ -33,12 +33,19 @@
 @endsection
 @section("content")
 
+<a class=" mb-5" href="{{route('choix_candidatre')}}">liste choix</a>
           
             <div class="container p-4">
             
              @if (Session::has('success'))
              <div class="alert alert-success"role="alert">
                  <strong>{{Session::get('success')}}</strong>
+             </div>
+             @endif
+
+             @if (Session::has('error'))
+             <div class="alert alert-warning"role="alert">
+                 <strong>{{Session::get('error')}}</strong>
              </div>
              @endif
            @error('candidature_excel')
@@ -50,6 +57,17 @@
            
             
             <input type="text" class="form-control-sm" name="" id="filter-text-box" oninput="onFilterTextBoxChanged()">
+            <form id="changeEtatForm" method="POST">
+                @csrf
+                <input type="hidden" id="csrfToken" name="_token" value="{{ csrf_token() }}">
+                <input type="hidden" id="selectedIds" name="ids">
+                <input class="btn btn-success w-20" type="button" value="Changer État" id="changeetat">
+                <input class="btn btn-danger w-20" type="button" value="Annuler État" id="annulerEtat">
+            </form>
+            
+            
+            
+
             <button type="button" class="btn btn-success w-20" id="exportButton">export</button>
             <form id="uploadForm" action="/dashboard/admin/import_candidature_excel" method="POST" enctype="multipart/form-data">
                 @method('POST')
@@ -81,15 +99,18 @@
             { headerName: 'Prenom', field: 'prenom', sortable: true, filter: true },
             { headerName: 'Sexe', field: 'sexe', sortable: true, filter: true },
             { headerName: 'CIN', field: 'cin', sortable: true, filter: true },
-            { headerName: 'note_ecrite', field: 'note_ecrite', sortable: true, filter: true },
-
+           
             { headerName: 'date_naissance', field: 'date_naissance', sortable: true, filter: true },
             { headerName: 'Nationalité', field: 'nationalite', sortable: true, filter: true },
             { headerName: 'Adresse', field: 'adresse', sortable: true, filter: true },
             { headerName: 'Ville Natale', field: 'ville_natale', sortable: true, filter: true },
             { headerName: 'Numéro de Téléphone', field: 'num_tel', sortable: true, filter: true },
+
             { headerName: 'Mention Diplôme', field: 'diplome.mention_diplome', sortable: true, filter: true },
             { headerName: 'Établissement', field: 'diplome.etablissement', sortable: true, filter: true },
+            { headerName: 'note_ecrite', field: 'note_ecrite', sortable: true, filter: true },
+            { headerName: 'Etat', field: 'etat', sortable: true, filter: true },
+
             { headerName: 'Scan Bac', field: 'diplome.scan_bac', sortable: true, filter: true },
             { headerName: 'Date Bac', field: 'diplome.date_bac', sortable: true, filter: true },
             { headerName: 'Type de Diplome', field: 'diplome.type_diplome', sortable: true, filter: true },
@@ -159,107 +180,50 @@
             }
 
             document.getElementById('filter-text-box').addEventListener('input', onFilterTextBoxChanged);
-        });
-    });
-</script>
-<h1 class="text-center">Table de Choix candidature</h1>
-<button type="button" class="btn btn-success w-20 mb-2" id="exportButton1">Export Choix</button>
-<div id="myGrid1" class="ag-theme-quartz" style="height: 80vh; width: 100%;"></div>
-               
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var columnDefs = [
-            { headerCheckboxSelection: true, checkboxSelection: true }, 
-            { headerName: 'Nom', field: 'candidature.nom', sortable: true, filter: true },
-            { headerName: 'Prenom', field: 'candidature.prenom', sortable: true, filter: true },
-            { headerName: 'Sexe', field: 'candidature.sexe', sortable: true, filter: true },
-            { headerName: 'CIN', field: 'candidature.cin', sortable: true, filter: true },
-            { headerName: 'date_naissance', field: 'candidature.date_naissance', sortable: true, filter: true }, 
-            { headerName: 'note_ecrite', field: 'candidature.note_ecrite', sortable: true, filter: true },
-            { headerName: 'Merite', field: 'candidature.merite', sortable: true, filter: true },
-            { headerName: 'choix_1', field: 'choix_1', sortable: true, filter: true },
-            { headerName: 'choix_2', field: 'choix_2', sortable: true, filter: true },
-            { headerName: 'choix_3', field: 'choix_3', sortable: true, filter: true },
-            { headerName: 'choix_4', field: 'choix_4', sortable: true, filter: true },
-            { headerName: 'choix_5', field: 'choix_5', sortable: true, filter: true },
-            { headerName: 'choix_6', field: 'choix_6', sortable: true, filter: true },
-            { headerName: 'choix_7', field: 'choix_7', sortable: true, filter: true },
-            { headerName: 'choix_8', field: 'choix_8', sortable: true, filter: true },
-            { headerName: 'choix_9', field: 'choix_9', sortable: true, filter: true },
-        ];
+            function changeEtat() {
+    var selectedNodes = gridOptions.api.getSelectedNodes();
+    var selectedIds = selectedNodes.map(node => node.data.id);
 
-        function fetchDataFromBackend() {
-            return fetch('/azertyuilkjhgfdsqsdfghjkjhgfdsqqjkjhgf4744fdfddffghsdfghsqSDFGHJYQSDFGHJQSDFGHJKIQSDFGHJKIGSDFGHJKLSDFGHJKJSDFJHGF515548548552')
-                .then(response => response.json())
-                .catch(error => console.error('Error fetching data:', error));
-        }
-
-        fetchDataFromBackend().then(userData => {
-            var gridOptions = {
-                columnDefs: columnDefs,
-                rowData: userData,
-                rowSelection: 'multiple',
-                suppressRowClickSelection: true,
-                modules: ['@ag-grid-community/excel-export'],
-                defaultColDef: {
-       filter: 'agTextColumnFilter',
-          flex: 1,
-          minWidth: 200,
-          floatingFilter: true,
-
-        sortable: true,
-        sortingOrder: ['asc', 'desc'], 
-        filter: true 
-    },
-    rowHeight:170,
-    rowGroup: true, 
-    autoGroupColumnDef: {
-        headerName: 'Group', 
-        field: 'fieldName'
-    },
+    if (selectedIds.length > 0) {
+        var confirmation = confirm("Êtes-vous sûr de vouloir changer l'état des candidatures sélectionnées ?");
         
-                
-                
-            };
-
-            var eGridDiv = document.querySelector('#myGrid1');
-
-            new agGrid.Grid(eGridDiv, gridOptions);
-            function exportSelectedRows() {
-    var selectedRows = gridOptions.api.getSelectedRows();
-    if (selectedRows.length > 0) {
-        var columnKeys = ['candidature.cin', 'candidature.nom', 'candidature.prenom', 'candidature.sexe', 'candidature.date_naissance', 'candidature.note_ecrite', 'candidature.merite', 'choix_1', 'choix_2', 'choix_3', 'choix_4', 'choix_5', 'choix_6', 'choix_7', 'choix_8', 'choix_9'];
-
-        // Define export parameters
-        var params = {
-            columnKeys: columnKeys,
-            allColumns: false,
-            fileName: 'selected_rows.xlsx',
-            sheetName: 'Selected Rows',
-            onlySelected: true
-        };
-
-        // Export selected rows as Excel
-        gridOptions.api.exportDataAsExcel(params);
+        if (confirmation) {
+            document.getElementById('selectedIds').value = JSON.stringify(selectedIds);
+            document.getElementById('changeEtatForm').action = "/changerEtat";
+            document.getElementById('changeEtatForm').submit();
+        }
     } else {
-        alert("No rows selected!");
+        alert('Aucune ligne sélectionnée!');
     }
 }
 
+document.getElementById("changeetat").addEventListener("click", changeEtat);
 
-            document.getElementById("exportButton1").addEventListener("click", exportSelectedRows);
+function confirmAnnulerEtat() {
+    var selectedNodes = gridOptions.api.getSelectedNodes();
+    var selectedIds = selectedNodes.map(node => node.data.id);
 
-            function onFilterTextBoxChanged() {
-                var gridApi = gridOptions.api;
-                gridApi.setQuickFilter(document.getElementById('filter-text-box').value);
-            }
+    if (selectedIds.length > 0) {
+        var confirmation = confirm("Êtes-vous sûr de vouloir annuler l'état des candidatures sélectionnées ?");
+        
+        if (confirmation) {
+            document.getElementById('selectedIds').value = JSON.stringify(selectedIds);
+            document.getElementById('changeEtatForm').action = "/annulerEtat";
+            document.getElementById('changeEtatForm').submit();
+        }
+    } else {
+        alert('Aucune ligne sélectionnée!');
+    }
+}
 
-            document.getElementById('filter-text-box').addEventListener('input', onFilterTextBoxChanged);
+document.getElementById("annulerEtat").addEventListener("click", confirmAnnulerEtat);
+
+
         });
     });
 </script>
+
                               
-            
                
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"

@@ -70,12 +70,11 @@
                                     <div class="card-body py-4">
                                         <h5 class="mb-2 fw-bold">
                                             
-                                            {{$averageMoyenne}}
                                             
                                             <img src="../../../page_admin_image/BarChartFill.png" class=" float-end" alt="">
                                         </h5>
                                         <p class="mb-2 fw-bold">
-                                            candidatures
+                                            Nombre d'etudiant accepter 
                                         </p>
                                        
                                     </div>
@@ -118,71 +117,49 @@
         crossorigin="anonymous"></script>
     <script src="../../../../../../page_admin_script/script.js"></script>
 
-</body>
-</html>
 
-<script>
-    let ctx=document.getElementById('my-chart').getContext('2d')
-    let data={
-        labels:['2015','2016','2017','2018','2019','2020','2021','2022','2023','2024'],
-        datasets:[
-            {
-                labels:'ventes',
-                data:[
-                    12,15,14,16,13,
-                ],
-                backgroundColor:'rgba(0,123,255,0.5)',
-                borderColor:'rgba(0,123,255,1)',
-                borderWidth:3
+
+    <script>
+        let ctx = document.getElementById('my-chart').getContext('2d');
+        let chartData = @json($chartData); // Convertit les données PHP en données JavaScript
+        
+        let myChart = new Chart(ctx, {
+            type: 'bar',
+            data: chartData,
+            options: {
+                responsive: true,
+                plugins: {
+                    filler: {
+                        propagate: false,
+                    },
+                    title: {
+                        display: true,
+                        text: 'Répartition par âge'
+                    }
+                },
+                interaction: {
+                    intersect: false,
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
             }
-        ]
-    }
-    let myChart=new Chart(ctx,{
-        // type:"bar",
-        // type:"bar",
-    //     type:"line",
-
-    //     data:data,
-    // options:{
-    //     responsive:true,
-    //     scales:{
-    //         y:{
-    //             beginAtZero:true
-    //         }
-
-    //     }
-    // }
-    type: 'bar',
-  data: data,
-  options: {
+        });
+    </script>
     
-    responsive:true,
-    plugins: {
-      filler: {
-        propagate: false,
-      },
-      title: {
-        display: true,
-        text: (ctx) => 'Moyenne de bac: ' + ctx.chart.data.datasets[0].fill
-      }
-    },
-    interaction: {
-      intersect: false,
-    }
-  },
-    })
-</script>
 <script>
     let ctxe=document.getElementById('my-cirle').getContext('2d')
 
     let datas={
-        labels:['autre','Maroccain'],
+        labels:['homme','femme'],
 
         datasets:[
             {
                 labels:'ventes',
                 data:[
-                    4.6,95.4
+                    {{$homme}},{{$femme}}
                 ],
                 backgroundColor:'rgba(0,123,255,1)',
                 borderColor:'rgba(0,56,255,1)',
@@ -201,7 +178,7 @@
       },
       title: {
         display: true,
-        text: (ctxe) => 'Nationalité: ' + ctxe.chart.data.datasets[0].fill
+        text: (ctxe) => 'Sexe ' 
       }
     },
     interaction: {
@@ -209,5 +186,5 @@
     }
   },
     })
-</script
+</script>
 @endsection

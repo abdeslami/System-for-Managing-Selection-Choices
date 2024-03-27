@@ -111,6 +111,8 @@ class CandidatureController extends Controller
         if($candidatureExist){
             $candidatureExist->update($attributes);
             $candidatureExist->diplome->update($attributes);
+            return redirect()->route('suivi')->with('success', 'Le formulaire ont été mis à jour avec succès.');
+
 
         }
         else{      
@@ -123,6 +125,7 @@ class CandidatureController extends Controller
 
 
             $diplome->candidature()->save($candidature);
+            return redirect()->route('suivi')->with('success', 'Le formulaire ont été ajouter avec succès.');
 
     }
     
@@ -160,6 +163,31 @@ class CandidatureController extends Controller
     
         return redirect()->route('choix_filiere')->with('success', 'Les choix ont été envoyés avec succès.');
     }
+    public function changerEtat(Request $request)
+    {
+        $ids = json_decode($request->input('ids'), true);
+        
+        if ($ids && count($ids) > 0) {
+            Candidature::whereIn('id', $ids)->update(['etat' => 'accept']);
+            return redirect()->route('list_candidature')->with('success', 'État de Candidature a bien été changé.');
+        } else {
+            return redirect()->route('list_candidature')->with('error', 'Sélectionnez une candidature pour changer l\'état.');
+        }
+    }
+    
+    public function annulerEtat(Request $request)
+    {
+        $ids = json_decode($request->input('ids'), true);
+        
+        if ($ids && count($ids) > 0) {
+            Candidature::whereIn('id', $ids)->update(['etat' => 'inscrit']);
+            return redirect()->route('list_candidature')->with('success', 'État de Candidature a bien été annulé.');
+        } else {
+            return redirect()->route('list_candidature')->with('error', 'Sélectionnez une candidature pour annuler l\'état.');
+        }
+    }
+    
+    
     
     
     
