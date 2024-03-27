@@ -58,7 +58,7 @@
                                 <form class="deleteForm d-inline-block" method="post" action="{{ route('deleteUser', ['id' => $user->id]) }}">
                                     @method('DELETE')
                                     @csrf 
-                                    <button class="btn btn-outline-danger rounded-0 delete-btn" title="delete"  type="button"><img title="delete" src="{{ asset('images/trash.svg') }}" alt=""></button>
+                                    <button class="btn btn-outline-danger border-0   delete-btn" title="delete"  type="button"><img title="delete" src="{{ asset('images/trash.svg') }}" alt=""></button>
                                 </form>
                                 <form method="post" class="d-inline-block" action="{{ route('updateForm', $user->id) }}">
                                     @csrf
