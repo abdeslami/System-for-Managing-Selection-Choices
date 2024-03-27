@@ -189,7 +189,7 @@
         
         if (confirmation) {
             document.getElementById('selectedIds').value = JSON.stringify(selectedIds);
-            document.getElementById('changeEtatForm').action = "/changerEtat";
+            document.getElementById('changeEtatForm').action = "/changer-etat-candidatures";
             document.getElementById('changeEtatForm').submit();
         }
     } else {
