@@ -9,7 +9,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\View\ViewName;
-
+ use Illuminate\Support\Facades\Storage;
 class Compte_utilisatuer_grud extends Controller
 {
     /**
@@ -78,9 +78,16 @@ class Compte_utilisatuer_grud extends Controller
      */
     public function show(string $id)
     {
-        //
+        $candidature = Candidature::with('diplome')->find($id);
+    
+        if ($candidature) {
+            return view("admin.details-document", compact('candidature'));
+        } else {
+            return redirect()->route('list_candidature')->with('error', 'Aucun document trouvé.');
+        }
     }
-
+    
+    
     /**
      * Show the form for editing the specified resource.
      */

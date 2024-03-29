@@ -3,8 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\Candidature;
-use App\Models\Choix_classement;
-use App\Models\Diplome;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -31,14 +29,16 @@ class CandidatureFactory extends Factory
             'merite' => $this->faker->randomFloat(2, 0, 20),
             'annee_universitaire' => $this->faker->year(),
             'etat' => $this->faker->randomElement(['pending', 'accepted', 'rejected']),
+            'user_id' => User::factory()->create()->id,
         ];
     }
 
     public function configure()
     {
         return $this->afterCreating(function (Candidature $candidature) {
-            // Associate Candidature with Choix_classement and Diplome here
+            $user = User::inRandomOrder()->first();
+            $candidature->user()->associate($user);
+            $candidature->save();
         });
     }
 }
-

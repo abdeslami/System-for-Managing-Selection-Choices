@@ -8,7 +8,7 @@ use App\Http\Requests\UpdateCandidatureRequest;
 use App\Models\Choix_classement;
 use App\Models\Diplome;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Storage;
 class CandidatureController extends Controller
 {
     /**
@@ -91,47 +91,53 @@ class CandidatureController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCandidatureRequest   $request)/* Request */
+    public function store(StoreCandidatureRequest $request)
     {   
-        $attributes = $request->all()  ;
-                    $userId = auth()->id();
-            $candidatureExist = Candidature::where("user_id",$userId)->first();
-        // Validate the incoming request data if necessary
-/*         $validatedData = $request->validate([
-            'nom' => 'required|string',
-            'prenom' => 'required|string',
-            // Add validation rules for other fields here
-        ]); */
-
-        if(isset($request->scan_cin)){
-            $path = $request->file('scan_cin')->store("documents");
-            $attributes["scan_cin"]=$path;
-
+        $userId = auth()->id();
+        $candidatureExist = Candidature::where("user_id", $userId)->first();
+        $attributes = $request->all();
+    
+        // Stocker les fichiers dans le dossier public
+        $dossier_scan = 'public/dossier_scan';
+        $filesToStore = [
+            'photo_personnel', 'scan_cin', 'scan_bac', 'scan_diplome', 'moyenne_s1', 'moyenne_s2', 'moyenne_s3', 'moyenne_s4', 'moyenne_s5',
+            'moyenne_s6', 'moyenne_s7', 'moyenne_s8', 'moyenne_s9', 'moyenne_s10', 'releve_s1',
+            'releve_s2', 'releve_s3', 'releve_s4', 'releve_s5', 'releve_s6', 'releve_s7', 'releve_s8',
+            'releve_s9', 'releve_s10', 'diplome_supp1', 'diplome_supp2', 'diplome_supp3', 'diplome_supp4',
+        ];
+        
+        foreach ($filesToStore as $file) {
+            if ($request->hasFile($file)) {
+                $originalName = $request->file($file)->getClientOriginalName();
+                $extension = $request->file($file)->getClientOriginalExtension();
+                $hashedName = hash('sha256',  $originalName . time()) . '.' . $extension;
+        
+                
+        
+                $path = $request->file($file)->storeAs($dossier_scan, $hashedName);
+        
+                // Mettre à jour les attributs avec les chemins des fichiers stockés
+                $attributes[$file] = $hashedName;
+            }
         }
-        if($candidatureExist){
+        
+    
+        if ($candidatureExist) {
             $candidatureExist->update($attributes);
             $candidatureExist->diplome->update($attributes);
-            return redirect()->route('suivi')->with('success', 'Le formulaire ont été mis à jour avec succès.');
-
-
-        }
-        else{      
-            
-            $attributes["user_id"]=$userId;
-        // Create a new Candidature model instance with the validated data
-        $candidature =Candidature::create($attributes);
-        $attributes['nom']= $request->nom_diplome;
-            $diplome= Diplome::create($attributes);
-
-
+            return redirect()->route('suivi')->with('success', 'Le formulaire a été mis à jour avec succès.');
+        } else {
+            $attributes["user_id"] = $userId;
+            $candidature = Candidature::create($attributes);
+            $diplome = Diplome::create($attributes);
             $diplome->candidature()->save($candidature);
-            return redirect()->route('suivi')->with('success', 'Le formulaire ont été ajouter avec succès.');
-
+    
+            return redirect()->route('suivi')->with('success', 'Le formulaire a été ajouté avec succès.');
+        }
     }
     
-        // Optionally, you can redirect the user to the next step of the form
-
-    }
+    
+    
     public function store_choix(Request $request)
     {
         $attributes = $request->all();

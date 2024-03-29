@@ -114,7 +114,22 @@
             { headerName: 'Scan Bac', field: 'diplome.scan_bac', sortable: true, filter: true },
             { headerName: 'Date Bac', field: 'diplome.date_bac', sortable: true, filter: true },
             { headerName: 'Type de Diplome', field: 'diplome.type_diplome', sortable: true, filter: true },
-            { headerName: 'Nom de Diplome', field: 'diplome.nom', sortable: true, filter: true }
+            { headerName: 'Nom de Diplome', field: 'diplome.nom', sortable: true, filter: true },
+            { 
+    headerName: 'All Document', 
+    field: 'id', 
+    sortable: true, 
+    filter: true,
+    cellRenderer: function(params) {
+        var id = params.value;
+        var url = "{{ route('Showdocumentcandidature', ['id' => 'ID']) }}";
+        url = url.replace('ID', id);
+        return '<a href="' + url + '">Voir le document</a>';
+    }
+}
+
+
+
         ];
 
         function fetchDataFromBackend() {

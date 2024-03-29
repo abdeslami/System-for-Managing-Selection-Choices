@@ -11,16 +11,10 @@ class Allmodul extends Seeder
 {
     public function run()
     {
-        // Create users and associate candidatures with diplomes and choix_classements
+        // Create users
         User::factory()
             ->count(10)
-            ->create()
-            ->each(function ($user) {
-                $candidature = Candidature::factory()->create([
-                    'choix_classement_id' => Choix_classement::factory()->create()->id,
-                    'diplome_id' => Diplome::factory()->create()->id,
-                ]);
-                $user->candidature()->save($candidature);
-            });
+            ->create();
     }
+    
 }

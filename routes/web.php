@@ -65,6 +65,8 @@ Route::post("/dashboard/admin/compte_utilisateur/ajouter_utilisateurs/add", [Com
 Route::delete("/dashboard/admin/compte_utilisateur/delete/{id?}", [Compte_utilisatuer_grud::class, 'destroy'])->name('deleteUser');
 Route::post('/userForm/{id}', [Compte_utilisatuer_grud::class, 'updateForm'])->name('updateForm');
 Route::put('/users/{id}', [Compte_utilisatuer_grud::class, 'update'])->name('updateUser');
+Route::get('/Showdocumentcandidature/{id}', [Compte_utilisatuer_grud::class, 'show'])->name('Showdocumentcandidature')->middleware('api_auth');
+
 
 
 
