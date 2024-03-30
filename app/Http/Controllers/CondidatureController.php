@@ -42,7 +42,7 @@ class CondidatureController extends Controller
             $scanCinOriginalName = $request->file('photo_personnel')->getClientOriginalName();
             $scanPhotoEncryptedName = hash('sha256', time() . $scanCinOriginalName) . '.' . $request->file('photo_personnel')->getClientOriginalExtension();
            
-            $scanCinPath = $request->file('photo_personnel')->storeAs('photo', $scanPhotoEncryptedName, 'public');
+            $scanCinPath = $request->file('photo_personnel')->storeAs('dossier_scan', $scanPhotoEncryptedName, 'public');
         }
         
         

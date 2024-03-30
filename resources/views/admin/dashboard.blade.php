@@ -30,7 +30,7 @@
                                             
                                             {{$diplomesCount}}
                                             
-                                            <img src="../../../page_admin_image/FileEarmarkPerson.png" class=" float-end" alt="">
+                                            <img src="{{asset('page_admin_image/FileEarmarkPerson.png')}}"  class=" float-end" alt="">
                                         </h5>
                                         <p class="mb-2 fw-bold">
                                             candidatures
@@ -41,7 +41,8 @@
                                 </div>
                                 <p class="text-center bg-primary border border-dark ">
                                     voir plus 
-                                    <img src="../../../page_admin_image/Vector (2).png" alt="">
+                                    <img src="{{asset('page_admin_image/Vector (2).png')}}"  alt="">
+
                                 </p>
                             </div>
                             <div class="col-12 col-md-3 ">
@@ -51,7 +52,7 @@
                                             
                                             {{$usersCount}}
                                             
-                                            <img src="../../../page_admin_image/PersonCircle.png" class=" float-end" alt="">
+                                            <img src="{{asset('page_admin_image/PersonCircle.png')}}" class=" float-end" alt="">
                                         </h5>
                                         <p class="mb-2 fw-bold">
                                             comptes
@@ -62,7 +63,8 @@
                                 </div>
                                 <p style="background-color: #804228;" class="text-center  border border-dark ">
                                     voir plus 
-                                    <img src="../../../page_admin_image/Vector (2).png" alt="">
+                                    <img src="{{asset('page_admin_image/Vector (2).png')}}"  alt="">
+
                                 </p>
                             </div>
                             <div class="col-12 col-md-3 ">
@@ -71,10 +73,11 @@
                                         <h5 class="mb-2 fw-bold">
                                             
                                             
-                                            <img src="../../../page_admin_image/BarChartFill.png" class=" float-end" alt="">
+                                            <img src="{{asset('page_admin_image/BarChartFill.png')}}" class=" float-end" alt="">
                                         </h5>
                                         <p class="mb-2 fw-bold">
-                                            Nombre d'etudiant accepter 
+                                            {{$accept}} <br>
+                                            Nombre  accepter 
                                         </p>
                                        
                                     </div>
@@ -82,7 +85,7 @@
                                 </div>
                                 <p style="background-color: #523326;" class="text-center  border border-dark ">
                                     voir plus 
-                                    <img src="../../../page_admin_image/Vector (2).png" alt="">
+                                    <img src="{{asset('page_admin_image/Vector (2).png')}}"  alt="">
                                 </p>
                             </div>
                          
@@ -112,13 +115,6 @@
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
-    <script src="../../../../../../page_admin_script/script.js"></script>
-
-
-
     <script>
         let ctx = document.getElementById('my-chart').getContext('2d');
         let chartData = @json($chartData); // Convertit les données PHP en données JavaScript

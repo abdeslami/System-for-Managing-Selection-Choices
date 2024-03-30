@@ -57,6 +57,10 @@
                     <input type="file" name="scan_cin" id="cin_pdf" class="form-control-file" >
                     <small class="form-text text-muted">Upload CIN PDF</small>
                 </div> 
+                <div class="form-group col-md-6"> 
+                    <input type="file" name="photo_personnel" id="photo_personnel" class="form-control-file" >
+                    <small class="form-text text-muted">Upload Photo</small>
+                </div> 
             </div>
             <div class="form-row"> 
                 <div class="form-group col-md-6">  

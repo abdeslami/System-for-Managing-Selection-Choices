@@ -1,1 +1,0 @@
-@extends('layouts.compte-layout')

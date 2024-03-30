@@ -41,7 +41,7 @@ class AdminController extends Controller
                $date_naissance = new DateTime($Candidatures->date_naissance);
                $aujourd_hui = new DateTime();
                $age = $date_naissance->diff($aujourd_hui)->y;  // Calcul de l'âge
-               $annee = $aujourd_hui->format('Y') - $age;  // Année de naissance
+               $annee =  $age;  // Année de naissance
                if (!isset($ages[$annee])) {
                    $ages[$annee] = 0;
                }
@@ -68,8 +68,10 @@ class AdminController extends Controller
                ]
            ]
        ];
+       $accept=Candidature::where('etat','accept')->count();
+    //    return $accept;
    
-       return view("admin.dashboard", compact('diplomesCount', 'usersCount', 'homme', 'femme', 'chartData'));
+       return view("admin.dashboard", compact('diplomesCount', 'usersCount', 'homme', 'femme', 'chartData',"accept"));
    }
    
     public function api_candidature(){
