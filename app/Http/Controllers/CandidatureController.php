@@ -172,18 +172,19 @@ class CandidatureController extends Controller
     public function changerEtat(Request $request)
     {
         $ids = json_decode($request->input('ids'), true);
-        
+        // dd($ids);
         if ($ids && count($ids) > 0) {
             Candidature::whereIn('id', $ids)->update(['etat' => 'accept']);
-            return redirect()->route('list_candidature')->with('success', 'État de Candidature a bien été changé.');
+            return redirect()->route('list_candidature')->with('success', 'État de la candidature a bien été changé.');
         } else {
             return redirect()->route('list_candidature')->with('error', 'Sélectionnez une candidature pour changer l\'état.');
         }
     }
-    
     public function annulerEtat(Request $request)
     {
         $ids = json_decode($request->input('ids'), true);
+
+        // dd($ids);
         
         if ($ids && count($ids) > 0) {
             Candidature::whereIn('id', $ids)->update(['etat' => 'inscrit']);

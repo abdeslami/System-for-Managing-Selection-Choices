@@ -25,7 +25,13 @@
     <div class="row justify-content-center">
         <div class="col-md-7 col-lg-4 mb-5 mb-lg-0 wow fadeIn">
             <div class="card border-0 shadow">
+                @if($candidature->photo_personnel)
                 <img src="{{ asset('storage/dossier_scan/' .$candidature->photo_personnel) }}" alt="...">
+                @else
+                <img src="{{ asset('page_admin_image/aucunprofile.PNG') }}" alt="aucun photo personelle">
+
+
+                @endif
                 <div class="card-body p-1-9 p-xl-5">
                     <div class="mb-4">
                         <h3 class="h4 mb-0">{{$candidature->nom}} {{$candidature->prenom}}</h3>
