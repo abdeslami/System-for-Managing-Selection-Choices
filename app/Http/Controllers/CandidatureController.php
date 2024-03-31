@@ -60,32 +60,161 @@ class CandidatureController extends Controller
     
         
     }
-    public function step1(Request $request)
+    public function step1()
     {
-/*             $userId = auth()->id();
-            $candidatureExist = Candidature::where("user_id",$userId)->first();
-        // Validate the incoming request data if necessary
-        $validatedData = $request->validate([
-            'nom' => 'required|string',
-            'prenom' => 'required|string',
-            // Add validation rules for other fields here
-        ]);
-        
+        $userId = auth()->id();
+        $candidatureExist = Candidature::where("user_id",$userId)->first();
+            return view("etudiant.multi-step-form.step1",compact("candidatureExist"));
+    }
+    public function postStep1(Request $request)
+    {
 
-        if(isset($request->scan_cin)){
-            $path = $request->file('scan_cin')->store("documents");
-        }
-        $validatedData["scan_cin"]=$path;
-        if($candidatureExist){
-            $candidatureExist->update($request->all());
-
-        }
-        else{        $validatedData["user_id"]=$userId;
-        // Create a new Candidature model instance with the validated data
-        $candidature = Candidature::create($validatedData);}
+        $userId = auth()->id();
+        $candidatureExist = Candidature::where("user_id", $userId)->first();
+        $attributes = $request->all();
     
-        // Optionally, you can redirect the user to the next step of the form
+        // Stocker les fichiers dans le dossier public
+        $dossier_scan = 'public/dossier_scan';
+        $filesToStore = [
+            'photo_personnel', 'scan_cin', 'scan_bac'];
+        
+        foreach ($filesToStore as $file) {
+            if ($request->hasFile($file)) {
+                $originalName = $request->file($file)->getClientOriginalName();
+                $extension = $request->file($file)->getClientOriginalExtension();
+                $hashedName = hash('sha256',  $originalName . time()) . '.' . $extension;
+        
+                
+        
+                $path = $request->file($file)->storeAs($dossier_scan, $hashedName);
+        
+                // Mettre à jour les attributs avec les chemins des fichiers stockés
+                $attributes[$file] = $hashedName;
+            }
+        }
+        
+    
+        if ($candidatureExist) {
+            $candidatureExist->update($attributes);
+            return redirect()->route('step2')->with('success', 'step 1 a été mis à jour avec succès.');
+        } else {
+            $attributes["user_id"] = $userId;
+            $candidature = Candidature::create($attributes);
+            $diplome = Diplome::create();
+            $diplome->candidature()->save($candidature);
+    
+            return redirect()->route('step2')->with('success', 'step 1 enregistrer avec succès.');
+        }
+            
+    }
+    public function step2()
+    {
+        $userId = auth()->id();
+        $candidatureExist = Candidature::where("user_id",$userId)->first();
+            return view("etudiant.multi-step-form.step2",compact("candidatureExist"));
+    }
+    public function postStep2(Request $request)
+    {
+
+        $userId = auth()->id();
+        $candidatureExist = Candidature::where("user_id", $userId)->first();
+        $attributes = $request->all();
+    
+        // Stocker les fichiers dans le dossier public
+        $dossier_scan = 'public/dossier_scan';
+        $filesToStore = [
+            'scan_diplome', 'releve_s1','releve_s2', 'releve_s3', 'releve_s4', 'releve_s5', 
+            'releve_s6', 'releve_s7', 'releve_s8','releve_s9', 'releve_s10',
+        ];
+        
+        foreach ($filesToStore as $file) {
+            if ($request->hasFile($file)) {
+                $originalName = $request->file($file)->getClientOriginalName();
+                $extension = $request->file($file)->getClientOriginalExtension();
+                $hashedName = hash('sha256',  $originalName . time()) . '.' . $extension;
+        
+                
+        
+                $path = $request->file($file)->storeAs($dossier_scan, $hashedName);
+        
+                // Mettre à jour les attributs avec les chemins des fichiers stockés
+                $attributes[$file] = $hashedName;
+            }
+        }
+            // Calculate merit based on non-null moyennes
+        $moyennes = ['moyenne_s1', 'moyenne_s2', 'moyenne_s3', 'moyenne_s4', 'moyenne_s5',
+        'moyenne_s6', 'moyenne_s7', 'moyenne_s8', 'moyenne_s9', 'moyenne_s10'];
+        $totalMerite = 0;
+        $count = 0;
+
+        foreach ($moyennes as $moyenne) {
+            if ($request->filled($moyenne) && is_numeric($request->$moyenne)) {
+                $totalMerite += +$request->$moyenne; // unary plus operator converts string to number
+                $count++;
+            }
+        }
+        $attributes["merite"] = $count > 0 ? $totalMerite / $count : null;
+/*         dd($attributes["merite"]);
  */
+        if ($candidatureExist) {
+            $candidatureExist->diplome->update($attributes);
+            return redirect()->route('step3')->with('success', 'step 2 a été mis à jour avec succès.');
+        } else {
+
+            return redirect()->route('step1');
+        }
+    }
+    public function step3()
+    {
+        $userId = auth()->id();
+        $candidatureExist = Candidature::where("user_id",$userId)->first();
+            return view("etudiant.multi-step-form.step3",compact("candidatureExist"));   
+         }
+         public function postStep3(Request $request)
+         {
+     
+            $userId = auth()->id();
+            $candidatureExist = Candidature::where("user_id", $userId)->first();
+            $attributes = $request->all();
+        
+            // Stocker les fichiers dans le dossier public
+            $dossier_scan = 'public/dossier_scan';
+            $filesToStore = [
+                'photo_personnel', 'scan_cin', 'scan_bac', 'scan_diplome', 'moyenne_s1', 'moyenne_s2', 'moyenne_s3', 'moyenne_s4', 'moyenne_s5',
+                'moyenne_s6', 'moyenne_s7', 'moyenne_s8', 'moyenne_s9', 'moyenne_s10', 'releve_s1',
+                'releve_s2', 'releve_s3', 'releve_s4', 'releve_s5', 'releve_s6', 'releve_s7', 'releve_s8',
+                'releve_s9', 'releve_s10', 'diplome_supp1', 'diplome_supp2', 'diplome_supp3', 'diplome_supp4',
+            ];
+            
+            foreach ($filesToStore as $file) {
+                if ($request->hasFile($file)) {
+                    $originalName = $request->file($file)->getClientOriginalName();
+                    $extension = $request->file($file)->getClientOriginalExtension();
+                    $hashedName = hash('sha256',  $originalName . time()) . '.' . $extension;
+            
+                    
+            
+                    $path = $request->file($file)->storeAs($dossier_scan, $hashedName);
+            
+                    // Mettre à jour les attributs avec les chemins des fichiers stockés
+                    $attributes[$file] = $hashedName;
+                }
+            }
+            
+        
+            if ($candidatureExist) {
+                $candidatureExist->diplome->update($attributes);
+                return redirect()->route('step4')->with('success', 'step 3 a été mis à jour avec succès.');
+            } else {
+    
+                return redirect()->route('step1');
+            }
+         }
+    public function step4()
+    {
+        $userId = auth()->id();
+        $candidatureExist = Candidature::where("user_id",$userId)->first();
+            return view("etudiant.multi-step-form.step4",compact("candidatureExist"));
     }
 
     /**

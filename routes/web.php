@@ -1,5 +1,6 @@
 <?php
 
+use App\Exports\ChoixExport;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CandidatureController;
 use App\Http\Controllers\ChoixClassementController;
@@ -11,6 +12,7 @@ use App\Models\User;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,12 +26,16 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-/*     return view('agGrid');
- */
+    return view('test-table');
+
 // return view('admin.edit-user');
-return redirect("/acceuil");
+/* return redirect("/acceuil"); */
 
 });
+Route::get('/choix/export', function () {
+    return Excel::download(new ChoixExport,"choix.xlsx");
+});
+
 Route::get('/admin', function () {
     return view('layouts.compte-layout');
 });
@@ -39,6 +45,17 @@ Route::get("/acceuil", function(){
 Route::get("/users", function(){
     return User::select('name', 'email', 'role')->get();
 }); 
+
+
+//form routes
+Route::get("/inscription/step1", [CandidatureController::class, "step1"])->name("step1");
+Route::post("/inscription/step1", [CandidatureController::class, "postStep1"])->name("postStep1");
+Route::get("/inscription/step2", [CandidatureController::class, "step2"])->name("step2");
+Route::post("/inscription/step2", [CandidatureController::class, "postStep2"])->name("postStep2");
+Route::get("/inscription/step3", [CandidatureController::class, "step3"])->name("step3");
+Route::post("/inscription/step3", [CandidatureController::class, "postStep3"])->name("postStep3");
+Route::get("/inscription/step4", [CandidatureController::class, "step4"])->name("step4");
+Route::post("/inscription/step4", [CandidatureController::class, "postStep4"])->name("postStep4");
 
 Auth::routes(["verify"=>true]);
 Route::get("/suivi", [CandidatureController::class,"index"])->name('suivi')->middleware('verified');;

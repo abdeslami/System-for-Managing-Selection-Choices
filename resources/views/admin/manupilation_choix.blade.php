@@ -28,9 +28,17 @@
                
 <script>
     document.addEventListener('DOMContentLoaded', function () {
+        function customCellRenderer(params) {
+    // Customize the cell content and style as needed
+    const cellValue = params.value;
+    const cellElement = document.createElement('div');
+    cellElement.textContent = cellValue;
+    cellElement.style.backgroundColor = '#ffcc00'; // Set background color as desired
+    return cellElement;
+}
         var columnDefs = [
             { headerCheckboxSelection: true, checkboxSelection: true }, 
-            { headerName: 'Nom', field: 'candidature.nom', sortable: true, filter: true },
+            { headerName: 'Nom', field: 'candidature.nom', sortable: true, filter: true, cellRenderer: customCellRenderer },
             { headerName: 'Prenom', field: 'candidature.prenom', sortable: true, filter: true },
             { headerName: 'Sexe', field: 'candidature.sexe', sortable: true, filter: true },
             { headerName: 'CIN', field: 'candidature.cin', sortable: true, filter: true },
@@ -88,7 +96,7 @@
             function exportSelectedRows() {
     var selectedRows = gridOptions.api.getSelectedRows();
     if (selectedRows.length > 0) {
-        var columnKeys = ['candidature.cin', 'candidature.nom', 'candidature.prenom','candidature.note_ecrite', 'choix_1', 'choix_2', 'choix_3', 'choix_4', 'choix_5', 'choix_6', 'choix_7', 'choix_8', 'choix_9'];
+        var columnKeys = ['candidature.nom','choix_1', 'choix_2', 'choix_3', 'choix_4', 'choix_5', 'choix_6', 'choix_7', 'choix_8', 'choix_9'];
 
         // Define export parameters
         var params = {

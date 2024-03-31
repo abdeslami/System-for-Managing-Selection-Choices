@@ -48,6 +48,7 @@ return new class extends Migration
             $table->string('nom_ds2')->nullable();
             $table->string('nom_ds3')->nullable();
             $table->string('nom_ds4')->nullable();
+            $table->string('merite')->nullable();
             $table->timestamps();
         });
     }
