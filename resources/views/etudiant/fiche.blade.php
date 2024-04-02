@@ -91,7 +91,13 @@
             <td>DIPLOME :</td> 
             <td></td> <td></td> <td></td> <td></td>
 
-            <td>{{ $candidature->diplome->etablissement }}</td>
+            <td>{{ $candidature->diplome->nom }}</td>
+        </tr>
+        <tr>
+            <td>TYPE DE DIPLOME :</td> 
+            <td></td> <td></td> <td></td> <td></td>
+
+            <td>{{ $candidature->diplome->type_diplome }}</td>
         </tr>
 
   

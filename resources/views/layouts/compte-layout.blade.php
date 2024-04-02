@@ -53,6 +53,12 @@
                         <span>Comptes des utilisateurs</span>
                     </a>
                 </li>
+                <li class="sidebar-item">
+                    <a href="/dashboard/admin/event" class="sidebar-link {{ request()->is('dashboard/admin/compte_utilisateur') ? 'active' : '' }}">
+                        <img width="31rem" height="31rem" src="{{ asset('page_admin_image/event.png') }}" alt="">
+                        <span>Date Inscription et Choix</span>
+                    </a>
+                </li>
             </ul>
             @else
             <ul class="sidebar-nav d-flex flex-column justify-content-center">
@@ -110,7 +116,9 @@
                                 </form>
                                 @endauth
                             </div>
+                            
                         </li>
+                        
                     </ul>
                 </div>
             </nav>

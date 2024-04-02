@@ -6,6 +6,7 @@ use App\Http\Controllers\CandidatureController;
 use App\Http\Controllers\ChoixClassementController;
 use App\Http\Controllers\Compte_utilisatuer_grud;
 use App\Http\Controllers\CondidatureController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\PDFController;
 use App\Models\Candidature;
 use App\Models\User;
@@ -92,6 +93,17 @@ Route::get('/Showdocumentcandidature/{id}', [Compte_utilisatuer_grud::class, 'sh
 Route::post("/dashboard/admin/import_candidature_excel", [AdminController::class,'import_candidature_excel'])->name('import_candidature_excel');
 Route::post('/changer-etat-candidatures', [CandidatureController::class,'changerEtat']);
 Route::post('/annulerEtat', [CandidatureController::class,'annulerEtat']);
+
+
+/**Event */
+
+Route::get("/dashboard/admin/event", [EventController::class,'index'])->name('event');
+Route::post("/dashboard/admin/event/storeDate", [EventController::class,'storeDate'])->name('storeDate');
+Route::post("/dashboard/admin/event/ouvrireinscription", [EventController::class,'ouvrireinscription'])->name('ouvrireinscription');
+Route::post("/dashboard/admin/event/fermeinscription", [EventController::class,'fermeinscription'])->name('fermeinscription');
+Route::post("/dashboard/admin/event/ouvrirechoix", [EventController::class,'ouvrirechoix'])->name('ouvrirechoix');
+Route::post("/dashboard/admin/event/fermechoix", [EventController::class,'fermechoix'])->name('fermechoix');
+
 
 
 

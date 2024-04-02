@@ -216,7 +216,9 @@ class CandidatureController extends Controller
         $candidatureExist = Candidature::where("user_id",$userId)->first();
             return view("etudiant.multi-step-form.step4",compact("candidatureExist"));
     }
-
+public function postStep4(){
+    return redirect('/suivi');
+}
     /**
      * Store a newly created resource in storage.
      */

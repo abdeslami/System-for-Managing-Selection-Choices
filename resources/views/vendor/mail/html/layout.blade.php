@@ -26,9 +26,8 @@ width: 100% !important;
 </head>
 <body>
   
-        <img src="{{asset('images/header.jpeg')}}" style="width: 100%" height="10rem" class="logo" alt="Laravel Logo">
-      
 <table class="wrapper" width="100%" cellpadding="0" cellspacing="0" role="presentation">
+        
 <tr>
 <td align="center">
 <table class="content" width="100%" cellpadding="0" cellspacing="0" role="presentation">
