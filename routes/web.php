@@ -49,19 +49,19 @@ Route::get("/users", function(){
 
 
 //form routes
-Route::get("/inscription/step1", [CandidatureController::class, "step1"])->name("step1");
-Route::post("/inscription/step1", [CandidatureController::class, "postStep1"])->name("postStep1");
-Route::get("/inscription/step2", [CandidatureController::class, "step2"])->name("step2");
-Route::post("/inscription/step2", [CandidatureController::class, "postStep2"])->name("postStep2");
-Route::get("/inscription/step3", [CandidatureController::class, "step3"])->name("step3");
-Route::post("/inscription/step3", [CandidatureController::class, "postStep3"])->name("postStep3");
-Route::get("/inscription/step4", [CandidatureController::class, "step4"])->name("step4");
-Route::post("/inscription/step4", [CandidatureController::class, "postStep4"])->name("postStep4");
+Route::get("/inscription/step1", [CandidatureController::class, "step1"])->name("step1")->middleware(['verified',"etat_inscript"]);
+Route::post("/inscription/step1", [CandidatureController::class, "postStep1"])->name("postStep1")->middleware(['verified',"etat_inscript"]);
+Route::get("/inscription/step2", [CandidatureController::class, "step2"])->name("step2")->middleware(['verified',"etat_inscript"]);
+Route::post("/inscription/step2", [CandidatureController::class, "postStep2"])->name("postStep2")->middleware(['verified',"etat_inscript"]);
+Route::get("/inscription/step3", [CandidatureController::class, "step3"])->name("step3")->middleware(['verified',"etat_inscript"]);
+Route::post("/inscription/step3", [CandidatureController::class, "postStep3"])->name("postStep3")->middleware(['verified',"etat_inscript"]);
+Route::get("/inscription/step4", [CandidatureController::class, "step4"])->name("step4")->middleware(['verified',"etat_inscript"]);
+Route::post("/inscription/step4", [CandidatureController::class, "postStep4"])->name("postStep4")->middleware(['verified',"etat_inscript"]);
 
 Auth::routes(["verify"=>true]);
 Route::get("/suivi", [CandidatureController::class,"index"])->name('suivi')->middleware('verified');;
-Route::get("/inscription", [CandidatureController::class,"create"])->middleware('verified');
-Route::get("/choix_filiere", [CandidatureController::class,"choix"])->name('choix_filiere')->middleware('verified');
+Route::get("/inscription", [CandidatureController::class,"create"])->middleware(['verified',"etat_inscript"]);
+Route::get("/choix_filiere", [CandidatureController::class,"choix"])->name('choix_filiere')->middleware(['verified',"etat_choix"]);
 
 Route::post("/inscription/s1", [CandidatureController::class,"store"])->name("candidat-store");
 Route::post("/choix/s1", [CandidatureController::class,"store_choix"])->name("choix-store");
@@ -103,6 +103,10 @@ Route::post("/dashboard/admin/event/ouvrireinscription", [EventController::class
 Route::post("/dashboard/admin/event/fermeinscription", [EventController::class,'fermeinscription'])->name('fermeinscription');
 Route::post("/dashboard/admin/event/ouvrirechoix", [EventController::class,'ouvrirechoix'])->name('ouvrirechoix');
 Route::post("/dashboard/admin/event/fermechoix", [EventController::class,'fermechoix'])->name('fermechoix');
+Route::post("/dashboard/admin/event/not_admin", [EventController::class,'not_admin'])->name('not_admin');
+Route::post("/dashboard/admin/event/delete_all_candidature", [EventController::class,'delete_all_candidature'])->name('delete_all_candidature');
+
+
 
 
 

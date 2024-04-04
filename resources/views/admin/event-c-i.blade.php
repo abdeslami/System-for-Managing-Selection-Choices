@@ -12,36 +12,45 @@
 @endsection
 
 @section("content")
+@if (Session::has('success'))
+    <div
+        class="alert alert-success"
+        role="alert"
+    >
+        <strong>{{Session::get('success')}}</strong> 
+    </div>
+    
+@endif
 <div class="d-flex justify-content-evenly  ">
-    <form method="POST" action="{{route('ouvrireinscription')}}">
+    <form id="e" method="POST" action="{{ route('ouvrireinscription') }}" onsubmit="return confirm('Voulez-vous vraiment ouvrir l\'inscription?')">
         @csrf
-   
-        <button type="submit" style="background-color:#FF8450;color:wheat;width:auto;height:auto;" >ouvrir l'inscription</button>
+        <button type="submit" class="btn font-weight-bold" style="background-color:#94eb30;color:wheat;width:auto;height:auto;" >ouvrir l'inscription</button>
     </form>
-    <form method="POST" action="{{route('fermeinscription')}}">
+    
+    <form method="POST" action="{{route('fermeinscription')}}" onsubmit="return confirm('Voulez-vous vraiment ferme l\'inscription?')">
         @csrf
    
-        <button type="submit" style="background-color:#FF8450;color:wheat;width:auto;height:auto;" >ferme l'inscription</button>
+        <button type="submit" class="btn font-weight-bold" style="background-color:#d33129;color:wheat;width:auto;height:auto;" >ferme l'inscription</button>
     </form>
-    <form method="POST" action="{{route('ouvrirechoix')}}">
+    <form method="POST" action="{{route('ouvrirechoix')}}" onsubmit="return confirm('Voulez-vous vraiment ouvrir la selection choix?')">
         @csrf
    
-        <button type="submit" style="background-color:#FF8450;color:wheat;width:auto;height:auto;" >ouvrir choix</button>
+        <button type="submit" class="btn font-weight-bold" style="background-color:#94eb30;color:wheat;width:auto;height:auto;"  >ouvrir choix</button>
     </form>
-    <form method="POST" action="{{route('fermechoix')}}">
+    <form method="POST" action="{{route('fermechoix')}}" onsubmit="return confirm('Voulez-vous vraiment ferme la selection choix?')">
         @csrf
    
-        <button type="submit" style="background-color:#FF8450;color:wheat;width:auto;height:auto;" >ferme choix</button>
+        <button type="submit" class="btn font-weight-bold" style="background-color:#d33129;color:wheat;width:auto;height:auto;"   >ferme choix</button>
     </form>
-    <form method="POST" action="{{route('ouvrireinscription')}}">
+    <form method="POST" action="{{route('not_admin')}}" onsubmit="return confirm('Voulez-vous vraiment Supprimmer candidat no admin?')">
         @csrf
    
-        <button type="submit" style="background-color:#FF8450;color:wheat;width:auto;height:auto;" >Suprimmer candidat no admin</button>
+        <button type="submit" class="btn font-weight-bold" style="background-color:#f40909;color:wheat;width:auto;height:auto;"  >Suprimmer candidat no admin</button>
     </form>
-    <form method="POST" action="{{route('ouvrireinscription')}}">
+    <form method="POST" action="{{route('delete_all_candidature')}}" onsubmit="return confirm('Voulez-vous vraiment Vide la base de donneé Candidature?')">
         @csrf
-   
-        <button type="submit" style="background-color:#FF8450;color:wheat;width:auto;height:auto;" >Vide la base de donneé</button>
+    
+        <button type="submit" class="btn font-weight-bold" style="background-color:#f35410;color:wheat;width:auto;height:auto;" >Vide la base de donneé</button>
     </form>
     
 </div>
@@ -115,7 +124,7 @@
         </form>
     </div>
    
-        <div  class="col-5">
+        <div  class="col-5 mb-5 mt-5">
             <h3 class="text-center mb-4">Calendrier des dates Inscription</h3>
        
                     <table class="table table-bordered table-responsive-sm">
@@ -131,14 +140,13 @@
                             </tr>
                         </thead>
                         <tbody id="calendar-body-inscript">
-                            <!-- Calendar dates will be populated here -->
                         </tbody>
                     </table>
         </div>
-        <div class="col-2">
+        <div class="col-2 mb-5 mt-5">
 
         </div>
-        <div class="col-5">
+        <div class="col-5 mb-5 mt-5">
                 <h3 class="text-center mb-4">Calendrier des dates Choix</h3>
               
                         <table class="table table-bordered table-responsive-sm">
@@ -254,7 +262,6 @@
             }
         }
     
-        // Initially display the dates
         displayDates();
     </script>
     @endsection

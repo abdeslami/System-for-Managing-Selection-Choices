@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -124,6 +125,8 @@
             </nav>
             <div class="container p-4">
                 @yield("content")
+               
+
             </div>
         </div>
     </div>

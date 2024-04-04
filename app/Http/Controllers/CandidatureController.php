@@ -99,6 +99,8 @@ class CandidatureController extends Controller
             return redirect()->route('step2')->with('success', 'step 1 a été mis à jour avec succès.');
         } else {
             $attributes["user_id"] = $userId;
+            $attributes["etat"] ="inscrit";
+
             $candidature = Candidature::create($attributes);
             $diplome = Diplome::create();
             $diplome->candidature()->save($candidature);
