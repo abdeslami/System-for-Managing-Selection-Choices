@@ -2,111 +2,33 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ChoixExport;
 use App\Exports\table_choix;
 use App\Models\Candidature;
-use App\Models\Diplome;
-use App\Models\User;
-use Maatwebsite\Excel\Facades\Excel;
-use App\Imports\CandidatureImport;
 use App\Models\Choix_classement;
-use DateTime;
-use Illuminate\Http\Request;
 
-use function Ramsey\Uuid\v1;
+use function PHPUnit\Framework\isEmpty;
+use function PHPUnit\Framework\isNull;
 
-class AdminController extends Controller
+class choixExportController extends Controller
 {
-   public function import_candidature_excel(Request $request)  {
-   
-    Excel::import(new CandidatureImport,$request->file('file'));
-    return redirect()->route('list_candidature')->with('success', 'Candidature bien importée');
+    //
 
-   }
-   public function dashboard_admin()
-   {
-       $usersCount = User::count();
-       $diplomesCount = Diplome::with('candidature')->count();
-       $Candidature = Candidature::all();
-       $homme = 0;
-       $femme = 0;
-       $ages = [];
-   
-       foreach ($Candidature as $Candidatures) {
-           if ($Candidatures->sexe == "homme") {
-               $homme++;
-           } else {
-               $femme++;
-           }
-   
-           if ($Candidatures->date_naissance) {
-               $date_naissance = new DateTime($Candidatures->date_naissance);
-               $aujourd_hui = new DateTime();
-               $age = $date_naissance->diff($aujourd_hui)->y;  // Calcul de l'âge
-               $annee =  $age;  // Année de naissance
-               if (!isset($ages[$annee])) {
-                   $ages[$annee] = 0;
-               }
-               $ages[$annee]++;
-           }
-       }
-       $data = [];
-       $labels = [];
-   
-       foreach ($ages as $annee => $count) {
-           $labels[] = $annee;
-           $data[] = $count;
-       }
-   
-       $chartData = [
-           'labels' => $labels,
-           'datasets' => [
-               [
-                   'label' => 'Nombre de candidats',
-                   'data' => $data,
-                   'backgroundColor' => 'rgba(0,123,255,0.5)',
-                   'borderColor' => 'rgba(0,123,255,1)',
-                   'borderWidth' => 3
-               ]
-           ]
-       ];
-       $accept=Candidature::where('etat','accept')->count();
-    //    return $accept;
-   
-       return view("admin.dashboard", compact('diplomesCount', 'usersCount', 'homme', 'femme', 'chartData',"accept"));
-   }
-   
-    public function api_candidature(){
-        $data = Candidature::with('diplome')->get();
-        
-        return $data;
-    }
-    public function api_candidature_choix(){
-        $data = Choix_classement::with('candidature')->get();
-        
-        return $data;
-    }
-    public function list_candidature()
-    {
-        
-        return view('admin.candidatures');
-    }
-    public function choix_candidatre(Request $request){
-        $users=Choix_classement::with('candidature')->get();
-        $available_places= $request->id;
-        return view("admin.manupilation_choix",compact('users','available_places'));
-    }
     
+    public function index(){
+        $users=Choix_classement::all();
+     return view('table2',compact("users"));
+    }
     public function clear(){
         Choix_classement::query()->update(['slected_c1' => "",
                                             'slected_c2' => "",
                                             'slected_c3' => "",]);
-        return redirect()->route("choix_candidatre");
-    }
-    public function export_choix(Request $request){
-        return Excel::download(new table_choix, 'exported_data_php.xlsx'); 
+        return redirect('/');
     }
 
-    public function affecter_choix(Request $request)
+    public function exportData(Request $request)
     {
 
         // Validate form inputs
@@ -188,7 +110,7 @@ else{
         }
 
 
-        $av=$available_places;
+
 
         /* // Validate form inputs
         $request->validate([
@@ -210,29 +132,12 @@ else{
             'nom_f1' => $nom_f1,
             // Add keys for the other 9 input fields
         ];
-    */
-    // return redirect()->route("choix_candidatre",compact('available_places'));
     
-    return to_route("choix_candidatre",compact('available_places'));
-    
-}
-       public function affichetest()
-{
-    $diplomes = Diplome::with('candidature')->get();
-
-    
-    
-    return view("admin.test", compact('diplomes'));
-}
-
-        
-        
-        public function fiche(){
-            return view("etudiant.fiche_etudiant");
+        // Export the Excel file*/
+        redirect('/');
+        return Excel::download(new table_choix(), 'exported_data_php.xlsx'); 
+        /* return redirect('/'); */
         }
-        public function etudiante(){
-            return view("etudiant.modifierEtudiant");
-        }
-        
+    
     
 }
