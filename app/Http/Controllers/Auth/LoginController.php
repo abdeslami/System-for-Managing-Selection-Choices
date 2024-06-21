@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -25,7 +29,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/acceuil';
 
     /**
      * Create a new controller instance.
@@ -40,11 +44,27 @@ class LoginController extends Controller
     protected function authenticated($request, $user)
     {
         if ($user->role === 'admin') {
-            return redirect("/index");
+            return redirect("/dashboard/admin");
         } elseif ($user->role === 'candidat') {
-            return redirect("/etudiant");
+            return redirect("/inscription");
         } else {
             return redirect($this->redirectTo);
         }
+    }
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        if ($response = $this->loggedOut($request)) {
+            return $response;
+        }
+
+        return $request->wantsJson()
+            ? new JsonResponse([], 204)
+            : redirect('/acceuil');
     }
 }

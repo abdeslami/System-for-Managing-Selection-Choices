@@ -40,6 +40,12 @@
     </div>
     
   <script>
+    function onFilterTextBoxChanged() {
+  gridApi.setGridOption(
+    'quickFilterText',
+    document.getElementById('filter-text-box').value
+  );
+}
         function fetchDataFromBackend() {
       return fetch('/users') // Assuming you have a route to retrieve products data
         .then(response => response.json())
@@ -58,7 +64,7 @@
     this.eGui.appendChild(this.eButton);
   }
 
-  init(params) {}
+  
 
   getGui() {
     return this.eGui;

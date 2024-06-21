@@ -16,7 +16,7 @@ class Diplome extends Model
         'moyenne_s6', 'moyenne_s7', 'moyenne_s8', 'moyenne_s9', 'moyenne_s10', 'releve_s1',
         'releve_s2', 'releve_s3', 'releve_s4', 'releve_s5', 'releve_s6', 'releve_s7', 'releve_s8',
         'releve_s9', 'releve_s10', 'diplome_supp1', 'diplome_supp2', 'diplome_supp3', 'diplome_supp4',
-        'nom_ds1', 'nom_ds2', 'nom_ds3', 'nom_ds4', 
+        'nom_ds1', 'nom_ds2', 'nom_ds3', 'nom_ds4', 'merite',
     ];
     
     

@@ -16,7 +16,7 @@
 <script>
     new WOW().init();
     </script>
-<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="../../../../../../../../../app.css">
 </head>
 <body class="container-fluid">
     
@@ -33,7 +33,7 @@
                     <a class="nav-link" href="#">Formations</a>
                 </li>
                 <li class="nav-item mx-auto"> <!-- Added mx-3 class for horizontal margin -->
-                    <a class="nav-brand" href="#"><img src="images/logo.png" alt=""></a>
+                    <a class="nav-brand" href="#"><img src="../../../../../../../../../images/logo.png" alt=""></a>
                 </li>
                 <li class="nav-item mx-3"> <!-- Added mx-3 class for horizontal margin -->
            
@@ -44,7 +44,7 @@
         @if (Route::has('login'))
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('login') }}">
-                    <button class="btn btn-primary fs-5 p-3">{{ __('Se connecter') }}</button> <!-- Normal button for "Se connecter" -->
+                    <button class="btn  btn-primary fs-7 p-3">{{ __('Se connecter') }}</button> <!-- Normal button for "Se connecter" -->
                 </a>
             </li>
         @endif
@@ -52,7 +52,7 @@
         @if (Route::has('register'))
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('register') }}">
-                    <button class="btn btn-outline-primary fs-5 p-3">{{ __('Register') }}</button> <!-- Outlined button for "Register" -->
+                    <button class="btn btn-outline-primary fs-7 p-3">{{ __('Register') }}</button> <!-- Outlined button for "Register" -->
                 </a>
             </li>
         @endif

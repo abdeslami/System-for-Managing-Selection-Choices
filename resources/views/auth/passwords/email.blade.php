@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('../../../layouts.layout')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+<div class="container mb-5">
+    <div style="margin-top: 10rem;" class="row justify-content-center">
+        <div class="col-md-8 ">
+            <div style="height: 40vh;" class="card  ">
+                <div class="card-header">Réinitialiser le mot de passe </div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -17,7 +17,7 @@
                     <form method="POST" action="{{ route('password.email') }}">
                         @csrf
 
-                        <div class="row mb-3">
+                        <div class="row mb-5">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
                             <div class="col-md-6">

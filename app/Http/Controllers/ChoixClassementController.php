@@ -14,6 +14,7 @@ class ChoixClassementController extends Controller
     public function index()
     {
         //
+        return view("etudiant.choix");
     }
 
     /**

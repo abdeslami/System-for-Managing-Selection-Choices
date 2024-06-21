@@ -25,15 +25,18 @@ return new class extends Migration
             $table->string('ville_natale')->nullable();
             $table->string('num_tel')->nullable();
             $table->string('photo_personnel')->nullable();
-            $table->string('merite')->nullable();
             $table->string('annee_universitaire')->nullable();
             $table->string('etat')->nullable();
-            //$table->foreignId("choix_classement_id")->nullable()->constrained('choix_classements')->onDelete('cascade'); 
-            //$table->foreignId("user_id")->constrained('users')->onDelete('cascade');
-            $table->foreignId("diplome_id")->nullable()->constrained('diplomes')->onDelete('cascade'); 
+            $table->string('note_ecrite')->nullable();
+            $table->foreignId("choix_classement_id")->nullable()->constrained('choix_classements')->onDelete('cascade');
+            $table->foreignId("user_id")->constrained('users')->onDelete('cascade');
+            $table->foreignId("diplome_id")->nullable()->constrained('diplomes')->onDelete('cascade');
+            $table->unique('choix_classement_id');
+            $table->unique('user_id');
+            $table->unique('diplome_id');
             $table->timestamps();
         });
-      
+     
     }
 
     /**

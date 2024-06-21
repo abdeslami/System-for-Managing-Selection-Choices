@@ -23,7 +23,8 @@
 
 
 body{
-    background: url(images/bg.svg) #EDE9D0 no-repeat right top scroll;
+    background: url(images/bg.svg) #EDE9D0 no-repeat  right top scroll;
+    background-size: cover;
     width: 100vw;
     height: 100vh; 
     margin: 0;
@@ -72,4 +73,31 @@ nav{
     margin-inline: 20%;
     padding: 15px;
     margin:30px;
+}
+.formations .card-title{
+    margin-inline: 8%;
+    padding: 5.5px;
+    margin:12px;
+}
+/**/
+.card-title {
+    transition: opacity 0.3s ease; /* Smooth transition effect */
+}
+
+.card-title:hover {
+    opacity: 1; /* Ensure opacity is full on hover */
+}
+
+.card-title:hover > * {
+    opacity: 0.7; /* Lower opacity for all children on hover */
+}
+
+.card-title a {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit text color from parent */
+}
+
+.card-title a:hover {
+    opacity: 1; /* Increase opacity of hovered link */
+    color: blue; /* Change color on hover */
 }
