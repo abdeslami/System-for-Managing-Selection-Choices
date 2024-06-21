@@ -92,7 +92,7 @@ class AdminController extends Controller
     }
     public function choix_candidatre(Request $request){
         $users=Choix_classement::with('candidature')->get();
-        $available_places= $request->id;
+        $available_places = session('available_places');
         return view("admin.manupilation_choix",compact('users','available_places'));
     }
     
@@ -112,35 +112,35 @@ class AdminController extends Controller
         // Validate form inputs
         $request->validate([
             'candidates_number'=>'numeric|nullable',
-            'nom_f1'=>'required',
-            'nom_f2'=>'required',
-            'nom_f3'=>'required',
-            'nom_f4'=>'required',
-            'nom_f5'=>'required',
-            'nom_f6'=>'required',
-            'nom_f7'=>'required',
-            'nom_f8'=>'required',
-            'nom_f9'=>'required',  
+            'IDSCC'=>'required',
+            'ITIRC'=>'required',
+            'SIC'=>'required',
+            'GCIV'=>'required',
+            'GELC'=>'required',
+            'GIND'=>'required',
+            'GINF'=>'required',
+            'SEIR'=>'required',
+            'MGSI'=>'required',  
         ]);
-/*         $f1=+$request->input('nom_f1');
-        $f2=+$request->input('nom_f2');
-        $f3=+$request->input('nom_f3');
-        $f4=+$request->input('nom_f4');
-        $f5=+$request->input('nom_f5');
-        $f6=+$request->input('nom_f6');
-        $f7=+$request->input('nom_f7');
-        $f8=+$request->input('nom_f8');
-        $f9=+$request->input('nom_f9'); */
+/*         $f1=+$request->input('IDSCC');
+        $f2=+$request->input('ITIRC');
+        $f3=+$request->input('SIC');
+        $f4=+$request->input('GCIV');
+        $f5=+$request->input('GELC');
+        $f6=+$request->input('GIND');
+        $f7=+$request->input('GINF');
+        $f8=+$request->input('SEIR');
+        $f9=+$request->input('MGSI'); */
         $available_places = [
-            'nom_f1' => +$request->input('nom_f1'),
-            'nom_f2' => +$request->input('nom_f2'),
-            'nom_f3' => +$request->input('nom_f3'),
-            'nom_f4' => +$request->input('nom_f4'),
-            'nom_f5' => +$request->input('nom_f5'),
-            'nom_f6' => +$request->input('nom_f6'),
-            'nom_f7' => +$request->input('nom_f7'),
-            'nom_f8' => +$request->input('nom_f8'),
-            'nom_f9' => +$request->input('nom_f9')
+            'IDSCC' => +$request->input('IDSCC'),
+            'ITIRC' => +$request->input('ITIRC'),
+            'SIC' => +$request->input('SIC'),
+            'GCIV' => +$request->input('GCIV'),
+            'GELC' => +$request->input('GELC'),
+            'GIND' => +$request->input('GIND'),
+            'GINF' => +$request->input('GINF'),
+            'SEIR' => +$request->input('SEIR'),
+            'MGSI' => +$request->input('MGSI')
         ];
 if($request->candidates_number){
     $list_choix=Choix_classement::limit($request->candidates_number)->get();
@@ -193,13 +193,13 @@ else{
         /* // Validate form inputs
         $request->validate([
             'candidates_number' => 'required|integer|min:1',
-            'nom_f1'=>'required',
+            'IDSCC'=>'required',
             // Add validation rules for the other 9 input fields
         ]);
     
         // Get form inputs
         $candidatesNumber = $request->input('candidates_number');
-        $nom_f1=$request->input('nom_f1');
+        $IDSCC=$request->input('IDSCC');
         // Get values for the other 9 input fields
     
         // Generate Excel export data
@@ -207,13 +207,13 @@ else{
             
             'candidates_number' => $candidatesNumber,
             'candidates'=> Candidature::take(9)->get(),
-            'nom_f1' => $nom_f1,
+            'IDSCC' => $IDSCC,
             // Add keys for the other 9 input fields
         ];
     */
-    // return redirect()->route("choix_candidatre",compact('available_places'));
+     return redirect()->route("choix_candidatre")->with('available_places', $available_places);;
     
-    return to_route("choix_candidatre",compact('available_places'));
+    //return to_route("choix_candidatre",compact('available_places'));
     
 }
        public function affichetest()

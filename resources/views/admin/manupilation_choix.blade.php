@@ -18,31 +18,31 @@
         <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.css" />
         <link rel="stylesheet" href="https://cdn.datatables.net/buttons/3.0.1/css/buttons.dataTables.css">
         <style>
-            .nom_f1{
+            .IDSCC{
           background-color: green ;
         }
-        .nom_f2{
+        .ITIRC{
           background-color: yellow;
         }
-        .nom_f3{
+        .SIC{
           background-color: red;
         }
-        .nom_f4{
+        .GCIV{
           background-color: royalblue;
         }
-        .nom_f5{
+        .GELC{
           background-color: brown;
         }
-        .nom_f6{
+        .GIND{
           background-color: orange;
         }
-        .nom_f7{
+        .GINF{
           background-color: yellowgreen;
         }
-        .nom_f8{
+        .SEIR{
           background-color: gray ;
         }
-        .nom_f9{
+        .MGSI{
           background-color: aqua;
         }
         #choix_inputs input{
@@ -66,15 +66,15 @@
 
     @php
     $colors=[
-      "nom_f1"=>"green",
-      "nom_f2"=>"yellow",
-      "nom_f3"=>"red",
-      "nom_f4"=>"royalblue",
-      "nom_f5"=>"brown",
-      "nom_f6"=>"orange",
-      "nom_f7"=>"yellowgreen",
-      "nom_f8"=>"gray",
-      "nom_f9"=>"aqua",
+      "IDSCC"=>"green",
+      "ITIRC"=>"yellow",
+      "SIC"=>"red",
+      "GCIV"=>"royalblue",
+      "GELC"=>"brown",
+      "GIND"=>"orange",
+      "GINF"=>"yellowgreen",
+      "SEIR"=>"gray",
+      "MGSI"=>"aqua",
     ]
   @endphp
 
@@ -87,40 +87,40 @@
     </div>
     <div id="choix_inputs">
     <div>
-      <label for="nom_f1">nom_f1:</label>
-      <input type="number" class="nom_f1 " name='nom_f1' min="0" value="{{ isset($available_places) ? $available_places['nom_f1'] : "0" }}">
+      <label for="IDSCC">IDSCC:</label>
+      <input type="number" class="IDSCC " name='IDSCC' min="0" value="{{ isset($available_places) ? $available_places['IDSCC'] : "0" }}">
     </div>
     <div>
-      <label for="nom_f2">nom_f2:</label>
-      <input type="number" class="nom_f2" name='nom_f2' min="0" value="{{ isset($available_places) ? $available_places['nom_f2'] : "0" }}" >
+      <label for="ITIRC">ITIRC:</label>
+      <input type="number" class="ITIRC" name='ITIRC' min="0" value="{{ isset($available_places) ? $available_places['ITIRC'] : "0" }}" >
     </div>
     <div>
-      <label for="nom_f3">nom_f3:</label>
-      <input type="number" class="nom_f3" name='nom_f3' min="0" value="{{ isset($available_places) ? $available_places['nom_f3'] : "0" }}">
+      <label for="SIC">SIC:</label>
+      <input type="number" class="SIC" name='SIC' min="0" value="{{ isset($available_places) ? $available_places['SIC'] : "0" }}">
     </div>
     <div>
-      <label for="nom_f4">nom_f4:</label>
-      <input type="number" class="nom_f4" name='nom_f4' min="0" value="{{ isset($available_places) ? $available_places['nom_f4'] : "0" }}">
+      <label for="GCIV">GCIV:</label>
+      <input type="number" class="GCIV" name='GCIV' min="0" value="{{ isset($available_places) ? $available_places['GCIV'] : "0" }}">
     </div>
     <div>
-      <label for="nom_f5">nom_f5:</label>
-      <input type="number" class="nom_f5" name='nom_f5' min="0" value="{{ isset($available_places) ? $available_places['nom_f5'] : "0" }}">
+      <label for="GELC">GELC:</label>
+      <input type="number" class="GELC" name='GELC' min="0" value="{{ isset($available_places) ? $available_places['GELC'] : "0" }}">
     </div>
     <div>
-      <label for="nom_f6">nom_f6:</label>
-      <input type="number" class="nom_f6" name='nom_f6' min="0" value="{{ isset($available_places) ? $available_places['nom_f6'] : "0" }}">
+      <label for="GIND">GIND:</label>
+      <input type="number" class="GIND" name='GIND' min="0" value="{{ isset($available_places) ? $available_places['GIND'] : "0" }}">
     </div>
     <div>
-      <label for="nom_f7">nom_f7:</label>
-      <input type="number" class="nom_f7" name='nom_f7' min="0" value="{{ isset($available_places) ? $available_places['nom_f7'] : "0" }}">
+      <label for="GINF">GINF:</label>
+      <input type="number" class="GINF" name='GINF' min="0" value="{{ isset($available_places) ? $available_places['GINF'] : "0" }}">
     </div>
     <div>
-      <label for="nom_f8">nom_f8:</label>
-      <input type="number" class="nom_f8" name='nom_f8' min="0" value="{{ isset($available_places) ? $available_places['nom_f8'] : "0" }}">
+      <label for="SEIR">SEIR:</label>
+      <input type="number" class="SEIR" name='SEIR' min="0" value="{{ isset($available_places) ? $available_places['SEIR'] : "0" }}">
     </div>
     <div>
-      <label for="nom_f9">nom_f9:</label>
-      <input type="number" class="nom_f9" name='nom_f9' min="0" value="{{ isset($available_places) ? $available_places['nom_f9'] : 0 }}">
+      <label for="MGSI">MGSI:</label>
+      <input type="number" class="MGSI" name='MGSI' min="0" value="{{ isset($available_places) ? $available_places['MGSI'] : 0 }}">
     </div>
 </div>
     <button type="submit" class="btn btn-secondary">affecter des choix</button>
