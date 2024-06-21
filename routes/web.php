@@ -128,5 +128,3 @@ Route::post("/ajouterE", [CondidatureController::class,'store'])->name('ajouterE
 Route::get('/index',[CondidatureController::class,'index']);
 
 */
-/* Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified'); 
- */

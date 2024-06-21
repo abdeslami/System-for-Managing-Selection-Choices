@@ -64,7 +64,7 @@
             <td>{{ $candidature->cin }}</td>
         </tr>
         <tr>
-            <td>CNE :</td> 
+            <td>ADRESSE :</td> 
             <td></td> <td></td> <td></td> <td></td>
 
             <td> {{ $candidature->cne_cme }}</td>
