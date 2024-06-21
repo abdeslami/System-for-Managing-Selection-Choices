@@ -152,10 +152,32 @@ class Compte_utilisatuer_grud extends Controller
         $candidature = Candidature::where('user_id', $user->id)->first();
     
         if ($candidature) {
+            if ($candidature->scan_cin) {
+                Storage::delete("public/dossier_scan/{$candidature->scan_cin}");
+            }
+
+            if ($candidature->photo_personnel) {
+                Storage::delete("public/dossier_scan/{$candidature->photo_personnel}");
+            }
             $diplome = Diplome::find($candidature->diplome_id);
             if ($diplome) {
+                for ($i = 1; $i <= 10; $i++) {
+                    $releve_field = "releve_s{$i}";
+                    if ($diplome->$releve_field) {
+                        Storage::delete("public/dossier_scan/{$diplome->$releve_field}");
+                    }
+                }
+
+                for ($i = 1; $i <= 4; $i++) {
+                    $diplome_supp_field = "diplome_supp{$i}";
+                    if ($diplome->$diplome_supp_field) {
+                        Storage::delete("public/dossier_scan/{$diplome->$diplome_supp_field}");
+                    }
+                }
+
                 $diplome->delete();
             }
+
     
             $choix = Choix_classement::find($candidature->choix_classement_id);
             if ($choix) {
