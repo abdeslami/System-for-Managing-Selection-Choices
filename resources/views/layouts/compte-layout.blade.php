@@ -23,7 +23,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.2/js/intlTelInput.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
-
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+<script>
+new WOW().init();
+</script>
         @yield("css/js links")
 
     </head>
@@ -139,5 +146,19 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
     <script src="{{ asset('page_admin_script/script.js') }}"></script>
+    <script>
+document.querySelectorAll(".action-button").forEach(function(button) {
+  button.addEventListener("click", function() {
+    var element = document.querySelector(".multi_step_form");
+    element.classList.add("animate__animated", "animate__backOutLeft", "animate__slower");
+    
+    // Remove animation classes after animation ends
+    element.addEventListener("animationend", function() {
+      element.classList.remove("animate__animated", "animate__backOutLeft", "animate__slower");
+    });
+  });
+});
+
+      </script>
 </body>
 </html>

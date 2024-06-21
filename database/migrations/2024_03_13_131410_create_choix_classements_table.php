@@ -22,6 +22,9 @@ return new class extends Migration
             $table->string('choix_7');
             $table->string('choix_8');
             $table->string('choix_9');
+            $table->string('slected_c1');
+            $table->string('slected_c2');
+            $table->string('slected_c3');
             $table->timestamps();
         });
     }

@@ -5,7 +5,7 @@
 
 @endsection
 @section("content")
-<section class="multi_step_form">  
+<section class="multi_step_form animate__animated animate__backInRight">  
     <form id="msform" action="{{ route("postStep4") }}" enctype="multipart/form-data" method="post">
         @csrf
         <div class="title">

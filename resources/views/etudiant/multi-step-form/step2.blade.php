@@ -5,7 +5,7 @@
 
 @endsection
 @section("content")
-<section class="multi_step_form">  
+<section class="multi_step_form animate__animated animate__backInRight">  
     <form id="msform" action="{{ route("postStep2") }}" enctype="multipart/form-data" method="post">
         @csrf
         <div class="title">
@@ -106,8 +106,8 @@
                     <small class="form-text text-muted">Upload Semestre 6 Relevé des Notes (PDF)</small>
                 </div> 
             </div>
-            <a href="{{ route('step1') }}" type="button" class="action-button  previous_button">Back</a>
-            <button type="submit" class=" action-button">Continue</button>  
+            <a href="{{ route('step1') }}" type="button" class="action-button previous_button">Back</a>
+            <button type="submit" class="action-button">Continue</button>  
         </fieldset>
     </form>
 </section>
