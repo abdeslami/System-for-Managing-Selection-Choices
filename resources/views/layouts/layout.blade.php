@@ -27,10 +27,10 @@
                     <a class="nav-link" href="/acceuil">Acceuil</a>
                 </li>
                 <li class="nav-item mx-3"> <!-- Added mx-3 class for horizontal margin -->
-                    <a class="nav-link" href="#">À propos</a>
+                    <a class="nav-link" href="#Apropos">À propos</a>
                 </li>
                 <li class="nav-item mx-3"> <!-- Added mx-3 class for horizontal margin -->
-                    <a class="nav-link" href="#">Formations</a>
+                    <a class="nav-link" href="#formations">Formations</a>
                 </li>
                 <li class="nav-item mx-auto"> <!-- Added mx-3 class for horizontal margin -->
                     <a class="nav-brand" href="#"><img src="../../../../../../../../../images/logo.png" alt=""></a>

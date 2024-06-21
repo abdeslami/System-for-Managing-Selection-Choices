@@ -62,7 +62,7 @@ new WOW().init();
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="/dashboard/admin/event" class="sidebar-link {{ request()->is('dashboard/admin/compte_utilisateur') ? 'active' : '' }}">
+                    <a href="/dashboard/admin/event" class="sidebar-link {{ request()->is('dashboard/admin/event') ? 'active' : '' }}">
                         <img width="31rem" height="31rem" src="{{ asset('page_admin_image/event.png') }}" alt="">
                         <span>Date Inscription et Choix</span>
                     </a>
