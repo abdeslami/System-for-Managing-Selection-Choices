@@ -26,16 +26,16 @@
 
            
         </div>
-        <div class="row justify-content-center ">
+        <div class="row justify-content-center mb-5">
             <div class="col-auto ">
-                <a href="#formations" >
+                <a href="#Apropos" >
                 <img src="images/vector.svg" class="animate__animated animate__bounce" alt=""></a>
             </div>
         </div>
-        <div class="row mt-5 ">
+        <div class="row mt-5 pt-5">
             <div class="col flex-fill title mx-4">
                 
-                <p class="h3 text-light px-2 py-1 wow animate__animated animate__fadeInLeft" id="formations">À propos</p>
+                <p class="h3 text-light px-2 py-1 wow animate__animated animate__fadeInLeft" id="Apropos">À propos</p>
             </div>
         </div>
         <div class="container">

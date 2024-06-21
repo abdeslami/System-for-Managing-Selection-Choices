@@ -21,6 +21,17 @@
             position: absolute;
             width: 1px;
         }
+        .ag-theme-quartz .ag-cell {
+            padding: 2px;
+        }
+        .ag-theme-quartz .ag-header-cell {
+            padding: 2px;
+        }
+        .ag-theme-quartz .ag-header-cell-filter, 
+        .ag-theme-quartz .ag-header-cell-filter input {
+            background-color: transparent !important;
+            color: black !important;
+        }
     </style>
 @endsection
 
@@ -43,7 +54,6 @@
             </div>
         @enderror
         <div class="d-flex justify-content-between mb-2">
-            
             <form id="changeEtatForm" method="POST">
                 <input type="text" class="form-control-sm" name="" id="filter-text-box" oninput="onFilterTextBoxChanged()">
                 @csrf
@@ -52,20 +62,17 @@
                 <input class="btn btn-danger w-20" type="button" value="Annuler État" id="annulerEtat">
             </form>
             <form id="uploadForm" action="{{ route('import_candidature_excel') }}" method="POST" enctype="multipart/form-data">
-            <button type="button" class="btn btn-success w-20" id="exportButton">export</button>
-
+                <button type="button" class="btn btn-success w-20" id="exportButton">export</button>
                 @csrf
                 <label for="apply" class="btn btn-success w-20">
                     <input type="file" name="file" id="apply" class="inputupload" onchange="submitForm()"> Import candidature Excel note ecrite
                 </label>
             </form>
-            
             <script>
                 function submitForm() {
                     document.getElementById('uploadForm').submit();
                 }
             </script>
-            
         </div>
         <div id="myGrid" class="ag-theme-quartz" style="height: 80vh; width: 100%;"></div>
     </div>
@@ -74,36 +81,37 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         var columnDefs = [
-            { headerCheckboxSelection: true, checkboxSelection: true }, 
-            { headerName: 'ID', field: 'id', sortable: true, filter: true },
-            { headerName: 'Nom', field: 'nom', sortable: true, filter: true },
-            { headerName: 'Prenom', field: 'prenom', sortable: true, filter: true },
-            { headerName: 'Sexe', field: 'sexe', sortable: true, filter: true },
-            { headerName: 'CIN', field: 'cin', sortable: true, filter: true },
-            { headerName: 'date_naissance', field: 'date_naissance', sortable: true, filter: true },
-            { headerName: 'Nationalité', field: 'nationalite', sortable: true, filter: true },
-            { headerName: 'Adresse', field: 'adresse', sortable: true, filter: true },
-            { headerName: 'Ville Natale', field: 'ville_natale', sortable: true, filter: true },
-            { headerName: 'Numéro de Téléphone', field: 'num_tel', sortable: true, filter: true },
-            { headerName: 'Mention Diplôme', field: 'diplome.mention_diplome', sortable: true, filter: true },
-            { headerName: 'Établissement', field: 'diplome.etablissement', sortable: true, filter: true },
-            { headerName: 'note_ecrite', field: 'note_ecrite', sortable: true, filter: true },
-            { headerName: 'Etat', field: 'etat', sortable: true, filter: true },
-            { headerName: 'Scan Bac', field: 'diplome.scan_bac', sortable: true, filter: true },
-            { headerName: 'Date Bac', field: 'diplome.date_bac', sortable: true, filter: true },
-            { headerName: 'Type de Diplome', field: 'diplome.type_diplome', sortable: true, filter: true },
-            { headerName: 'Nom de Diplome', field: 'diplome.nom', sortable: true, filter: true },
+            { headerCheckboxSelection: true, checkboxSelection: true, maxWidth: 50 }, 
+            { headerName: 'ID', field: 'id', sortable: true, filter: 'agTextColumnFilter', maxWidth: 80 },
+            { headerName: 'Nom', field: 'nom', sortable: true, filter: 'agTextColumnFilter', minWidth: 120 },
+            { headerName: 'Prenom', field: 'prenom', sortable: true, filter: 'agTextColumnFilter', minWidth: 120 },
+            { headerName: 'Sexe', field: 'sexe', sortable: true, filter: 'agTextColumnFilter', maxWidth: 80 },
+            { headerName: 'CIN', field: 'cin', sortable: true, filter: 'agTextColumnFilter', minWidth: 100 },
+            { headerName: 'Date Naissance', field: 'date_naissance', sortable: true, filter: 'agDateColumnFilter', minWidth: 130 },
+            { headerName: 'Nationalité', field: 'nationalite', sortable: true, filter: 'agTextColumnFilter', minWidth: 120 },
+            { headerName: 'Adresse', field: 'adresse', sortable: true, filter: 'agTextColumnFilter', minWidth: 150 },
+            { headerName: 'Ville Natale', field: 'ville_natale', sortable: true, filter: 'agTextColumnFilter', minWidth: 130 },
+            { headerName: 'Numéro de Téléphone', field: 'num_tel', sortable: true, filter: 'agTextColumnFilter', minWidth: 150 },
+            { headerName: 'Mention Diplôme', field: 'diplome.mention_diplome', sortable: true, filter: 'agTextColumnFilter', minWidth: 150 },
+            { headerName: 'Établissement', field: 'diplome.etablissement', sortable: true, filter: 'agTextColumnFilter', minWidth: 150 },
+            { headerName: 'Note Écrite', field: 'note_ecrite', sortable: true, filter: 'agNumberColumnFilter', maxWidth: 100 },
+            { headerName: 'État', field: 'etat', sortable: true, filter: 'agTextColumnFilter', maxWidth: 100 },
+            { headerName: 'Scan Bac', field: 'diplome.scan_bac', sortable: true, filter: 'agTextColumnFilter', minWidth: 120 },
+            { headerName: 'Date Bac', field: 'diplome.date_bac', sortable: true, filter: 'agDateColumnFilter', minWidth: 120 },
+            { headerName: 'Type de Diplome', field: 'diplome.type_diplome', sortable: true, filter: 'agTextColumnFilter', minWidth: 150 },
+            { headerName: 'Nom de Diplome', field: 'diplome.nom', sortable: true, filter: 'agTextColumnFilter', minWidth: 120 },
             { 
-                headerName: 'All Document', 
+                headerName: 'All Documents', 
                 field: 'id', 
                 sortable: true, 
-                filter: true,
+                filter: 'agTextColumnFilter',
                 cellRenderer: function(params) {
                     var id = params.value;
                     var url = "{{ route('Showdocumentcandidature', ['id' => 'ID']) }}";
                     url = url.replace('ID', id);
                     return '<a href="' + url + '">Voir le document</a>';
-                }
+                },
+                minWidth: 120
             }
         ];
 
@@ -121,15 +129,14 @@
                 suppressRowClickSelection: true,
                 modules: ['@ag-grid-community/excel-export'],
                 defaultColDef: {
-                    filter: 'agTextColumnFilter',
-                    flex: 1,
-                    minWidth: 200,
+                    filter: true,
                     floatingFilter: true,
+                    flex: 1,
+                    minWidth: 100,
                     sortable: true,
-                    sortingOrder: ['asc', 'desc'], 
-                    filter: true 
+                    sortingOrder: ['asc', 'desc']
                 },
-                rowHeight: 170,
+                rowHeight: 40,  // Reduced row height
                 rowGroup: true, 
                 autoGroupColumnDef: {
                     headerName: 'Group', 
@@ -138,20 +145,18 @@
             };
 
             var eGridDiv = document.querySelector('#myGrid');
-
             new agGrid.Grid(eGridDiv, gridOptions);
 
             function exportSelectedRows() {
                 var selectedRows = gridOptions.api.getSelectedRows();
                 if (selectedRows.length > 0) {
                     var params = {
-                        columnKeys: ['cin', 'nom', 'prenom', 'sexe','date_naissance','note_ecrite'],
+                        columnKeys: ['cin', 'nom', 'prenom', 'sexe', 'date_naissance', 'note_ecrite'],
                         allColumns: false,
                         fileName: 'selected_rows.xlsx',
-                        sheetName: 'Selected Rows', 
-                        onlySelected: true 
+                        sheetName: 'Selected Rows',
+                        onlySelected: true
                     };
-
                     gridOptions.api.exportDataAsExcel(params);
                 } else {
                     alert("No rows selected!");
@@ -167,17 +172,15 @@
 
             document.getElementById('filter-text-box').addEventListener('input', onFilterTextBoxChanged);
 
-                        function changeEtat() {
+            function changeEtat() {
                 var selectedIds = [];
                 gridOptions.api.forEachNodeAfterFilter(node => {
                     if (node.isSelected()) {
                         selectedIds.push(node.data.id);
                     }
                 });
-
                 if (selectedIds.length > 0) {
                     var confirmation = confirm("Êtes-vous sûr de vouloir changer l'état des candidatures sélectionnées ?");
-                    
                     if (confirmation) {
                         document.getElementById('selectedIds').value = JSON.stringify(selectedIds);
                         document.getElementById('changeEtatForm').action = "/changer-etat-candidatures";
@@ -188,7 +191,6 @@
                 }
             }
 
-
             document.getElementById("changeetat").addEventListener("click", changeEtat);
 
             function confirmAnnulerEtat() {
@@ -198,10 +200,8 @@
                         selectedIds.push(node.data.id);
                     }
                 });
-
                 if (selectedIds.length > 0) {
                     var confirmation = confirm("Êtes-vous sûr de vouloir annuler l'état des candidatures sélectionnées ?");
-                    
                     if (confirmation) {
                         document.getElementById('selectedIds').value = JSON.stringify(selectedIds);
                         document.getElementById('changeEtatForm').action = "/annulerEtat";

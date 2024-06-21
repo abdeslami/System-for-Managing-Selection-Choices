@@ -1,14 +1,17 @@
 <?php
 
 use App\Exports\ChoixExport;
+use App\Exports\table_choix;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CandidatureController;
 use App\Http\Controllers\ChoixClassementController;
+use App\Http\Controllers\choixExportController;
 use App\Http\Controllers\Compte_utilisatuer_grud;
 use App\Http\Controllers\CondidatureController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\PDFController;
 use App\Models\Candidature;
+use App\Models\Choix_classement;
 use App\Models\User;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Support\Facades\Route;
@@ -26,16 +29,23 @@ use Maatwebsite\Excel\Facades\Excel;
 |
 */
 
-Route::get('/', function () {
-    return view('test-table');
+// Route::get('/', function () {
+//     $users=Choix_classement::all();
+//     return view('table2',compact("users"));
+/* Route::get('/', function () {
+    return view("test-table"); */
 
 // return view('admin.edit-user');
 /* return redirect("/acceuil"); */
 
-});
-Route::get('/choix/export', function () {
-    return Excel::download(new ChoixExport,"choix.xlsx");
-});
+//});
+/* Route::get('/', [choixExportController::class,'index']);
+Route::post('/clear', [choixExportController::class,'clear'])->name("clear");
+Route::post('/choix/export', [choixExportController::class,'exportData'])->name("export"); */
+
+/* Route::get('/choix/export', function(){
+    return Excel::download(new table_choix, "doc.xlsx");
+})->name("export"); */
 
 Route::get('/admin', function () {
     return view('layouts.compte-layout');
@@ -59,6 +69,7 @@ Route::get("/inscription/step4", [CandidatureController::class, "step4"])->name(
 Route::post("/inscription/step4", [CandidatureController::class, "postStep4"])->name("postStep4")->middleware(['verified',"etat_inscript"]);
 
 Auth::routes(["verify"=>true]);
+
 Route::get("/suivi", [CandidatureController::class,"index"])->name('suivi')->middleware('verified');;
 Route::get("/inscription", [CandidatureController::class,"create"])->middleware(['verified',"etat_inscript"]);
 Route::get("/choix_filiere", [CandidatureController::class,"choix"])->name('choix_filiere')->middleware(['verified',"etat_choix"]);
@@ -76,7 +87,10 @@ Route::get('/azertyuilkjhgfdsqsdfghjkjhgfdsqqjkjhgf4744fdfddffghsdfghsqSDFGHJYQS
 Route::get("/dashboard/admin", [AdminController::class,'dashboard_admin'])->name('dashboard_admin');
 Route::get("/dashboard/admin/list_candidature", [AdminController::class,'list_candidature'])->name('list_candidature');
 Route::get("/dashboard/admin/compte_utilisateur", [Compte_utilisatuer_grud::class,'index'])->name('compte_utilisateur');
-Route::get("/dashboard/admin/choix_candidatre", [AdminController::class,'choix_candidatre'])->name('choix_candidatre');
+Route::get("/dashboard/admin/choix_candidatre/{id?}", [AdminController::class,'choix_candidatre'])->name('choix_candidatre');
+Route::post('dashboard/admin/choix/clear', [AdminController::class,'clear'])->name("clear");
+Route::post('/affecter_choix', [AdminController::class,'affecter_choix'])->name("affecter_choix");
+Route::post('dashboard/admin/choix/export', [AdminController::class,'export_choix'])->name("export");
 
 Route::get("/dashboard/admin/compte_utilisateur/ajouter_utilisateurs", [Compte_utilisatuer_grud::class,'create'])->name('ajouter_utilisateurs');
 Route::post("/dashboard/admin/compte_utilisateur/ajouter_utilisateurs/add", [Compte_utilisatuer_grud::class,'store'])->name('ajouter_utilisateurs_add');

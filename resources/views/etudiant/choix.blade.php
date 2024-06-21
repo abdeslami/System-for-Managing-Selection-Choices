@@ -20,15 +20,15 @@
     <select name="choix_1" class="form-control form-control-lg"  id="choix_1" onchange="updateSecondChoice()" >
 
         
-        <option value="Cycle Ingénieur - Ingénierie Data Sciences et Cloud Computing">Cycle Ingénieur - Ingénierie Data Sciences et Cloud Computing</option>
-        <option value="Cycle Ingénieur - Ingénierie des Technologies de l'information et Réseaux de Communication">Cycle Ingénieur - Ingénierie des Technologies de l'information et Réseaux de Communication</option>
-        <option value="Cycle Ingénieur - Sécurité Informatique et Cyber Sécurité<">Cycle Ingénieur - Sécurité Informatique et Cyber Sécurité</option>
-        <option value="Cycle Ingénieur - Génie Civil">Cycle Ingénieur - Génie Civil</option>
-        <option value="Cycle Ingénieur - Génie Electrique">Cycle Ingénieur - Génie Electrique</option>
-        <option value="Cycle Ingénieur - Génie Industriel">Cycle Ingénieur - Génie Industriel</option>
-        <option value="Cycle Ingénieur - Génie Informatique">Cycle Ingénieur - Génie Informatique</option>
-        <option value="Cycle Ingénieur - Génie des Systèmes Electronique, Informatique et Réseaux">Cycle Ingénieur - Génie des Systèmes Electronique, Informatique et Réseaux</option>
-        <option value="Cycle Ingénieur - Management et Gouvernance des Systèmes d'informations">Cycle Ingénieur - Management et Gouvernance des Systèmes d'informations</option>
+        <option value="IDSCC">Cycle Ingénieur - Ingénierie Data Sciences et Cloud Computing</option>
+        <option value="ITIRC">Cycle Ingénieur - Ingénierie des Technologies de l'information et Réseaux de Communication</option>
+        <option value="SIC">Cycle Ingénieur - Sécurité Informatique et Cyber Sécurité</option>
+        <option value="GCIV">Cycle Ingénieur - Génie Civil</option>
+        <option value="GELC">Cycle Ingénieur - Génie Electrique</option>
+        <option value="GIND">Cycle Ingénieur - Génie Industriel</option>
+        <option value="GINF">Cycle Ingénieur - Génie Informatique</option>
+        <option value="SEIR">Cycle Ingénieur - Génie des Systèmes Electronique, Informatique et Réseaux</option>
+        <option value="MGSI">Cycle Ingénieur - Management et Gouvernance des Systèmes d'informations</option>
 
 
 
@@ -39,16 +39,15 @@
     <select name="choix_2"  id="choix_2" onchange="updateSecondChoice()" class="form-control form-control-lg" >
 
         
-        <option value="Cycle Ingénieur - Ingénierie Data Sciences et Cloud Computing">Cycle Ingénieur - Ingénierie Data Sciences et Cloud Computing</option>
-        <option value="Cycle Ingénieur - Ingénierie des Technologies de l'information et Réseaux de Communication">Cycle Ingénieur - Ingénierie des Technologies de l'information et Réseaux de Communication</option>
-        <option value="Cycle Ingénieur - Sécurité Informatique et Cyber Sécurité<">Cycle Ingénieur - Sécurité Informatique et Cyber Sécurité</option>
-        <option value="Cycle Ingénieur - Génie Civil">Cycle Ingénieur - Génie Civil</option>
-        <option value="Cycle Ingénieur - Génie Electrique">Cycle Ingénieur - Génie Electrique</option>
-        <option value="Cycle Ingénieur - Génie Industriel">Cycle Ingénieur - Génie Industriel</option>
-        <option value="Cycle Ingénieur - Génie Informatique">Cycle Ingénieur - Génie Informatique</option>
-        <option value="Cycle Ingénieur - Génie des Systèmes Electronique, Informatique et Réseaux">Cycle Ingénieur - Génie des Systèmes Electronique, Informatique et Réseaux</option>
-        <option value="Cycle Ingénieur - Management et Gouvernance des Systèmes d'informations">Cycle Ingénieur - Management et Gouvernance des Systèmes d'informations</option>
-
+      <option value="IDSCC">Cycle Ingénieur - Ingénierie Data Sciences et Cloud Computing</option>
+      <option value="ITIRC">Cycle Ingénieur - Ingénierie des Technologies de l'information et Réseaux de Communication</option>
+      <option value="SIC">Cycle Ingénieur - Sécurité Informatique et Cyber Sécurité</option>
+      <option value="GCIV">Cycle Ingénieur - Génie Civil</option>
+      <option value="GELC">Cycle Ingénieur - Génie Electrique</option>
+      <option value="GIND">Cycle Ingénieur - Génie Industriel</option>
+      <option value="GINF">Cycle Ingénieur - Génie Informatique</option>
+      <option value="SEIR">Cycle Ingénieur - Génie des Systèmes Electronique, Informatique et Réseaux</option>
+      <option value="MGSI">Cycle Ingénieur - Management et Gouvernance des Systèmes d'informations</option>
 
 
     </select>
@@ -58,16 +57,15 @@
     <select name="choix_3"  id="choix_3" onchange="updateSecondChoice()" class="form-control form-control-lg" >
 
         
-        <option value="Cycle Ingénieur - Ingénierie Data Sciences et Cloud Computing">Cycle Ingénieur - Ingénierie Data Sciences et Cloud Computing</option>
-        <option value="Cycle Ingénieur - Ingénierie des Technologies de l'information et Réseaux de Communication">Cycle Ingénieur - Ingénierie des Technologies de l'information et Réseaux de Communication</option>
-        <option value="Cycle Ingénieur - Sécurité Informatique et Cyber Sécurité<">Cycle Ingénieur - Sécurité Informatique et Cyber Sécurité</option>
-        <option value="Cycle Ingénieur - Génie Civil">Cycle Ingénieur - Génie Civil</option>
-        <option value="Cycle Ingénieur - Génie Electrique">Cycle Ingénieur - Génie Electrique</option>
-        <option value="Cycle Ingénieur - Génie Industriel">Cycle Ingénieur - Génie Industriel</option>
-        <option value="Cycle Ingénieur - Génie Informatique">Cycle Ingénieur - Génie Informatique</option>
-        <option value="Cycle Ingénieur - Génie des Systèmes Electronique, Informatique et Réseaux">Cycle Ingénieur - Génie des Systèmes Electronique, Informatique et Réseaux</option>
-        <option value="Cycle Ingénieur - Management et Gouvernance des Systèmes d'informations">Cycle Ingénieur - Management et Gouvernance des Systèmes d'informations</option>
-
+      <option value="IDSCC">Cycle Ingénieur - Ingénierie Data Sciences et Cloud Computing</option>
+      <option value="ITIRC">Cycle Ingénieur - Ingénierie des Technologies de l'information et Réseaux de Communication</option>
+      <option value="SIC">Cycle Ingénieur - Sécurité Informatique et Cyber Sécurité</option>
+      <option value="GCIV">Cycle Ingénieur - Génie Civil</option>
+      <option value="GELC">Cycle Ingénieur - Génie Electrique</option>
+      <option value="GIND">Cycle Ingénieur - Génie Industriel</option>
+      <option value="GINF">Cycle Ingénieur - Génie Informatique</option>
+      <option value="SEIR">Cycle Ingénieur - Génie des Systèmes Electronique, Informatique et Réseaux</option>
+      <option value="MGSI">Cycle Ingénieur - Management et Gouvernance des Systèmes d'informations</option>
 
 
     </select>
@@ -77,16 +75,15 @@
     <select name="choix_4"  id="choix_4" onchange="updateSecondChoice()" class="form-control form-control-lg" >
 
         
-        <option value="Cycle Ingénieur - Ingénierie Data Sciences et Cloud Computing">Cycle Ingénieur - Ingénierie Data Sciences et Cloud Computing</option>
-        <option value="Cycle Ingénieur - Ingénierie des Technologies de l'information et Réseaux de Communication">Cycle Ingénieur - Ingénierie des Technologies de l'information et Réseaux de Communication</option>
-        <option value="Cycle Ingénieur - Sécurité Informatique et Cyber Sécurité<">Cycle Ingénieur - Sécurité Informatique et Cyber Sécurité</option>
-        <option value="Cycle Ingénieur - Génie Civil">Cycle Ingénieur - Génie Civil</option>
-        <option value="Cycle Ingénieur - Génie Electrique">Cycle Ingénieur - Génie Electrique</option>
-        <option value="Cycle Ingénieur - Génie Industriel">Cycle Ingénieur - Génie Industriel</option>
-        <option value="Cycle Ingénieur - Génie Informatique">Cycle Ingénieur - Génie Informatique</option>
-        <option value="Cycle Ingénieur - Génie des Systèmes Electronique, Informatique et Réseaux">Cycle Ingénieur - Génie des Systèmes Electronique, Informatique et Réseaux</option>
-        <option value="Cycle Ingénieur - Management et Gouvernance des Systèmes d'informations">Cycle Ingénieur - Management et Gouvernance des Systèmes d'informations</option>
-
+      <option value="IDSCC">Cycle Ingénieur - Ingénierie Data Sciences et Cloud Computing</option>
+      <option value="ITIRC">Cycle Ingénieur - Ingénierie des Technologies de l'information et Réseaux de Communication</option>
+      <option value="SIC">Cycle Ingénieur - Sécurité Informatique et Cyber Sécurité</option>
+      <option value="GCIV">Cycle Ingénieur - Génie Civil</option>
+      <option value="GELC">Cycle Ingénieur - Génie Electrique</option>
+      <option value="GIND">Cycle Ingénieur - Génie Industriel</option>
+      <option value="GINF">Cycle Ingénieur - Génie Informatique</option>
+      <option value="SEIR">Cycle Ingénieur - Génie des Systèmes Electronique, Informatique et Réseaux</option>
+      <option value="MGSI">Cycle Ingénieur - Management et Gouvernance des Systèmes d'informations</option>
 
 
     </select>
@@ -96,16 +93,15 @@
     <select name="choix_5"  id="choix_5" onchange="updateSecondChoice()" class="form-control form-control-lg" >
 
         
-        <option value="Cycle Ingénieur - Ingénierie Data Sciences et Cloud Computing">Cycle Ingénieur - Ingénierie Data Sciences et Cloud Computing</option>
-        <option value="Cycle Ingénieur - Ingénierie des Technologies de l'information et Réseaux de Communication">Cycle Ingénieur - Ingénierie des Technologies de l'information et Réseaux de Communication</option>
-        <option value="Cycle Ingénieur - Sécurité Informatique et Cyber Sécurité<">Cycle Ingénieur - Sécurité Informatique et Cyber Sécurité</option>
-        <option value="Cycle Ingénieur - Génie Civil">Cycle Ingénieur - Génie Civil</option>
-        <option value="Cycle Ingénieur - Génie Electrique">Cycle Ingénieur - Génie Electrique</option>
-        <option value="Cycle Ingénieur - Génie Industriel">Cycle Ingénieur - Génie Industriel</option>
-        <option value="Cycle Ingénieur - Génie Informatique">Cycle Ingénieur - Génie Informatique</option>
-        <option value="Cycle Ingénieur - Génie des Systèmes Electronique, Informatique et Réseaux">Cycle Ingénieur - Génie des Systèmes Electronique, Informatique et Réseaux</option>
-        <option value="Cycle Ingénieur - Management et Gouvernance des Systèmes d'informations">Cycle Ingénieur - Management et Gouvernance des Systèmes d'informations</option>
-
+      <option value="IDSCC">Cycle Ingénieur - Ingénierie Data Sciences et Cloud Computing</option>
+      <option value="ITIRC">Cycle Ingénieur - Ingénierie des Technologies de l'information et Réseaux de Communication</option>
+      <option value="SIC">Cycle Ingénieur - Sécurité Informatique et Cyber Sécurité</option>
+      <option value="GCIV">Cycle Ingénieur - Génie Civil</option>
+      <option value="GELC">Cycle Ingénieur - Génie Electrique</option>
+      <option value="GIND">Cycle Ingénieur - Génie Industriel</option>
+      <option value="GINF">Cycle Ingénieur - Génie Informatique</option>
+      <option value="SEIR">Cycle Ingénieur - Génie des Systèmes Electronique, Informatique et Réseaux</option>
+      <option value="MGSI">Cycle Ingénieur - Management et Gouvernance des Systèmes d'informations</option>
 
 
     </select>
@@ -115,16 +111,15 @@
     <select name="choix_6"  id="choix_6" onchange="updateSecondChoice()" class="form-control form-control-lg" >
 
         
-        <option value="Cycle Ingénieur - Ingénierie Data Sciences et Cloud Computing">Cycle Ingénieur - Ingénierie Data Sciences et Cloud Computing</option>
-        <option value="Cycle Ingénieur - Ingénierie des Technologies de l'information et Réseaux de Communication">Cycle Ingénieur - Ingénierie des Technologies de l'information et Réseaux de Communication</option>
-        <option value="Cycle Ingénieur - Sécurité Informatique et Cyber Sécurité<">Cycle Ingénieur - Sécurité Informatique et Cyber Sécurité</option>
-        <option value="Cycle Ingénieur - Génie Civil">Cycle Ingénieur - Génie Civil</option>
-        <option value="Cycle Ingénieur - Génie Electrique">Cycle Ingénieur - Génie Electrique</option>
-        <option value="Cycle Ingénieur - Génie Industriel">Cycle Ingénieur - Génie Industriel</option>
-        <option value="Cycle Ingénieur - Génie Informatique">Cycle Ingénieur - Génie Informatique</option>
-        <option value="Cycle Ingénieur - Génie des Systèmes Electronique, Informatique et Réseaux">Cycle Ingénieur - Génie des Systèmes Electronique, Informatique et Réseaux</option>
-        <option value="Cycle Ingénieur - Management et Gouvernance des Systèmes d'informations">Cycle Ingénieur - Management et Gouvernance des Systèmes d'informations</option>
-
+      <option value="IDSCC">Cycle Ingénieur - Ingénierie Data Sciences et Cloud Computing</option>
+      <option value="ITIRC">Cycle Ingénieur - Ingénierie des Technologies de l'information et Réseaux de Communication</option>
+      <option value="SIC">Cycle Ingénieur - Sécurité Informatique et Cyber Sécurité</option>
+      <option value="GCIV">Cycle Ingénieur - Génie Civil</option>
+      <option value="GELC">Cycle Ingénieur - Génie Electrique</option>
+      <option value="GIND">Cycle Ingénieur - Génie Industriel</option>
+      <option value="GINF">Cycle Ingénieur - Génie Informatique</option>
+      <option value="SEIR">Cycle Ingénieur - Génie des Systèmes Electronique, Informatique et Réseaux</option>
+      <option value="MGSI">Cycle Ingénieur - Management et Gouvernance des Systèmes d'informations</option>
 
 
     </select>
@@ -134,16 +129,15 @@
     <select name="choix_7"  id="choix_7" onchange="updateSecondChoice()" class="form-control form-control-lg" >
 
         
-        <option value="Cycle Ingénieur - Ingénierie Data Sciences et Cloud Computing">Cycle Ingénieur - Ingénierie Data Sciences et Cloud Computing</option>
-        <option value="Cycle Ingénieur - Ingénierie des Technologies de l'information et Réseaux de Communication">Cycle Ingénieur - Ingénierie des Technologies de l'information et Réseaux de Communication</option>
-        <option value="Cycle Ingénieur - Sécurité Informatique et Cyber Sécurité<">Cycle Ingénieur - Sécurité Informatique et Cyber Sécurité</option>
-        <option value="Cycle Ingénieur - Génie Civil">Cycle Ingénieur - Génie Civil</option>
-        <option value="Cycle Ingénieur - Génie Electrique">Cycle Ingénieur - Génie Electrique</option>
-        <option value="Cycle Ingénieur - Génie Industriel">Cycle Ingénieur - Génie Industriel</option>
-        <option value="Cycle Ingénieur - Génie Informatique">Cycle Ingénieur - Génie Informatique</option>
-        <option value="Cycle Ingénieur - Génie des Systèmes Electronique, Informatique et Réseaux">Cycle Ingénieur - Génie des Systèmes Electronique, Informatique et Réseaux</option>
-        <option value="Cycle Ingénieur - Management et Gouvernance des Systèmes d'informations">Cycle Ingénieur - Management et Gouvernance des Systèmes d'informations</option>
-
+      <option value="IDSCC">Cycle Ingénieur - Ingénierie Data Sciences et Cloud Computing</option>
+      <option value="ITIRC">Cycle Ingénieur - Ingénierie des Technologies de l'information et Réseaux de Communication</option>
+      <option value="SIC">Cycle Ingénieur - Sécurité Informatique et Cyber Sécurité</option>
+      <option value="GCIV">Cycle Ingénieur - Génie Civil</option>
+      <option value="GELC">Cycle Ingénieur - Génie Electrique</option>
+      <option value="GIND">Cycle Ingénieur - Génie Industriel</option>
+      <option value="GINF">Cycle Ingénieur - Génie Informatique</option>
+      <option value="SEIR">Cycle Ingénieur - Génie des Systèmes Electronique, Informatique et Réseaux</option>
+      <option value="MGSI">Cycle Ingénieur - Management et Gouvernance des Systèmes d'informations</option>
 
 
     </select>
@@ -153,16 +147,15 @@
     <select name="choix_8"  id="choix_8" onchange="updateSecondChoice()" class="form-control form-control-lg" >
 
         
-        <option value="Cycle Ingénieur - Ingénierie Data Sciences et Cloud Computing">Cycle Ingénieur - Ingénierie Data Sciences et Cloud Computing</option>
-        <option value="Cycle Ingénieur - Ingénierie des Technologies de l'information et Réseaux de Communication">Cycle Ingénieur - Ingénierie des Technologies de l'information et Réseaux de Communication</option>
-        <option value="Cycle Ingénieur - Sécurité Informatique et Cyber Sécurité<">Cycle Ingénieur - Sécurité Informatique et Cyber Sécurité</option>
-        <option value="Cycle Ingénieur - Génie Civil">Cycle Ingénieur - Génie Civil</option>
-        <option value="Cycle Ingénieur - Génie Electrique">Cycle Ingénieur - Génie Electrique</option>
-        <option value="Cycle Ingénieur - Génie Industriel">Cycle Ingénieur - Génie Industriel</option>
-        <option value="Cycle Ingénieur - Génie Informatique">Cycle Ingénieur - Génie Informatique</option>
-        <option value="Cycle Ingénieur - Génie des Systèmes Electronique, Informatique et Réseaux">Cycle Ingénieur - Génie des Systèmes Electronique, Informatique et Réseaux</option>
-        <option value="Cycle Ingénieur - Management et Gouvernance des Systèmes d'informations">Cycle Ingénieur - Management et Gouvernance des Systèmes d'informations</option>
-
+      <option value="IDSCC">Cycle Ingénieur - Ingénierie Data Sciences et Cloud Computing</option>
+      <option value="ITIRC">Cycle Ingénieur - Ingénierie des Technologies de l'information et Réseaux de Communication</option>
+      <option value="SIC">Cycle Ingénieur - Sécurité Informatique et Cyber Sécurité</option>
+      <option value="GCIV">Cycle Ingénieur - Génie Civil</option>
+      <option value="GELC">Cycle Ingénieur - Génie Electrique</option>
+      <option value="GIND">Cycle Ingénieur - Génie Industriel</option>
+      <option value="GINF">Cycle Ingénieur - Génie Informatique</option>
+      <option value="SEIR">Cycle Ingénieur - Génie des Systèmes Electronique, Informatique et Réseaux</option>
+      <option value="MGSI">Cycle Ingénieur - Management et Gouvernance des Systèmes d'informations</option>
 
 
     </select>
@@ -172,16 +165,15 @@
     <select name="choix_9"  id="choix_9" onchange="updateSecondChoice()" class="form-control form-control-lg" >
 
         
-        <option value="Cycle Ingénieur - Ingénierie Data Sciences et Cloud Computing">Cycle Ingénieur - Ingénierie Data Sciences et Cloud Computing</option>
-        <option value="Cycle Ingénieur - Ingénierie des Technologies de l'information et Réseaux de Communication">Cycle Ingénieur - Ingénierie des Technologies de l'information et Réseaux de Communication</option>
-        <option value="Cycle Ingénieur - Sécurité Informatique et Cyber Sécurité<">Cycle Ingénieur - Sécurité Informatique et Cyber Sécurité</option>
-        <option value="Cycle Ingénieur - Génie Civil">Cycle Ingénieur - Génie Civil</option>
-        <option value="Cycle Ingénieur - Génie Electrique">Cycle Ingénieur - Génie Electrique</option>
-        <option value="Cycle Ingénieur - Génie Industriel">Cycle Ingénieur - Génie Industriel</option>
-        <option value="Cycle Ingénieur - Génie Informatique">Cycle Ingénieur - Génie Informatique</option>
-        <option value="Cycle Ingénieur - Génie des Systèmes Electronique, Informatique et Réseaux">Cycle Ingénieur - Génie des Systèmes Electronique, Informatique et Réseaux</option>
-        <option value="Cycle Ingénieur - Management et Gouvernance des Systèmes d'informations">Cycle Ingénieur - Management et Gouvernance des Systèmes d'informations</option>
-
+      <option value="IDSCC">Cycle Ingénieur - Ingénierie Data Sciences et Cloud Computing</option>
+      <option value="ITIRC">Cycle Ingénieur - Ingénierie des Technologies de l'information et Réseaux de Communication</option>
+      <option value="SIC">Cycle Ingénieur - Sécurité Informatique et Cyber Sécurité</option>
+      <option value="GCIV">Cycle Ingénieur - Génie Civil</option>
+      <option value="GELC">Cycle Ingénieur - Génie Electrique</option>
+      <option value="GIND">Cycle Ingénieur - Génie Industriel</option>
+      <option value="GINF">Cycle Ingénieur - Génie Informatique</option>
+      <option value="SEIR">Cycle Ingénieur - Génie des Systèmes Electronique, Informatique et Réseaux</option>
+      <option value="MGSI">Cycle Ingénieur - Management et Gouvernance des Systèmes d'informations</option>
 
 
     </select>
